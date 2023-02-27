@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const CardSidebar = (props) => {
   <Card className="d-flex">
