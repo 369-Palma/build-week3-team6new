@@ -11,7 +11,7 @@ const AziendeConsultate = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProfiles());
+    dispatch(fetchProfiles(""));
   }, []);
 
   return (
