@@ -20,13 +20,7 @@ const AziendeConsultate = () => {
         <h2>Altre aziende consultate</h2>
       </Row>
       <Row className="py-2">
-        {users?.map((_, i) => {
-          return (
-            <Row key={i}>
-              <CardSidebar />
-            </Row>
-          );
-        })}
+        <CardSidebar />
       </Row>
     </Container>
   );

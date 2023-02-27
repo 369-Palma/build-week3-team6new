@@ -1,17 +1,33 @@
-import { Button, Card } from "react-bootstrap";
+import { Container, Button, Card, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-const CardSidebar = ({ image, name, surname, title }) => {
+const CardSidebar = () => {
+  const users = useSelector((state) => state.content.slice(0, 5));
+
+  console.log(users);
   return (
-    <Card className="d-flex">
-      <Card.Img variant="top" src={image} alt={name} className="fotoTonde" />
-      <Card.Body>
-        <Card.Title>
-          {name} {surname} . <span className="disabled">3°</span>
-        </Card.Title>
-        <Card.Text>{title}</Card.Text>
-        <Button className="my-2">Collegati</Button>
-      </Card.Body>
-    </Card>
+    <Container>
+      {users.map((user) => (
+        <Row>
+          <Card className="d-flex">
+            <Card.Img
+              variant="top"
+              src={user.image}
+              alt="foto"
+              className="fotoTonde"
+            />
+            <Card.Body>
+              <Card.Title>
+                {user.name} {user.surname} .{" "}
+                <span className="disabled">3°</span>
+              </Card.Title>
+              <Card.Text>{user.title}</Card.Text>
+              <Button className="my-2">Collegati</Button>
+            </Card.Body>
+          </Card>
+        </Row>
+      ))}
+    </Container>
   );
 };
 
