@@ -8,4 +8,9 @@ const mainReducer = (state = initialState, action) => {
       return state;
   }
 };
+<<<<<<< HEAD
 export default mainReducer; */
+=======
+
+export default mainReducer;
+>>>>>>> develop

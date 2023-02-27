@@ -1,16 +1,15 @@
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-import './App.css';
-import CustomNavbar from"./components/Navbar";
+import "./App.css";
+import AziendeConsultate from "./components/AziendeConsultate";
+import CustomNavbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-    <h1>Ciao</h1>
-      <header className="App-header">
-       
-      </header>
-      <CustomNavbar></CustomNavbar>
-    </>
+    <div className="App">
+      <CustomNavbar/>
+      <AziendeConsultate></AziendeConsultate>
+    </div>
   );
 }
 
