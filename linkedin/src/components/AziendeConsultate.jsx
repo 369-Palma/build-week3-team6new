@@ -20,9 +20,7 @@ const AziendeConsultate = () => {
         <h2>Altre aziende consultate</h2>
       </Row>
       <Row className="py-2">
-        return (
         <CardSidebar />
-        );
       </Row>
     </Container>
   );
