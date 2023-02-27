@@ -8,7 +8,7 @@ const CardSidebar = (props) => {
         {props.name} + {props.surname}
       </Card.Title>
       <Card.Text>{props.title}</Card.Text>
-      <Button variant="primary">Go somewhere</Button>
+      <Button variant="primary">Collegati</Button>
     </Card.Body>
   </Card>;
 };
