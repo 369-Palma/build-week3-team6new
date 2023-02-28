@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
+import { HiOutlinePencil } from "react-icons/hi";
 import { fetchUser } from "../redux/actions/index";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Experiences from "./Experiences";
+import ModalExperiences from "./ModaleExperiences";
 
 // function Esempio() {
 //     const [contatore, setContatore] = useState();
@@ -11,6 +13,7 @@ import Experiences from "./Experiences";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
+
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
@@ -61,13 +64,16 @@ const UserProfile = () => {
                 </Button>
               </div>
             </Col>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={4} className="d-flex">
               <img
                 src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
                 alt=""
                 style={{ width: "3em", height: "3em" }}
                 className="me-2 mb-1"
-              />{" "}
+              />
+              <Button variant="primary">
+                <HiOutlinePencil />
+              </Button>
               Epicode
             </Col>
           </Row>
