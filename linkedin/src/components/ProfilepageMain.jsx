@@ -13,7 +13,7 @@ const UserProfile = () => {
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
-    // console.log(fetchProfiles("me"));
+
   }, []);
   console.log(profileStore);
   return (
@@ -33,24 +33,13 @@ const UserProfile = () => {
               alt="userimage"
             />
           </Row>
-          <Row className="profile ml-1">
-            <img
-              className="img-fluid"
-              src={profileStore.image}
-              alt="userimage"
-            />
-          </Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
-                {profileStore.name} {profileStore.surname}
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
-              <p className="my-0 occupation">{profileStore.title}</p>
-              <p className="my-0 location text-muted">{profileStore.area}</p>
-
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
@@ -80,7 +69,6 @@ const UserProfile = () => {
                   />{" "}
                   Strive school
                 </li>
-
                 <li className="education">
                   <img
                     src="https://www.schema17project.com/wp-content/uploads/2020/10/logo-palla-291x300.png"
