@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
@@ -12,7 +13,7 @@ const UserProfile = () => {
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
-    // console.log(fetchProfiles("me"));
+
   }, []);
   console.log(profileStore);
   return (
@@ -39,7 +40,6 @@ const UserProfile = () => {
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
-
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
@@ -69,7 +69,6 @@ const UserProfile = () => {
                   />{" "}
                   Strive school
                 </li>
-
                 <li className="education">
                   <img
                     src="https://www.schema17project.com/wp-content/uploads/2020/10/logo-palla-291x300.png"
