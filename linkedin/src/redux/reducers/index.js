@@ -1,3 +1,4 @@
+/* const initialState = {
 import { GET_USERS } from "../actions/index";
 
 const initialState = {
@@ -15,5 +16,5 @@ const mainReducer = (state = initialState, action) => {
       return state;
   }
 };
+export default mainReducer; */
 
-export default mainReducer;
