@@ -13,7 +13,6 @@ const UserProfile = () => {
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
-
   }, []);
   console.log(profileStore);
   return (
@@ -28,7 +27,7 @@ const UserProfile = () => {
           </Row>
           <Row className="profile ml-1">
             <img
-              className="img-fluid"
+              className="img-fluid fotoUser"
               src={profileStore.image}
               alt="userimage"
             />
@@ -43,7 +42,7 @@ const UserProfile = () => {
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
-              <div className="d-flex justify-content-start w-100">
+              <div className="d-flex justify-content-start w-100 mb-3">
                 <Button className="profilebutton open-to-btn">
                   Disponibile per
                 </Button>
@@ -59,26 +58,13 @@ const UserProfile = () => {
               </div>
             </Col>
             <Col xs={12} md={4}>
-              <ul>
-                <li className="education mb-1">
-                  <img
-                    src="https://strive.school/favicon.ico"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Strive school
-                </li>
-                <li className="education">
-                  <img
-                    src="https://www.schema17project.com/wp-content/uploads/2020/10/logo-palla-291x300.png"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Tech University
-                </li>
-              </ul>
+              <img
+                src="https://yt3.googleusercontent.com/9RGAVa52qAdJfJSShxr9prs7EUpia4tsVsnvrb-E1Yhdj7H4LMU4gHLRDC-7tJLV9BVYaEq6M7g=s900-c-k-c0x00ffffff-no-rj"
+                alt=""
+                style={{ width: "3em", height: "3em" }}
+                className="me-2 education mb-1"
+              />{" "}
+              Epicode
             </Col>
           </Row>
         </Container>

@@ -13,13 +13,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <CustomNavbar />
-
+        {/* <Home></Home> */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
 
-        <AziendeConsultate />
+        {/* <AziendeConsultate></AziendeConsultate> */}
       </BrowserRouter>
     </div>
   );
