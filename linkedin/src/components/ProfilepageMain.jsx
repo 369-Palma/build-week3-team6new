@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { fetchProfiles, fetchUser } from "../redux/actions/index";
-import React, { useState, useEffect } from "react";
+import { fetchUser } from "../redux/actions/index";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // function Esempio() {
@@ -22,7 +23,7 @@ const UserProfile = () => {
           <Row className="p-background">
             <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
           </Row>
-          <Row className="profile ml-1">{/* <img className="img-fluid" src={image} /> */}</Row>
+          <Row className="profile ml-1"><img className="img-fluid" src={profileStore.image} alt="userimage" /></Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
