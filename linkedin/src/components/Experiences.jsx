@@ -16,15 +16,8 @@ const Experiences = () => {
 
     useEffect(() => {
         dispatch(fetchExp("experiences"));
-        console.log(experiences)
     }, []);
 
-
-
-
-
-
-    console.log(experiences)
 
     ///fetch
 
