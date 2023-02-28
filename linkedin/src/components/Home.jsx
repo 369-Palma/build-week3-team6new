@@ -11,7 +11,7 @@ const Home = () => {
         </Col>
       </Row>
       <Col className="d-xs-none d-md-block col-md-4 ms-4">
-        <AziendeConsultate></AziendeConsultate>
+        {/* <AziendeConsultate></AziendeConsultate> */}
         <Row className="my-2"></Row>
       </Col>
     </Container>
