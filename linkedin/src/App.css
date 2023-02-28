@@ -1,3 +1,31 @@
+/* .fotoUser {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  
+} */
+
+.fotoUser {
+  overflow: hidden;
+  border-radius: 50%;
+  position: absolute;
+  top: 165px;
+  left: 25px;
+  width: 170px;
+}
+.fotoUser img {
+  width: 12em;
+  height: 10em;
+  border-radius: 50%;
+}
+
+.userdetail {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .bottoneSideBar {
   background-color: transparent;
   border-radius: 25px;
@@ -106,12 +134,12 @@
 h5 {
   font-size: 1rem;
 }
-#basic-navbar-nav{
+#basic-navbar-nav {
   cursor: pointer;
 }
-.nav-link:hover{
-color: black;
+.nav-link:hover {
+  color: black;
 }
-.nav-icons:hover{
+.nav-icons:hover {
   color: black;
 }

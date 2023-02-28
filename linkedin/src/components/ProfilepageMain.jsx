@@ -3,6 +3,7 @@ import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Experiences from "./Experiences";
 
 // function Esempio() {
 //     const [contatore, setContatore] = useState();
@@ -13,7 +14,6 @@ const UserProfile = () => {
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
-
   }, []);
   console.log(profileStore);
   return (
@@ -27,14 +27,17 @@ const UserProfile = () => {
             />
           </Row>
           <Row className="profile ml-1">
+            {/* <img className="img-fluid" src={image} /> */}
+          </Row>
+          <Row className="profile ml-1">
             <img
-              className="img-fluid"
+              className="img-fluid fotoUser"
               src={profileStore.image}
               alt="userimage"
             />
           </Row>
-          <Row className="userdetail ">
-            <Col xs={12} md={8}>
+          <Row>
+            <Col className="userdetail " xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
               </h4>
@@ -43,7 +46,7 @@ const UserProfile = () => {
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
-              <div className="d-flex justify-content-start w-100">
+              <div className="d-flex justify-content-start w-100 mb-3">
                 <Button className="profilebutton open-to-btn">
                   Disponibile per
                 </Button>
@@ -59,26 +62,20 @@ const UserProfile = () => {
               </div>
             </Col>
             <Col xs={12} md={4}>
-              <ul>
-                <li className="education mb-1">
-                  <img
-                    src="https://strive.school/favicon.ico"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Strive school
-                </li>
-                <li className="education">
-                  <img
-                    src="https://www.schema17project.com/wp-content/uploads/2020/10/logo-palla-291x300.png"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Tech University
-                </li>
-              </ul>
+              <img
+                src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
+                alt=""
+                style={{ width: "3em", height: "3em" }}
+                className="me-2 mb-1"
+              />{" "}
+              Epicode
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col>
+              <Experiences />
             </Col>
           </Row>
         </Container>

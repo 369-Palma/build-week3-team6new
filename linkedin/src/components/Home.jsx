@@ -1,4 +1,6 @@
 import UserProfile from "./ProfilepageMain";
+import AziendeConsultate from "./AziendeConsultate";
+
 import { Container, Row, Col } from "react-bootstrap";
 import Experiences from "./Experiences";
 
@@ -12,6 +14,7 @@ const Home = () => {
         </Col>
       </Row>
       <Col className="d-xs-none d-md-block col-md-4 ms-4">
+        <AziendeConsultate></AziendeConsultate>
         <Row className="my-2"></Row>
       </Col>
     </Container>
