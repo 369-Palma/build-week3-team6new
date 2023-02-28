@@ -2,6 +2,8 @@ import "./App.css";
 import AziendeConsultate from "./components/AziendeConsultate";
 import UserProfile from "./components/ProfilepageMain";
 import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
