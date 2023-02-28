@@ -1,44 +1,20 @@
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { fetchProfiles } from "../redux/actions/index";
-import React, { useState, useEffect } from "react";
+import { fetchUser } from "../redux/actions/index";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const UserProfile = ({ image, name, surname, title, area }) => {
-  const [profile, setProfile] = useState({});
+// function Esempio() {
+//     const [contatore, setContatore] = useState();
+// }
 
-  const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
-
-  const fetchProfiles = (query) => {
-    return async () => {
-      try {
-        const res = await fetch(baseline + query, {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
-          },
-        });
-        if (res.ok) {
-          const dataProfile = await res.json();
-          setProfile(dataProfile);
-          console.log(profile);
-        } else {
-          console.log("Badoglio!");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  };
+const UserProfile = () => {
   const dispatch = useDispatch();
-  const profileStore = useSelector((state) => state.profile);
-
+  const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
-    dispatch(fetchProfiles("me"));
+    dispatch(fetchUser("me"));
+    // console.log(fetchProfiles("me"));
   }, []);
-
+  console.log(profileStore);
   return (
     <>
       <Card>
@@ -50,26 +26,30 @@ const UserProfile = ({ image, name, surname, title, area }) => {
             />
           </Row>
           <Row className="profile ml-1">
-            {/* <img className="img-fluid" src={image} /> */}
+            <img
+              className="img-fluid"
+              src={profileStore.image}
+              alt="userimage"
+            />
           </Row>
-          <Row className="user__detail ">
+          <Row className="userdetail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
-                {name} {surname}
+                {profileStore.name} {profileStore.surname}
               </h4>
-              <p className="my-0 occupation">{title}</p>
-              <p className="my-0 location text-muted">{area}</p>
+              <p className="my-0 occupation">{profileStore.title}</p>
+              <p className="my-0 location text-muted">{profileStore.area}</p>
 
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
               <div className="d-flex justify-content-start w-100">
-                <Button className="profile__button open-to-btn">
+                <Button className="profilebutton open-to-btn">
                   Disponibile per
                 </Button>
                 <Button
                   variant="outline-primary"
-                  className="add__btn profile__button  mx-3"
+                  className="addbtn profilebutton  mx-3"
                 >
                   Aggiungi sezione profilo
                 </Button>
