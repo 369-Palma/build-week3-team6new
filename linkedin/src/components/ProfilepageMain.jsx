@@ -5,7 +5,7 @@ import { fetchUser } from "../redux/actions/index";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Experiences from "./Experiences";
-import ModalExperiences from "./ModaleExperiences";
+/* import ModalExperiences from "./ModaleExperiences"; */
 
 // function Esempio() {
 //     const [contatore, setContatore] = useState();

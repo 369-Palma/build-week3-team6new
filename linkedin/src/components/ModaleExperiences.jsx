@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import { BsFillInfoSquareFill, HiPlus, HiOutlinePencil } from "react-icons/bs";
+import { BsFillInfoSquareFill, HiPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const ModalExperiences = () => {
   const [lgShow, setLgShow] = useState(false);
 
-  const handleShow = () => setLgShow(true);
-
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        <HiOutlinePencil />
-      </Button>
       <Modal
         size="lg"
         show={lgShow}
