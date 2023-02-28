@@ -1,3 +1,23 @@
+.bottoneSideBar {
+  background-color: transparent;
+  border-radius: 25px;
+  border: 1px solid black;
+  color: var(--gray-text);
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+  font-size: 0.9rem;
+}
+.cardImgsideBar {
+  position: relative;
+}
+
+.fotoTonde {
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 10px;
+}
 .App {
   text-align: center;
 }
