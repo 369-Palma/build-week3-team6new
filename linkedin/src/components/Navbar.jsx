@@ -9,6 +9,7 @@ import {
   BsFillChatDotsFill,
   BsFillBellFill,
   BsFillGrid3X3GapFill,
+  BsFillPersonFill,
 } from "react-icons/bs";
 
 const CustomNavbar = () => {
@@ -43,35 +44,51 @@ const CustomNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <BsHouseDoorFill />
-              <Nav.Link href="#">Home</Nav.Link>
-              <BsFillPeopleFill />
-              <Nav.Link href="#">Rete</Nav.Link>
-              <BsFillBriefcaseFill />
-              <Nav.Link href="#">Lavoro</Nav.Link>
-              <BsFillChatDotsFill />
-              <Nav.Link href="#">Messaggistica</Nav.Link>
-              <BsFillBellFill />
-              <Nav.Link href="#">Notifiche</Nav.Link>
-              <NavDropdown title="Tu" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-              </NavDropdown>
-              <BsFillGrid3X3GapFill />
-              <NavDropdown title="Lavoro" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-              </NavDropdown>
+              <div className="ml-3 nav-link">
+                <BsHouseDoorFill classNamne="nav-icon" size="22" />
+                <Nav.Link href="#">Home</Nav.Link>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillPeopleFill className="nav-icon" size="22" />
+                <Nav.Link href="#">Rete</Nav.Link>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillBriefcaseFill className="nav-icon" size="22" />
+
+                <Nav.Link href="#">Lavoro</Nav.Link>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillChatDotsFill className="nav-icon" size="22" />
+                <Nav.Link href="#">Messaggistica</Nav.Link>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillBellFill classNamne="nav-icon" size="22" />
+                <Nav.Link href="#">Notifiche</Nav.Link>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillPersonFill className="nav-icon" size="22" />
+                <NavDropdown title="Tu" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
+              <div className="ml-3 nav-link">
+                <BsFillGrid3X3GapFill className="nav-icon" size="22" />
+                <NavDropdown title="Lavoro" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
             </Nav>
           </Navbar.Collapse>
         </div>
