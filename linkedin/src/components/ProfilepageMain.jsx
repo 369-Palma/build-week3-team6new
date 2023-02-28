@@ -33,7 +33,7 @@ const UserProfile = () => {
               alt="userimage"
             />
           </Row>
-          <Row className="user__detail ">
+          <Row className="userdetail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
