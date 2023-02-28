@@ -12,11 +12,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-<<<<<<< Updated upstream
         <CustomNavbar />
-=======
-         <CustomNavbar /> 
->>>>>>> Stashed changes
 
         <Routes>
 
