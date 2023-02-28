@@ -1,5 +1,8 @@
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 import "./App.css";
 import AziendeConsultate from "./components/AziendeConsultate";
+import CustomNavbar from "./components/Navbar";
 import UserProfile from "./components/ProfilepageMain";
 import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,6 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
+      <CustomNavbar />
       <Container className="d-flex">
         <Row>
           <Col className="col-xs-12 col-md-8 w-100">

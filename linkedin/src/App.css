@@ -56,3 +56,62 @@
     transform: rotate(360deg);
   }
 }
+
+#navbar-body {
+  color: #666666;
+  font-size: 0.8rem;
+  border-bottom: #d1d1d1;
+}
+#navbar-logo {
+  height: 34px;
+  width: 34px;
+}
+.navbar-right-section {
+  border-left: 1px solid #d1d1d1;
+  padding-left: 20px;
+}
+#form-control-search-form-control {
+  border: none;
+  border-radius: 0;
+  font-size: 0.9rem;
+  background-color: #eef3f8;
+}
+#navbar-search-container {
+  background-color: #eef3f8;
+}
+#navbar-search-icon {
+  color: #666666;
+}
+.navbar-icon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 22px;
+}
+.navbar-icon-container:hover {
+  color: black;
+  cursor: pointer;
+}
+
+#navbar-center {
+  display: flex;
+  flex-direction: row;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+h5 {
+  font-size: 1rem;
+}
+#basic-navbar-nav{
+  cursor: pointer;
+}
+.nav-link:hover{
+color: black;
+}
+.nav-icons:hover{
+  color: black;
+}
