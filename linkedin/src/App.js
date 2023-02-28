@@ -12,14 +12,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-<<<<<<< Updated upstream
         <CustomNavbar />
-=======
-         <CustomNavbar /> 
->>>>>>> Stashed changes
 
         <Routes>
-
           <Route path="/" element={<Home />}></Route>
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
