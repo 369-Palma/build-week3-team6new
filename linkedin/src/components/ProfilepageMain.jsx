@@ -1,5 +1,5 @@
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { fetchProfiles } from "../redux/actions/index";
+import { fetchProfiles, fetchUser } from "../redux/actions/index";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 //     const [contatore, setContatore] = useState();
 // }
 
-const UserProfile = ({ image, name, surname, title, area }) => {
+const UserProfile = () => {
   const dispatch = useDispatch();
-  const profileStore = useSelector((state) => state.content);
+  const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
-    dispatch(fetchProfiles("me"));
+    dispatch(fetchUser("me"));
     // console.log(fetchProfiles("me"));
   }, []);
+  console.log(profileStore)
   return (
     <>
       <Card>
@@ -25,10 +26,10 @@ const UserProfile = ({ image, name, surname, title, area }) => {
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
-                {name} {surname}
+                {profileStore.name} {profileStore.surname}
               </h4>
-              <p className="my-0 occupation">{title}</p>
-              <p className="my-0 location text-muted">{area}</p>
+              <p className="my-0 occupation">{profileStore.title}</p>
+              <p className="my-0 location text-muted">{profileStore.area}</p>
 
               <p className="my-2 connections">580 follower - 951 collegamenti</p>
               <div className="d-flex justify-content-start w-100">

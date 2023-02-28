@@ -12,14 +12,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <CustomNavbar />
-        {/* <Home></Home> */}
+        {/* <CustomNavbar /> */}
+
         <Routes>
+
           <Route path="/" element={<Home />}></Route>
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
 
-        {/* <AziendeConsultate></AziendeConsultate> */}
+        <AziendeConsultate />
       </BrowserRouter>
     </div>
   );
