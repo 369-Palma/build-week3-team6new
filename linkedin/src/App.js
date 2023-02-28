@@ -19,7 +19,7 @@ function App() {
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
 
-        <AziendeConsultate></AziendeConsultate>
+        {/* <AziendeConsultate></AziendeConsultate> */}
       </BrowserRouter>
     </div>
   );
