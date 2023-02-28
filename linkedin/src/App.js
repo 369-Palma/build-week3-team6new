@@ -1,12 +1,26 @@
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 import "./App.css";
 import AziendeConsultate from "./components/AziendeConsultate";
-import UserProfile from "./components/ProfilepageMain";
+import CustomNavbar from "./components/Navbar";
+/* import UserProfile from "./components/ProfilepageMain"; */
+import Home from "./components/Home";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <UserProfile></UserProfile>
-      <AziendeConsultate></AziendeConsultate>
+      <BrowserRouter>
+        <CustomNavbar />
+        {/* <Home></Home> */}
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
+        </Routes>
+
+        {/* <AziendeConsultate></AziendeConsultate> */}
+      </BrowserRouter>
     </div>
   );
 }
