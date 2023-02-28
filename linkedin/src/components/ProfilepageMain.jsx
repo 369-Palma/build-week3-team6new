@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { fetchProfiles, fetchUser } from "../redux/actions/index";
-import React, { useState, useEffect } from "react";
+import { fetchUser } from "../redux/actions/index";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // function Esempio() {
