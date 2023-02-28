@@ -28,7 +28,7 @@ const CustomNavbar = () => {
             </a>
           </div>
           <div>
-            <Form inline className="d-none d-lg-block">
+            {/* <Form inline className="d-none d-lg-block">
               <Form.Group id="navbar-search-container">
                 <FormControl
                   id="form-control-search-form-control"
@@ -37,7 +37,7 @@ const CustomNavbar = () => {
                   className="mr-sm-2"
                 />
               </Form.Group>
-            </Form>
+            </Form> */}
           </div>
         </div>
         <div>
@@ -45,7 +45,7 @@ const CustomNavbar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <div className="ml-3 nav-link">
-                <BsHouseDoorFill classNamne="nav-icon" size="22" />
+                <BsHouseDoorFill className="nav-icon" size="22" />
                 <Nav.Link href="#">Home</Nav.Link>
               </div>
               <div className="ml-3 nav-link">
@@ -62,7 +62,7 @@ const CustomNavbar = () => {
                 <Nav.Link href="#">Messaggistica</Nav.Link>
               </div>
               <div className="ml-3 nav-link">
-                <BsFillBellFill classNamne="nav-icon" size="22" />
+                <BsFillBellFill className="nav-icon" size="22" />
                 <Nav.Link href="#">Notifiche</Nav.Link>
               </div>
               <div className="ml-3 nav-link">
