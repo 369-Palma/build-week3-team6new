@@ -1,13 +1,17 @@
-/* const initialState = {
-import { GET_USERS } from "../actions/index";
+import { GET_USERS, GET_PROFILE } from "../actions/index";
 
 const initialState = {
-  content: {},
+  content: [],
 };
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS:
+      return {
+        ...state,
+        content: [...state.content, ...action.payload],
+      };
+    case GET_PROFILE:
       return {
         ...state,
         content: action.payload,
@@ -16,5 +20,5 @@ const mainReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default mainReducer; */
 
+export default mainReducer;
