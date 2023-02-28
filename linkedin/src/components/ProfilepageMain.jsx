@@ -3,6 +3,7 @@ import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Experiences from "./Experiences";
 
 // function Esempio() {
 //     const [contatore, setContatore] = useState();
@@ -24,6 +25,9 @@ const UserProfile = () => {
               src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
               alt=""
             />
+          </Row>
+          <Row className="profile ml-1">
+            {/* <img className="img-fluid" src={image} /> */}
           </Row>
           <Row className="profile ml-1">
             <img
@@ -59,12 +63,19 @@ const UserProfile = () => {
             </Col>
             <Col xs={12} md={4}>
               <img
-                src="https://yt3.googleusercontent.com/9RGAVa52qAdJfJSShxr9prs7EUpia4tsVsnvrb-E1Yhdj7H4LMU4gHLRDC-7tJLV9BVYaEq6M7g=s900-c-k-c0x00ffffff-no-rj"
+                src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
                 alt=""
                 style={{ width: "3em", height: "3em" }}
-                className="me-2 education mb-1"
+                className="me-2 mb-1"
               />{" "}
               Epicode
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col>
+              <Experiences />
             </Col>
           </Row>
         </Container>

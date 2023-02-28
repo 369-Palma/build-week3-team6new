@@ -1,5 +1,6 @@
 import UserProfile from "./ProfilepageMain";
 import AziendeConsultate from "./AziendeConsultate";
+
 import { Container, Row, Col } from "react-bootstrap";
 
 const Home = () => {
