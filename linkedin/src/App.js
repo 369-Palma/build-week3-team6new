@@ -8,14 +8,14 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function App() {
 
-     
-    
+
+
 
   return (
     <div className="App">
-       <CustomNavbar/>
+      <CustomNavbar />
       <Container className="d-flex">
-     
+
         <Row>
           <Col className="col-xs-12 col-md-8 w-100">
             <UserProfile></UserProfile>
