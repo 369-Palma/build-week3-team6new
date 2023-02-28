@@ -19,9 +19,9 @@
   border-radius: 50%;
 }
 
-.userdetail Col {
+.userdetail {
+  margin-top: 60px;
   display: flex;
-  margin-top: 63px;
   flex-direction: column;
   align-items: flex-start;
 }

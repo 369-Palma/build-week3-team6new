@@ -32,8 +32,8 @@ const UserProfile = () => {
               alt="userimage"
             />
           </Row>
-          <Row className="userdetail ">
-            <Col xs={12} md={8}>
+          <Row>
+            <Col className="userdetail " xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
               </h4>
