@@ -31,8 +31,6 @@ export const fetchProfiles = (query) => {
   };
 };
 
-
-
 export const fetchUser = (query) => {
   return async (dispatch) => {
     try {
