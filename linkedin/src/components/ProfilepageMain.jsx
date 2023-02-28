@@ -15,27 +15,53 @@ const UserProfile = () => {
     dispatch(fetchUser("me"));
     // console.log(fetchProfiles("me"));
   }, []);
-  console.log(profileStore)
+  console.log(profileStore);
   return (
     <>
       <Card>
         <Container>
           <Row className="p-background">
-            <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
+            <img
+              src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
+              alt=""
+            />
           </Row>
-          <Row className="profile ml-1"><img className="img-fluid" src={profileStore.image} alt="userimage" /></Row>
+          <Row className="profile ml-1">
+            <img
+              className="img-fluid"
+              src={profileStore.image}
+              alt="userimage"
+            />
+          </Row>
+          <Row className="profile ml-1">
+            <img
+              className="img-fluid"
+              src={profileStore.image}
+              alt="userimage"
+            />
+          </Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
+                {profileStore.name} {profileStore.surname}
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
+              <p className="my-0 occupation">{profileStore.title}</p>
+              <p className="my-0 location text-muted">{profileStore.area}</p>
 
-              <p className="my-2 connections">580 follower - 951 collegamenti</p>
+              <p className="my-2 connections">
+                580 follower - 951 collegamenti
+              </p>
               <div className="d-flex justify-content-start w-100">
-                <Button className="profile__button open-to-btn">Disponibile per</Button>
-                <Button variant="outline-primary" className="add__btn profile__button  mx-3">
+                <Button className="profilebutton open-to-btn">
+                  Disponibile per
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  className="addbtn profilebutton  mx-3"
+                >
                   Aggiungi sezione profilo
                 </Button>
                 <Button variant="outline-secondary" className="profile__button">
