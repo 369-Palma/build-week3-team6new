@@ -23,7 +23,7 @@ const UserProfile = () => {
           <Row className="p-background">
             <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
           </Row>
-          <Row className="profile ml-1">{/* <img className="img-fluid" src={image} /> */}</Row>
+          <Row className="profile ml-1"><img className="img-fluid" src={profileStore.image} alt="userimage" /></Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
