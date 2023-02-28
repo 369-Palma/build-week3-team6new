@@ -3,26 +3,23 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AziendeConsultate from "./components/AziendeConsultate";
 import CustomNavbar from "./components/Navbar";
-import UserProfile from "./components/ProfilepageMain";
-import { Container, Row, Col } from "react-bootstrap";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+/* import UserProfile from "./components/ProfilepageMain"; */
+import Home from "./components/Home";
+
+/* import { BrowserRouter, Routes, Route } from "react-router-dom"; */
 
 function App() {
   return (
     <div className="App">
+      {/* <BrowserRouter> */}
       <CustomNavbar />
-      <Container className="d-flex">
-        <Row>
-          <Col className="col-xs-12 col-md-8 w-100">
-            <UserProfile></UserProfile>
-          </Col>
-        </Row>
-        <Col className="d-xs-none d-md-block col-md-4 ms-4">
-          <Row className="my-2">
-            <AziendeConsultate></AziendeConsultate>
-          </Row>
-        </Col>
-      </Container>
+      {/*  <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/profile/:user.id" element={<UserProfile />}></Route>
+        </Routes> */}
+      <Home />
+      <AziendeConsultate></AziendeConsultate>
+      {/* </BrowserRouter> */}
     </div>
   );
 }

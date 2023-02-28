@@ -1,4 +1,6 @@
 export const GET_USERS = "GET_USERS";
+export const GET_PROFILE = "GET_PROFILE";
+
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 export const fetchProfiles = (query) => {
   return async (dispatch) => {
