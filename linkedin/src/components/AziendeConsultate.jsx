@@ -1,7 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import CardSidebar from "./CardSidebar";
 import { useState, useEffect } from "react";
-import { fetchProfiles } from "../redux/actions/index";
+import { fetchUsers } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const AziendeConsultate = () => {
@@ -11,7 +11,7 @@ const AziendeConsultate = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProfiles(""));
+    dispatch(fetchUsers(""));
   }, []);
 
   return (
