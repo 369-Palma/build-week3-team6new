@@ -2,6 +2,7 @@ import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import { fetchProfiles } from "../redux/actions/index";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Experiences from "./Experiences";
 
 // function Esempio() {
 //     const [contatore, setContatore] = useState();
@@ -19,9 +20,14 @@ const UserProfile = ({ image, name, surname, title, area }) => {
       <Card>
         <Container>
           <Row className="p-background">
-            <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
+            <img
+              src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
+              alt=""
+            />
           </Row>
-          <Row className="profile ml-1">{/* <img className="img-fluid" src={image} /> */}</Row>
+          <Row className="profile ml-1">
+            {/* <img className="img-fluid" src={image} /> */}
+          </Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
@@ -30,10 +36,17 @@ const UserProfile = ({ image, name, surname, title, area }) => {
               <p className="my-0 occupation">{title}</p>
               <p className="my-0 location text-muted">{area}</p>
 
-              <p className="my-2 connections">580 follower - 951 collegamenti</p>
+              <p className="my-2 connections">
+                580 follower - 951 collegamenti
+              </p>
               <div className="d-flex justify-content-start w-100">
-                <Button className="profile__button open-to-btn">Disponibile per</Button>
-                <Button variant="outline-primary" className="add__btn profile__button  mx-3">
+                <Button className="profile__button open-to-btn">
+                  Disponibile per
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  className="add__btn profile__button  mx-3"
+                >
                   Aggiungi sezione profilo
                 </Button>
                 <Button variant="outline-secondary" className="profile__button">
@@ -63,6 +76,13 @@ const UserProfile = ({ image, name, surname, title, area }) => {
                   Tech University
                 </li>
               </ul>
+            </Col>
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col>
+              <Experiences />
             </Col>
           </Row>
         </Container>
