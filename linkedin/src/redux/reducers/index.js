@@ -2,7 +2,7 @@ import { GET_USERS, GET_PROFILE } from "../actions/index";
 
 const initialState = {
   content: [],
-  contentUsers: {}
+  contentUsers: {},
 };
 
 const mainReducer = (state = initialState, action) => {
