@@ -8,12 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 // }
 
 const UserProfile = ({ image, name, surname, title, area }) => {
-  const me = "me";
   const dispatch = useDispatch();
   const profileStore = useSelector((state) => state.content);
   useEffect(() => {
-    dispatch(fetchProfiles(me));
-    console.log(fetchProfiles("me"));
+    dispatch(fetchProfiles("me"));
+    // console.log(fetchProfiles("me"));
   }, []);
   return (
     <>

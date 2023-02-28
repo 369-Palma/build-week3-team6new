@@ -1,7 +1,7 @@
 import { GET_USERS } from "../actions/index";
 
 const initialState = {
-  content: [],
+  content: {},
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const mainReducer = (state = initialState, action) => {
     case GET_USERS:
       return {
         ...state,
-        content: [...state.content, ...action.payload],
+        content: action.payload,
       };
     default:
       return state;
