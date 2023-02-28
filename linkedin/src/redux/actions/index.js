@@ -77,13 +77,11 @@ export const fetchExp = (exp) => {
       });
       if (res.ok) {
         const dataUsers = await res.json();
-        console.log(dataUsers)
 
         dispatch({
           type: GET_EXP,
           payload: dataUsers,
         });
-        console.log(dataUsers)
 
       } else {
         console.log("Badoglio!");
@@ -109,13 +107,11 @@ export const PostExp = (query) => {
       });
       if (res.ok) {
         const dataUsers = await res.json();
-        console.log(dataUsers)
 
         dispatch({
           type: POST_EXP,
           payload: dataUsers,
         });
-        console.log(dataUsers)
 
       } else {
         console.log("Badoglio!");
