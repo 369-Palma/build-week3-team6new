@@ -4,12 +4,12 @@ import { HiOutlinePencil } from "react-icons/hi";
 import { fetchUser } from "../redux/actions/index";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Experiences from "./Experiences";
+
 /* import ModalExperiences from "./ModaleExperiences"; */
 
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const handleShow = () => setLgShow(true);
+  //const handleShow = () => setLgShow(true);
   const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
