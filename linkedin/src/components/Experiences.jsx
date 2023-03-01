@@ -29,7 +29,12 @@ const Experiences = () => {
         <HiOutlinePencil />
       </Button>
 
-      <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)} aria-labelledby="example-modal-sizes-title-lg">
+      <Modal
+        size="lg"
+        show={lgShow}
+        onHide={() => setLgShow(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
@@ -54,7 +59,10 @@ const Experiences = () => {
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Inserisci pronomi personalizzati</Form.Label>
             <Form.Control type="text" autoFocus />
-            <Form.Label>Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te</Form.Label>
+            <Form.Label>
+              Indica i pronomi di genere che vuoi che gli altri usino per
+              riferirsi a te
+            </Form.Label>
           </Form.Group>
           <p>
             Scopri di più sui <strong>pronomi di genere.</strong>
@@ -103,29 +111,40 @@ const Experiences = () => {
         </Modal.Footer>
       </Modal>
 
-      <div>
+      <div
+        className="border rounded border-light-subtle px-4"
+        style={{ backgroundColor: "white" }}
+      >
         <div className="d-flex justify-content-between">
           <div>
-            <h3>Esperienza</h3>
+            <h3 className="fs-5 my-3">Esperienza</h3>
           </div>
-          <div>
+          <div className="d-flex align-items-center">
             <HiPlus className="fs-3 me-4" />
             <HiOutlinePencil className="fs-4" />
           </div>
         </div>
 
         <Row className="d-flex text-start">
-          <h3>{experiences?.role}</h3>
-          <h4>{experiences?.company}</h4>
-          <p>{experiences?.description}</p>
-          <p>{experiences?.startDate}</p>
-          <p>{experiences?.area}</p>
+          <div className="border-bottom">
+            {/*<div>
+              <img src={experiences?.image} alt="" />
+            </div>*/}
+            <h3 className="fs-6">{experiences?.role}</h3>
+            <p className="fs-6 m-0">{experiences?.company}</p>
+            <p className="fs-6 m-0">{experiences?.description}</p>
+            <p className="m-0">{experiences?.startDate}</p>
+            <p>{experiences?.area}</p>
+          </div>
         </Row>
         <Row className="d-flex text-start">
-          <h3>Lavoro</h3>
-          <h4>Azienda</h4>
-          <p>date</p>
-          <p>Luogo</p>
+          <div>
+            <h3 className="fs-6 mt-2">{experiences?.role}</h3>
+            <p className="fs-6 m-0">{experiences?.company}</p>
+            <p className="fs-6 m-0">{experiences?.description}</p>
+            <p className="m-0">{experiences?.startDate}</p>
+            <p>{experiences?.area}</p>
+          </div>
         </Row>
       </div>
     </>

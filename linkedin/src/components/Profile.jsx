@@ -1,5 +1,6 @@
 import UserProfile from "./ProfilepageMain";
 import AziendeConsultate from "./AziendeConsultate";
+import PeopleYouMightKnow from "./PeopleMightKnow";
 
 import { Container, Row, Col } from "react-bootstrap";
 import Experiences from "./Experiences";
@@ -15,7 +16,7 @@ const Profile = () => {
       </Row>
       <Col className="d-xs-none d-md-block col-md-4 ms-4">
         <AziendeConsultate></AziendeConsultate>
-
+        <PeopleYouMightKnow></PeopleYouMightKnow>
         <Row className="my-2"></Row>
       </Col>
     </Container>
