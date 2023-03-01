@@ -51,14 +51,6 @@ const UserProfile = () => {
           </Row>
         </Container>
       </Card>
-      {/* Experiences section */}
-      <Container>
-        <Row>
-          <Col>
-            <Experiences />
-          </Col>
-        </Row>
-      </Container>
     </>
   );
 };
