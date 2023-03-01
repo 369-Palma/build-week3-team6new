@@ -223,7 +223,7 @@ const UserProfile = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="d-flix align-self-start">
+            <Col className="d-flex align-self-start">
               <Card.Text>{profileStore.bio}</Card.Text>
             </Col>
           </Row>
