@@ -1,10 +1,12 @@
 import React from "react";
 import {
-  Nav, Navbar, Container,
+  Nav,
+  Navbar,
+  Container,
   // FormControl,
   // Form
 } from "react-bootstrap";
-
+import ModalNav from "../components/ModalProfileNav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {
   BsHouseDoorFill,
@@ -72,7 +74,9 @@ const CustomNavbar = () => {
               <div className="ml-3 nav-link">
                 <BsFillPersonFill className="nav-icon" size="22" />
                 <NavDropdown title="Tu" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.1">
+                    <ModalNav />
+                  </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     Another action
                   </NavDropdown.Item>

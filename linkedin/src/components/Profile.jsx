@@ -4,7 +4,7 @@ import AziendeConsultate from "./AziendeConsultate";
 import { Container, Row, Col } from "react-bootstrap";
 import Experiences from "./Experiences";
 
-const Home = () => {
+const Profile = () => {
   return (
     <Container className="d-flex">
       <Row>
@@ -15,10 +15,11 @@ const Home = () => {
       </Row>
       <Col className="d-xs-none d-md-block col-md-4 ms-4">
         <AziendeConsultate></AziendeConsultate>
+
         <Row className="my-2"></Row>
       </Col>
     </Container>
   );
 };
 
-export default Home;
+export default Profile;
