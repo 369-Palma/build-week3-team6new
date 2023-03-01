@@ -26,27 +26,25 @@ const UserProfile = ({ image, name, surname, title, area }) => {
             />
           </Row>
           <Row className="profile ml-1">
-            {/* <img className="img-fluid" src={image} /> */}
+            <img
+              className="img-fluid fotoUser"
+              src={profileStore.image}
+              alt="userimage"
+            />
           </Row>
           <Row className="user__detail ">
             <Col xs={12} md={8}>
               <h4 className="name mb-0">
                 {name} {surname}
               </h4>
-              <p className="my-0 occupation">{title}</p>
-              <p className="my-0 location text-muted">{area}</p>
-
+              <p className="my-0 occupation">{profileStore.title}</p>
+              <p className="my-0 location text-muted">{profileStore.area}</p>
               <p className="my-2 connections">
                 580 follower - 951 collegamenti
               </p>
-              <div className="d-flex justify-content-start w-100">
-                <Button className="profile__button open-to-btn">
-                  Disponibile per
-                </Button>
-                <Button
-                  variant="outline-primary"
-                  className="add__btn profile__button  mx-3"
-                >
+              <div className="d-flex justify-content-start w-100 mb-3">
+                <Button>Disponibile per</Button>
+                <Button variant="outline-primary" className="mx-3">
                   Aggiungi sezione profilo
                 </Button>
                 <Button variant="outline-secondary" className="profile__button">
@@ -76,13 +74,6 @@ const UserProfile = ({ image, name, surname, title, area }) => {
                   Tech University
                 </li>
               </ul>
-            </Col>
-          </Row>
-        </Container>
-        <Container>
-          <Row>
-            <Col>
-              <Experiences />
             </Col>
           </Row>
         </Container>
