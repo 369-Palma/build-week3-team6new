@@ -14,6 +14,7 @@ const UserProfile = () => {
   console.log(profileStore);
   return (
     <>
+      {/* Profile section */}
       <Card>
         <Container>
           <Row className="p-background">
@@ -49,14 +50,15 @@ const UserProfile = () => {
             </Col>
           </Row>
         </Container>
-        <Container>
-          <Row>
-            <Col>
-              <Experiences />
-            </Col>
-          </Row>
-        </Container>
       </Card>
+      {/* Experiences section */}
+      <Container>
+        <Row>
+          <Col>
+            <Experiences />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
