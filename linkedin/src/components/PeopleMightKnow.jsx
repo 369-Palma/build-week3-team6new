@@ -6,7 +6,7 @@ import { fetchProfiles } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const PeopleYouMightKnow = () => {
-  const users = useSelector((state) => state.content);
+  const users = useSelector((state) => state.profile.content);
   const dispatch = useDispatch();
 
   useEffect(() => {

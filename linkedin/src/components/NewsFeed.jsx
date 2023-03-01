@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 function NewsFeed() {
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.posts);
+  const post = useSelector((state) => state.posts.posts);
   console.log(post);
 
   useEffect(() => {

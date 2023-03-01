@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 
 const CardSidebar = () => {
-  const users = useSelector((state) => state.content.slice(0, 5));
+  const users = useSelector((state) => state.profile.content.slice(0, 5));
 
   console.log(users);
   return (
@@ -13,7 +13,12 @@ const CardSidebar = () => {
         .map((user) => (
           <Row className="d-flex flex-row align-items-center px-2">
             <Card className="cardImgsideBar d-flex flex-row">
-              <Card.Img variant="top" src={user.image} alt="foto" className="fotoTonde" />
+              <Card.Img
+                variant="top"
+                src={user.image}
+                alt="foto"
+                className="fotoTonde"
+              />
               <Card.Body>
                 <Card.Title>
                   {user.name} {user.surname}
