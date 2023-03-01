@@ -3,7 +3,8 @@ import { GET_USERS, GET_PROFILE, GET_EXP, POST_EXP } from "../actions/index";
 const initialState = {
   content: [],
   contentUsers: {},
-  contentExp: []
+  contentExp: [],
+  // postContentExp: []
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -23,11 +24,11 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         contentExp: [...state.content, ...action.payload],
       };
-    case POST_EXP:
-      return {
-        ...state,
-        contentExp: [...action.payload],
-      };
+    // case POST_EXP:
+    //   return {
+    //     ...state,
+    //     contentExp: [...action.payload],
+    //   };
     default:
       return state;
   }
