@@ -5,25 +5,27 @@ import { useEffect } from "react";
 import { fetchProfiles } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
-const AziendeConsultate = () => {
+const PeopleYouMightKnow = () => {
   const users = useSelector((state) => state.content);
-  console.log(users);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProfiles(""));
   }, []);
 
+  // Randomizza gli utenti
+  const shuffledUsers = users.sort(() => Math.random() - 0.5);
+
   return (
     <Container>
       <Row>
-        <h4>Altre aziende consultate</h4>
+        <h4>Persone che potresti conoscere</h4>
       </Row>
       <Row className="py-2">
-        <CardSidebar />
+        <CardSidebar users={shuffledUsers} />
       </Row>
     </Container>
   );
 };
 
-export default AziendeConsultate;
+export default PeopleYouMightKnow;

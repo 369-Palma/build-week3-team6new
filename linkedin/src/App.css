@@ -9,14 +9,9 @@
   overflow: hidden;
   border-radius: 50%;
   position: absolute;
-  top: 165px;
+  top: 200px;
   left: 25px;
   width: 170px;
-}
-.fotoUser img {
-  width: 12em;
-  height: 10em;
-  border-radius: 50%;
 }
 
 .userdetail {
