@@ -5,6 +5,17 @@
   
 } */
 
+.LinkModale {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.LinkModale:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .fotoUser {
   overflow: hidden;
   border-radius: 50%;

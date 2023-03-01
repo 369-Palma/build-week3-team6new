@@ -77,23 +77,13 @@ const CustomNavbar = () => {
                   <NavDropdown.Item href="#action/3.1">
                     <ModalNav />
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
                 </NavDropdown>
               </div>
               <div className="ml-3 nav-link">
                 <BsFillGrid3X3GapFill className="nav-icon" size="22" />
                 <NavDropdown title="Lavoro" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
+                  <NavDropdown.Item href="#action/3.1">
+                    <ModalNav></ModalNav>
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>
