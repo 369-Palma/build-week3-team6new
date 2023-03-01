@@ -3,7 +3,6 @@ import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Experiences from "./Experiences";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
