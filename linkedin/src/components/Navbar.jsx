@@ -18,7 +18,10 @@ import {
   BsFillPersonFill,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { Col, Row } from "react-bootstrap";
+import {
+  Col,
+  // Row 
+} from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
