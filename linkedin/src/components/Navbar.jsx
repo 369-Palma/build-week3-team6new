@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Row,
   Nav,
   Navbar,
   Container,
@@ -20,7 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import {
   Col,
-  // Row 
+  // Row
 } from "react-bootstrap";
 
 const CustomNavbar = () => {
