@@ -53,58 +53,58 @@ const CustomNavbar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Link to="/" className="nav-icon LinkModale">
-                <div className="d-flex flex-column me-3">
+                <Row className="d-flex flex-column me-3">
                   <Col className="ml-3 nav-link">
                     <BsHouseDoorFill className="nav-icon" size="22" />
                   </Col>
                   <Col>
                     <p> Home </p>
                   </Col>
-                </div>
+                </Row>
               </Link>
 
               <Link to="#" className="nav-icon LinkModale">
-                <div className="d-flex flex-column me-3">
+                <Row className="d-flex flex-column me-3">
                   <Col className="ml-3 nav-link">
                     <BsFillPeopleFill className="nav-icon" size="22" />
                   </Col>
                   <Col>
                     <p> Rete </p>
                   </Col>
-                </div>
+                </Row>
               </Link>
 
               <Link to="#" className="nav-icon LinkModale">
-                <div className="d-flex flex-column me-3">
+                <Row className="d-flex flex-column me-3">
                   <Col className="ml-3 nav-link">
                     <BsFillBriefcaseFill className="nav-icon" size="22" />
                   </Col>
                   <Col>
                     <p> Lavoro </p>
                   </Col>
-                </div>
+                </Row>
               </Link>
 
               <Link to="#" className="nav-icon LinkModale">
-                <div className="d-flex flex-column me-3">
+                <Row className="d-flex flex-column me-3">
                   <Col className="ml-3 nav-link">
                     <BsFillChatDotsFill className="nav-icon" size="22" />
                   </Col>
                   <Col>
                     <p> Messaggistica </p>
                   </Col>
-                </div>
+                </Row>
               </Link>
 
               <Link to="#" className="nav-icon LinkModale">
-                <div className="d-flex flex-column me-3">
+                <Row className="d-flex flex-column me-3">
                   <Col className="ml-3 nav-link">
                     <BsFillBellFill className="nav-icon" size="22" />
                   </Col>
                   <Col>
                     <p> Notifiche </p>
                   </Col>
-                </div>
+                </Row>
               </Link>
 
               <div className="ml-3 nav-link">
