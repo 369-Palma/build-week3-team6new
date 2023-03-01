@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { HiOutlinePencil } from "react-icons/hi";
+// import { HiOutlinePencil } from "react-icons/hi";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

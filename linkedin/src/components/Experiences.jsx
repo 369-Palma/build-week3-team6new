@@ -46,7 +46,7 @@ const Experiences = () => {
                 },
             });
             if (res.ok) {
-                const data = await res.json();
+                // const data = await res.json();
 
 
 
@@ -65,13 +65,22 @@ const Experiences = () => {
 
     const handleShow = () => setLgShow(true);
 
+
+
+    // this modal for exp
+    const [lgShowExp, setLgShowExp] = useState(false);
+
+    const handleShowExp = () => setLgShowExp(true);
+    // this modal for exp
+
+
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
                 <HiOutlinePencil />
             </Button>
 
-            <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)} aria-labelledby="example-modal-sizes-title-lg">
+            <Modal size="lg" show={lgShowExp} onHide={() => setLgShowExp(false)} aria-labelledby="example-modal-sizes-title-lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Add Exp</Modal.Title>
                 </Modal.Header>
@@ -200,8 +209,13 @@ const Experiences = () => {
                         <h3>Esperienza</h3>
                     </div>
                     <div>
-                        <HiPlus className="fs-3 me-4" />
-                        <HiOutlinePencil className="fs-4" />
+                        <Button >
+                            <HiPlus className="fs-3 p-1" />
+                        </Button>
+
+                        <Button onClick={handleShowExp}>
+                            <HiOutlinePencil className="fs-4 p-1" />
+                        </Button>
                     </div>
                 </div>
 
