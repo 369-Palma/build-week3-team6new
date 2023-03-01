@@ -5,10 +5,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Experiences from "./Experiences";
 
-// function Esempio() {
-//     const [contatore, setContatore] = useState();
-// }
-
 const UserProfile = () => {
   const dispatch = useDispatch();
   const profileStore = useSelector((state) => state.contentUsers);
@@ -21,44 +17,25 @@ const UserProfile = () => {
       <Card>
         <Container>
           <Row className="p-background">
-            <img
-              src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
-              alt=""
-            />
+            <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
           </Row>
           <Row className="profile ml-1">
-            {/* <img className="img-fluid" src={image} /> */}
-          </Row>
-          <Row className="profile ml-1">
-            <img
-              className="img-fluid fotoUser"
-              src={profileStore.image}
-              alt="userimage"
-            />
+            <img className="img-fluid fotoUser" src={profileStore.image} alt="userimage" />
           </Row>
           <Row>
-            <Col className="userdetail " xs={12} md={8}>
+            <Col className="userdetail" xs={12} md={8}>
               <h4 className="name mb-0">
                 {profileStore.name} {profileStore.surname}
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
-              <p className="my-2 connections">
-                580 follower - 951 collegamenti
-              </p>
+              <p className="my-2 connections">580 follower - 951 collegamenti</p>
               <div className="d-flex justify-content-start w-100 mb-3">
-                <Button className="profilebutton open-to-btn">
-                  Disponibile per
-                </Button>
-                <Button
-                  variant="outline-primary"
-                  className="addbtn profilebutton  mx-3"
-                >
+                <Button>Disponibile per</Button>
+                <Button variant="outline-primary" className="mx-3">
                   Aggiungi sezione profilo
                 </Button>
-                <Button variant="outline-secondary" className="profile__button">
-                  Altro
-                </Button>
+                <Button variant="outline-secondary">Altro</Button>
               </div>
             </Col>
             <Col xs={12} md={4}>
