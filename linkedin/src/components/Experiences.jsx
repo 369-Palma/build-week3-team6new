@@ -2,7 +2,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExp } from "../redux/actions";
-import { HiPlus, HiOutlinePencil, BsFillInfoSquareFill } from "react-icons/hi";
+import { HiPlus, HiOutlinePencil } from "react-icons/hi";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import { Row, Button, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -28,12 +29,7 @@ const Experiences = () => {
         <HiOutlinePencil />
       </Button>
 
-      <Modal
-        size="lg"
-        show={lgShow}
-        onHide={() => setLgShow(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
-      >
+      <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)} aria-labelledby="example-modal-sizes-title-lg">
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
@@ -58,10 +54,7 @@ const Experiences = () => {
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Inserisci pronomi personalizzati</Form.Label>
             <Form.Control type="text" autoFocus />
-            <Form.Label>
-              Indica i pronomi di genere che vuoi che gli altri usino per
-              riferirsi a te
-            </Form.Label>
+            <Form.Label>Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te</Form.Label>
           </Form.Group>
           <p>
             Scopri di più sui <strong>pronomi di genere.</strong>
