@@ -1,10 +1,12 @@
 import React from "react";
 import {
-  Nav, Navbar, Container,
+  Nav,
+  Navbar,
+  Container,
   // FormControl,
   // Form
 } from "react-bootstrap";
-
+import ModalNav from "../components/ModalProfileNav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {
   BsHouseDoorFill,
@@ -15,6 +17,11 @@ import {
   BsFillGrid3X3GapFill,
   BsFillPersonFill,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import {
+  Col,
+  // Row 
+} from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
@@ -48,48 +55,74 @@ const CustomNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <div className="ml-3 nav-link">
-                <BsHouseDoorFill className="nav-icon" size="22" />
-                <Nav.Link href="#">Home</Nav.Link>
-              </div>
-              <div className="ml-3 nav-link">
-                <BsFillPeopleFill className="nav-icon" size="22" />
-                <Nav.Link href="#">Rete</Nav.Link>
-              </div>
-              <div className="ml-3 nav-link">
-                <BsFillBriefcaseFill className="nav-icon" size="22" />
+              <Link to="/" className="nav-icon LinkModale">
+                <div className="d-flex flex-column me-3">
+                  <Col className="ml-3 nav-link">
+                    <BsHouseDoorFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Home </p>
+                  </Col>
+                </div>
+              </Link>
 
-                <Nav.Link href="#">Lavoro</Nav.Link>
-              </div>
-              <div className="ml-3 nav-link">
-                <BsFillChatDotsFill className="nav-icon" size="22" />
-                <Nav.Link href="#">Messaggistica</Nav.Link>
-              </div>
-              <div className="ml-3 nav-link">
-                <BsFillBellFill className="nav-icon" size="22" />
-                <Nav.Link href="#">Notifiche</Nav.Link>
-              </div>
+              <Link to="#" className="nav-icon LinkModale">
+                <div className="d-flex flex-column me-3">
+                  <Col className="ml-3 nav-link">
+                    <BsFillPeopleFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Rete </p>
+                  </Col>
+                </div>
+              </Link>
+
+              <Link to="#" className="nav-icon LinkModale">
+                <div className="d-flex flex-column me-3">
+                  <Col className="ml-3 nav-link">
+                    <BsFillBriefcaseFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Lavoro </p>
+                  </Col>
+                </div>
+              </Link>
+
+              <Link to="#" className="nav-icon LinkModale">
+                <div className="d-flex flex-column me-3">
+                  <Col className="ml-3 nav-link">
+                    <BsFillChatDotsFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Messaggistica </p>
+                  </Col>
+                </div>
+              </Link>
+
+              <Link to="#" className="nav-icon LinkModale">
+                <div className="d-flex flex-column me-3">
+                  <Col className="ml-3 nav-link">
+                    <BsFillBellFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Notifiche </p>
+                  </Col>
+                </div>
+              </Link>
+
               <div className="ml-3 nav-link">
                 <BsFillPersonFill className="nav-icon" size="22" />
                 <NavDropdown title="Tu" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
+                  <NavDropdown.Item href="#action/3.1">
+                    <ModalNav />
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>
               <div className="ml-3 nav-link">
                 <BsFillGrid3X3GapFill className="nav-icon" size="22" />
                 <NavDropdown title="Lavoro" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
+                  <NavDropdown.Item href="#action/3.1">
+                    <ModalNav></ModalNav>
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>

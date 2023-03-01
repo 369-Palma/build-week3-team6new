@@ -1,4 +1,7 @@
-import { GET_USERS, GET_PROFILE, GET_EXP, POST_EXP } from "../actions/index";
+import {
+  GET_USERS, GET_PROFILE, GET_EXP,
+  // POST_EXP 
+} from "../actions/index";
 
 const initialState = {
   content: [],

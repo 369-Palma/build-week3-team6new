@@ -5,18 +5,24 @@
   
 } */
 
+.LinkModale {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.LinkModale:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .fotoUser {
   overflow: hidden;
   border-radius: 50%;
   position: absolute;
-  top: 165px;
+  top: 200px;
   left: 25px;
   width: 170px;
-}
-.fotoUser img {
-  width: 12em;
-  height: 10em;
-  border-radius: 50%;
 }
 
 .userdetail {
@@ -48,6 +54,7 @@
 }
 .App {
   text-align: center;
+  background-color: #f3f2ef; /*AGGIUNTO */
 }
 
 .App-logo {
