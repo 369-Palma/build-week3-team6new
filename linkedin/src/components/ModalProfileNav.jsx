@@ -37,7 +37,9 @@ const ModalNav = () => {
               <Modal.Body>
                 <p className="my-0 occupation">{profileStore.title}</p>
                 <p className="my-0 location text-muted">{profileStore.area}</p>
-                <Button variant="secondary">Visualizza profilo</Button>
+                <Link to="/profile/:user.id">
+                  <Button variant="secondary">Visualizza profilo</Button>
+                </Link>
               </Modal.Body>
             </Col>
           </Container>
@@ -66,7 +68,7 @@ const ModalNav = () => {
               Account per la pubb...
             </Link>
           </Row>
-          <Row className="d-flex flex-column flex-align-items-start">
+          <Row className="d-flex flex-column align-items-start">
             <Link to="#" className="LinkModale">
               Esci
             </Link>

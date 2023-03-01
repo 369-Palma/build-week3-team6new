@@ -17,6 +17,8 @@ import {
   BsFillGrid3X3GapFill,
   BsFillPersonFill,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
@@ -50,10 +52,16 @@ const CustomNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <div className="ml-3 nav-link">
-                <BsHouseDoorFill className="nav-icon" size="22" />
-                <Nav.Link href="#">Home</Nav.Link>
-              </div>
+              <Link to="/" className="nav-icon LinkModale">
+                <div className="d-flex flex-column ">
+                  <Col className="ml-3 nav-link">
+                    <BsHouseDoorFill className="nav-icon" size="22" />
+                  </Col>
+                  <Col>
+                    <p> Home </p>
+                  </Col>
+                </div>
+              </Link>
               <div className="ml-3 nav-link">
                 <BsFillPeopleFill className="nav-icon" size="22" />
                 <Nav.Link href="#">Rete</Nav.Link>
