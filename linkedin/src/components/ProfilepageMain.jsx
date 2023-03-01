@@ -47,9 +47,6 @@ const UserProfile = () => {
               </div>
             </Col>
             <Col xs={12} md={4} className="d-flex">
-              <Button variant="primary">
-                <HiOutlinePencil />
-              </Button>
               <img
                 src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
                 alt=""
