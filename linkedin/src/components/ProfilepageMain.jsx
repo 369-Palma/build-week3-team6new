@@ -212,6 +212,12 @@ const UserProfile = () => {
           </Row>
         </Container>
       </Card>
+      <Card className="bg-white my-3">
+        <Card.Body>
+          <Card.Title>Informazioni</Card.Title>
+          <Card.Text>{profileStore.bio}</Card.Text>
+        </Card.Body>
+      </Card>
     </>
   );
 };
