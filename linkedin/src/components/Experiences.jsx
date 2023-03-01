@@ -8,6 +8,8 @@ import { Row, Button, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 
+
+
 const Experiences = () => {
     const [exp, setExp] = useState(
         {
@@ -19,8 +21,6 @@ const Experiences = () => {
             area: ""
         }
     )
-
-
     ///fetch
     const dispatch = useDispatch();
     const experiences = useSelector((state) => state.contentExp);
