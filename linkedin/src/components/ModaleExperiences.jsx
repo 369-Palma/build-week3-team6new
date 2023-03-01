@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { BsFillInfoSquareFill, HiPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { PostExp } from "../redux/actions";
 
 const ModalExperiences = () => {
   const [lgShow, setLgShow] = useState(false);
