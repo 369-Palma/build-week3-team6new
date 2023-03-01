@@ -21,10 +21,17 @@ const UserProfile = () => {
       <Card>
         <Container>
           <Row className="p-background">
-            <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
+            <img
+              src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
+              alt=""
+            />
           </Row>
           <Row className="profile ml-1">
-            <img className="img-fluid fotoUser" src={profileStore.image} alt="userimage" />
+            <img
+              className="img-fluid fotoUser"
+              src={profileStore.image}
+              alt="userimage"
+            />
           </Row>
           <Row>
             <Col className="userdetail" xs={12} md={8}>
@@ -33,7 +40,9 @@ const UserProfile = () => {
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
-              <p className="my-2 connections">580 follower - 951 collegamenti</p>
+              <p className="my-2 connections">
+                580 follower - 951 collegamenti
+              </p>
               <div className="d-flex justify-content-start w-100 mb-3">
                 <Button>Disponibile per</Button>
                 <Button variant="outline-primary" className="mx-3">
