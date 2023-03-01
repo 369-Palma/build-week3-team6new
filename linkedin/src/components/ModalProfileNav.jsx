@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { fetchUser } from "../redux/actions";
 import React, { useEffect } from "react";
