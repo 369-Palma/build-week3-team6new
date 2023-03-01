@@ -1,9 +1,11 @@
 export const GET_USERS = "GET_USERS";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_EXP = "GET_EXP";
-export const DELETE_EXP = "DELETE_EXP"
+export const DELETE_EXP = "DELETE_EXP";
+export const GET_POSTS = "GET_POSTS";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
+const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
 
 export const fetchProfiles = (query) => {
   return async (dispatch) => {
@@ -51,7 +53,6 @@ export const fetchUser = (query) => {
           type: GET_PROFILE,
           payload: dataUsers,
         });
-
       } else {
         console.log("Badoglio!");
       }
@@ -60,7 +61,6 @@ export const fetchUser = (query) => {
     }
   };
 };
-
 
 export const fetchExp = (exp) => {
   return async (dispatch) => {
@@ -81,7 +81,6 @@ export const fetchExp = (exp) => {
           type: GET_EXP,
           payload: dataUsers,
         });
-
       } else {
         console.log("Badoglio!");
       }
@@ -90,7 +89,6 @@ export const fetchExp = (exp) => {
     }
   };
 };
-
 
 export const deleteExp = (expid) => {
   return async (dispatch) => {
@@ -115,7 +113,6 @@ export const deleteExp = (expid) => {
           type: DELETE_EXP,
           payload: dataUsers,
         });
-
       } else {
         console.log("Badoglio!");
       }
@@ -124,9 +121,6 @@ export const deleteExp = (expid) => {
     }
   };
 };
-
-
-
 
 // export const postExp = (post) => {
 //   return async (dispatch) => {
@@ -158,3 +152,31 @@ export const deleteExp = (expid) => {
 //     }
 //   };
 // };
+
+export const fetchPosts = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(postBaseline, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
+        },
+      });
+      if (res.ok) {
+        const dataPosts = await res.json();
+
+        dispatch({
+          type: GET_POSTS,
+          payload: dataPosts,
+        });
+      } else {
+        console.log("Error fetching posts!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
