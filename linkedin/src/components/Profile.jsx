@@ -14,7 +14,7 @@ const Profile = () => {
           <Experiences />
         </Col>
       </Row>
-      <Col className="d-xs-none d-md-block col-md-4 ms-4">
+      <Col className="d-none d-lg-block col-md-4 ms-4">
         <AziendeConsultate></AziendeConsultate>
         <PeopleYouMightKnow></PeopleYouMightKnow>
         <Row className="my-2"></Row>
