@@ -38,7 +38,11 @@ const ModalNav = () => {
                 <p className="my-0 occupation">{profileStore.title}</p>
                 <p className="my-0 location text-muted">{profileStore.area}</p>
                 <Link to="/profile/:user.id">
-                  <Button variant="secondary">Visualizza profilo</Button>
+                  <Button
+                    className="bottoniBlu" /*  variant="light border border-primary text-primary py-0 fs-6" */
+                  >
+                    Visualizza profilo
+                  </Button>
                 </Link>
               </Modal.Body>
             </Col>

@@ -9,6 +9,16 @@
   width: 100vw;
   height: 100vh;
 } */
+.bottoniBlu {
+  border: 1.5px solid blue;
+  background-color: white;
+  color: blue;
+  padding: 0, auto;
+}
+
+.bottoniBlu:hover {
+  border: 2px solid blue;
+}
 
 .LinkModale {
   text-decoration: none;
