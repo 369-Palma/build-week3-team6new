@@ -214,8 +214,19 @@ const UserProfile = () => {
       </Card>
       <Card className="bg-white my-3">
         <Card.Body>
-          <Card.Title>Informazioni</Card.Title>
-          <Card.Text>{profileStore.bio}</Card.Text>
+          <Row className="d-flex flex-space-between">
+            <Col sx={11} className="d-flex align-self-start">
+              <Card.Title>Informazioni</Card.Title>
+            </Col>
+            <Col sx={1} className="d-flex justify-content-end w-25">
+              <HiOutlinePencil />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flix align-self-start">
+              <Card.Text>{profileStore.bio}</Card.Text>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
     </>
