@@ -1,7 +1,7 @@
 export const GET_USERS = "GET_USERS";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_EXP = "GET_EXP";
-
+export const DELETE_EXP = "DELETE_EXP"
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -90,6 +90,42 @@ export const fetchExp = (exp) => {
     }
   };
 };
+
+
+export const deleteExp = (expid) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` + expid,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
+          },
+        }
+      );
+
+      if (res.ok) {
+        const dataUsers = await res.json();
+
+        dispatch({
+          type: DELETE_EXP,
+          payload: dataUsers,
+        });
+
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
 
 
 // export const postExp = (post) => {
