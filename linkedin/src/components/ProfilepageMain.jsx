@@ -1,22 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Col, Card, Row, Button } from "react-bootstrap";
-import { fetchProfiles } from "../redux/actions/index";
-import React, { useState, useEffect } from "react";
+import { fetchUser } from "../redux/actions/index";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Experiences from "./Experiences";
 
-// function Esempio() {
-//     const [contatore, setContatore] = useState();
-// }
-
-const UserProfile = ({ image, name, surname, title, area }) => {
+const UserProfile = () => {
   const dispatch = useDispatch();
-  const profileStore = useSelector((state) => state.content);
+  const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
-    dispatch(fetchProfiles("me"));
-    // console.log(fetchProfiles("me"));
+    dispatch(fetchUser("me"));
   }, []);
+  console.log(profileStore);
   return (
     <>
+      {/* Profile section */}
       <Card>
         <Container>
           <Row className="p-background">
@@ -32,10 +30,10 @@ const UserProfile = ({ image, name, surname, title, area }) => {
               alt="userimage"
             />
           </Row>
-          <Row className="user__detail ">
-            <Col xs={12} md={8}>
+          <Row>
+            <Col className="userdetail" xs={12} md={8}>
               <h4 className="name mb-0">
-                {name} {surname}
+                {profileStore.name} {profileStore.surname}
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <p className="my-0 location text-muted">{profileStore.area}</p>
@@ -47,33 +45,17 @@ const UserProfile = ({ image, name, surname, title, area }) => {
                 <Button variant="outline-primary" className="mx-3">
                   Aggiungi sezione profilo
                 </Button>
-                <Button variant="outline-secondary" className="profile__button">
-                  Altro
-                </Button>
+                <Button variant="outline-secondary">Altro</Button>
               </div>
             </Col>
             <Col xs={12} md={4}>
-              <ul>
-                <li className="education mb-1">
-                  <img
-                    src="https://strive.school/favicon.ico"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Strive school
-                </li>
-
-                <li className="education">
-                  <img
-                    src="https://www.schema17project.com/wp-content/uploads/2020/10/logo-palla-291x300.png"
-                    alt=""
-                    style={{ width: "3em", height: "3em" }}
-                    className="mr-2"
-                  />{" "}
-                  Tech University
-                </li>
-              </ul>
+              <img
+                src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
+                alt=""
+                style={{ width: "3em", height: "3em" }}
+                className="me-2 mb-1"
+              />{" "}
+              Epicode
             </Col>
           </Row>
         </Container>
