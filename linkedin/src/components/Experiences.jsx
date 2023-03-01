@@ -6,6 +6,7 @@ import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 // import { BsFillInfoSquareFill } from "react-icons/bs";
 import { Row, Button, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 
@@ -209,13 +210,15 @@ const Experiences = () => {
                         <h3>Esperienza</h3>
                     </div>
                     <div>
-                        <Button >
+                        <Button onClick={handleShowExp}>
                             <HiPlus className="fs-3 p-1" />
                         </Button>
 
-                        <Button onClick={handleShowExp}>
-                            <HiOutlinePencil className="fs-4 p-1" />
-                        </Button>
+                        <Link to="/profile/:user.id/:expId">
+                            <Button >
+                                <HiOutlinePencil className="fs-4 p-1" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
 
@@ -237,5 +240,4 @@ const Experiences = () => {
         </>
     );
 };
-
 export default Experiences;
