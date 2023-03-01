@@ -134,9 +134,7 @@
   flex-direction: row;
 }
 
-.width-100 {
-  width: 100%;
-}
+
 
 h5 {
   font-size: 1rem;
@@ -149,4 +147,64 @@ h5 {
 }
 .nav-icons:hover {
   color: black;
+}
+#footer {
+height: 200px;
+  width: 100%;
+margin-left: 180px;
+  text-align: start;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+
+  
+}
+#footer ul{
+  list-style: none;
+  padding-left: 0px;
+}
+
+#footer a,
+#footer p,
+#footer .form-label,
+#footer .form-control {
+  color: #666666;
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+  color: #0a66c2;
+}
+
+#footer-settings a {
+  font-weight: bold;
+}
+
+#footer-icons {
+  color: #666666;
+}
+
+#footer form {
+  width: 220px;
+}
+#dropdown-basic{
+  font-size: 0.7rem;
+  background-color: #F2F2F2;
+  color: #666666;
+  text-align: start;
+  border: none;
+  padding-left: 0px;
+  
+  
+}
+#dropdown-basic:hover{
+  text-decoration: underline;
+  color: #0a66c2;
+}
+#footer .drop-menu{
+  color: black;
+}
+#footer .drop-menu:hover{
+  text-decoration: none;
 }

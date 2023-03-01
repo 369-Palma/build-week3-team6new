@@ -20,7 +20,7 @@ import {
 import { Link } from "react-router-dom";
 import {
   Col,
-  // Row 
+  // Row
 } from "react-bootstrap";
 
 const CustomNavbar = () => {
