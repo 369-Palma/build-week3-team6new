@@ -97,8 +97,7 @@ export const deleteExp = (expid) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` +
-          expid,
+        `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` + expid,
         {
           method: "DELETE",
           headers: {
@@ -188,7 +187,7 @@ export const fetchPosts = () => {
 
         dispatch({
           type: GET_POSTS,
-          payload: dataPosts,
+          payload: dataPosts.reverse().slice(0, 20),
         });
       } else {
         console.log("Error fetching posts!");
