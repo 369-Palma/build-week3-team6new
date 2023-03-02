@@ -1,5 +1,6 @@
 import NewsFeed from "./NewsFeed";
-import CreatePostNewsPage from "../components/CreatePostNewspage";
+import CreatePostNewsPage from "./CreatePostNewsPage";
+
 const Home = () => {
   return (
     <>

@@ -1,15 +1,29 @@
 import { Card, Col, Row } from "react-bootstrap";
-import { HiOutlinePhoto } from "react-icons /hi";
+import { TbPhoto } from "react-icons/tb";
+import { BsPlayBtnFill } from "react-icons/bs";
+import { RiCalendarEventFill } from "react-icons/ri";
+import { MdOutlineArticle } from "react-icons/md";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPostsSearch } from "../redux/actions/index";
+
 const CreatePostNewsPage = () => {
+  const postInfo = useSelector((state) => state.postInfo);
+  const dispatch = useDispatch();
+
+  /*  useEffect(() => {
+    dispatch(fetchPostsSearch());
+  }, []); */
+
   return (
     <>
       <div className="d-flex justify-content-center">
         <div style={{ width: "700px", maxWidth: "100%" }}>
-          {randomPosts.map((post) => (
+          {postInfo.map((post) => (
             <Card key={post?.id} style={{ margin: "1rem 0" }}>
               <Card.Img
                 variant="top"
-                src={"#"}
+                src={post?.image}
                 alt="foto"
                 className="fotoTonde ms-2"
               />
@@ -23,7 +37,7 @@ const CreatePostNewsPage = () => {
                   className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
                 >
                   <p className="mb-0 ml-2 text-primary">
-                    <HiOutlinePhoto />
+                    <TbPhoto />
                     Foto
                   </p>
                 </Col>
@@ -32,7 +46,7 @@ const CreatePostNewsPage = () => {
                   className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
                 >
                   <p className="mb-0 ml-2">
-                    <BiCommentDetail />
+                    <BsPlayBtnFill />
                     Video
                   </p>
                 </Col>
@@ -41,7 +55,7 @@ const CreatePostNewsPage = () => {
                   className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
                 >
                   <p className="mb-0 ml-2">
-                    <BiShare />
+                    <RiCalendarEventFill />
                     Evento
                   </p>
                 </Col>
@@ -51,7 +65,7 @@ const CreatePostNewsPage = () => {
                   className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
                 >
                   <p className="mb-0 ml-2">
-                    <BiCommentDetail />
+                    <MdOutlineArticle />
                     Scrivi un articolo
                   </p>
                 </Col>

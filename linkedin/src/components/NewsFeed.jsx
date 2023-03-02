@@ -15,33 +15,50 @@ function NewsFeed() {
     dispatch(fetchPosts());
   }, []);
 
-  const randomPosts = Array.from({ length: 15 }, () => post[Math.floor(Math.random() * post.length)]);
+  const randomPosts = Array.from(
+    { length: 15 },
+    () => post[Math.floor(Math.random() * post.length)]
+  );
 
   return (
     <div className="d-flex justify-content-center">
       <div style={{ width: "700px", maxWidth: "100%" }}>
         {randomPosts.map((post) => (
           <Card key={post?.id} style={{ margin: "1rem 0" }}>
-            <Card.Img variant="top" src={post?.user.image} alt="foto" className="fotoTonde ms-2" />
+            <Card.Img
+              variant="top"
+              src={post?.user?.image}
+              alt="foto"
+              className="fotoTonde ms-2"
+            />
             <Card.Body>
               <Card.Title>{post?.username} said:</Card.Title>
               <Card.Text>{post?.text}</Card.Text>
             </Card.Body>
             <hr className="my-1" />
             <Row className="text-muted post-actions justify-content-center">
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col
+                xs="2"
+                className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
+              >
                 <p className="mb-0 ml-2 text-primary">
                   <FiThumbsUp />
                   Like
                 </p>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col
+                xs="2"
+                className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
+              >
                 <p className="mb-0 ml-2">
                   <BiCommentDetail />
                   Comment
                 </p>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col
+                xs="2"
+                className="d-flex align-items-center justify-content-center p-2 mx-3 rounded"
+              >
                 <p className="mb-0 ml-2">
                   <BiShare />
                   Share
