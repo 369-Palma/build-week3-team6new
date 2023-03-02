@@ -1,9 +1,9 @@
 import NewsFeed from "./NewsFeed";
-
+import CreatePostNewsPage from "../components/CreatePostNewspage";
 const Home = () => {
   return (
     <>
-      <h2>Benvenuto su LinkedIn</h2>
+      <CreatePostNewsPage />
       <NewsFeed />
     </>
   );
