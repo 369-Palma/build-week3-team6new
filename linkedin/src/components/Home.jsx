@@ -1,9 +1,12 @@
 import NewsFeed from "./NewsFeed";
+/* import Searchbar from "./Searchbar"; */
+import StartAPost from "./CreatePostNewspage";
 
 const Home = () => {
   return (
     <>
-      <h2>Benvenuto su LinkedIn</h2>
+      <StartAPost />
+      {/* <Searchbar /> */}
       <NewsFeed />
     </>
   );

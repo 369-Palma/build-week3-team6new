@@ -7,7 +7,7 @@ import CustomNavbar from "./components/Navbar";
 
 import Profile from "./components/Profile";
 import Home from "./components/Home";
-import ExpSolo from "./components/ExpSolo"
+import ExpSolo from "./components/ExpSolo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 
@@ -16,7 +16,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <CustomNavbar />
-        {/* <Home></Home> */}
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/profile/:user.id" element={<Profile />}></Route>
@@ -24,7 +23,7 @@ function App() {
 
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
-<Footer/>
+        <Footer />
         {/* <AziendeConsultate></AziendeConsultate> */}
       </BrowserRouter>
     </div>

@@ -4,6 +4,7 @@ import {
   GET_EXP,
   GET_POSTS,
   // POST_EXP
+  POST_POSTS,
 } from "../actions/index";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   contentUsers: {},
   contentExp: [],
   posts: [],
+  postInfo: [],
   // postContentExp: []
 };
 
@@ -41,6 +43,11 @@ const mainReducer = (state = initialState, action) => {
     //     ...state,
     //     contentExp: [...action.payload],
     //   };
+    case POST_POSTS:
+      return {
+        ...state,
+        postInfo: [...action.payload],
+      };
     default:
       return state;
   }
