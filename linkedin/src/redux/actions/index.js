@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 export const GET_USERS = "GET_USERS";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_EXP = "GET_EXP";
@@ -202,6 +204,7 @@ export const fetchPostsSearch = () => {
     try {
       const res = await fetch(postBaseline, {
         method: "POST",
+        /* body: JSON.stringify(newPostToSend) */
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

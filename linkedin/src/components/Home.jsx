@@ -1,10 +1,12 @@
 import NewsFeed from "./NewsFeed";
-import CreatePostNewsPage from "./CreatePostNewsPage";
+/* import Searchbar from "./Searchbar"; */
+import StartAPost from "./CreatePostNewspage";
 
 const Home = () => {
   return (
     <>
-      <CreatePostNewsPage />
+      <StartAPost />
+      {/* <Searchbar /> */}
       <NewsFeed />
     </>
   );
