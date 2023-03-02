@@ -1,7 +1,7 @@
 import { GET_PROFILE } from "../actions/index";
 
 const initialState = {
-  content: [],
+  contentUsers: {},
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE:
       return {
         ...state,
-        content: [...state.content, ...action.payload],
+        contentUsers: action.payload,
       };
     default:
       return state;
