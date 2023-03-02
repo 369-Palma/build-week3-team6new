@@ -26,6 +26,7 @@ function NewsFeed() {
             <Card.Body>
               <Card.Title>{post?.username} said:</Card.Title>
               <Card.Text>{post?.text}</Card.Text>
+              {post?.image ? <Card.Img variant="bottom" src={post?.image} alt="fotopost" /> : null}
             </Card.Body>
             <hr className="my-1" />
             <Row className="text-muted post-actions justify-content-center">
