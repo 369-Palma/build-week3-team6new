@@ -90,11 +90,12 @@ const UserProfile = () => {
                 Epicode
               </Col>
               <Button
-                className="w-25 align-self-end"
-                variant="primary"
+                className="align-self-end m-3 rounded-circle"
+                variant="transparent"
                 onClick={handleShow}
+                id="buttonModal-profile"
               >
-                <HiOutlinePencil />
+                <HiOutlinePencil className="fs-5" />
               </Button>
               {/* Inizio Modale profilo */}
               <Modal
@@ -106,57 +107,74 @@ const UserProfile = () => {
                 <Modal.Header closeButton>
                   <Modal.Title>Modal title</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="modal-body-profile">
+                  <p className="textColor-modal">* indica che è obbligatorio</p>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Nome*</Form.Label>
-                    <Form.Control type="text" autoFocus />
+                    <Form.Label className="textColor-modal">Nome*</Form.Label>
+                    <Form.Control
+                      type="text"
+                      autoFocus
+                      placeholder={profileStore.name}
+                    />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Cognome*</Form.Label>
-                    <Form.Control type="text" autoFocus />
+                    <Form.Label className="textColor-modal">
+                      Cognome*
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      autoFocus
+                      placeholder={profileStore.surname}
+                    />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Nome aggiuntivo</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Nome aggiuntivo
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
-                  <p>Pronuncia del nome</p>
-                  <p>
-                    <BsFillInfoSquareFill />
+                  <p className="textColor-modal">Pronuncia del nome</p>
+                  <p className="textColor-modal">
+                    <BsFillInfoSquareFill className="me-2" />
                     Può essere aggiunta solo usando la nostra app per
-                    dispositivi mobili{" "}
+                    dispositivi mobili
                   </p>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Inserisci pronomi personalizzati</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Inserisci pronomi personalizzati
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
-                    <Form.Label>
+                    <Form.Label className="textColor-modal">
                       Indica i pronomi di genere che vuoi che gli altri usino
                       per riferirsi a te
                     </Form.Label>
                   </Form.Group>
-                  <p>
+                  <p className="textColor-modal">
                     Scopri di più sui <strong>pronomi di genere.</strong>
                   </p>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Sommario*</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Sommario*
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <h4>Posizione attuale</h4>
-                  <Link>
+                  <Link className="text-decoration-none fs-6 fw-semibold">
                     <p>
                       <HiPlus /> Aggiungi posizione lavorativa
                     </p>
@@ -165,15 +183,17 @@ const UserProfile = () => {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Settore*</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Settore*
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
-                    <Form.Label>
-                      Scopri di più sulle{" "}
+                    <Form.Label className="textColor-modal">
+                      Scopri di più sulle
                       <strong>opzioni relative al settore</strong>
                     </Form.Label>
                   </Form.Group>
                   <h4>Formazione</h4>
-                  <Link>
+                  <Link className="text-decoration-none fs-6 fw-semibold">
                     <p>
                       <HiPlus /> Aggiungi un nuovo grado di formazione
                     </p>
@@ -183,14 +203,16 @@ const UserProfile = () => {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Paese/Area geografica </Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Paese/Area geografica
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>CAP </Form.Label>
+                    <Form.Label className="textColor-modal">CAP </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <h4>Informazioni di contatto</h4>
@@ -198,11 +220,16 @@ const UserProfile = () => {
                     Aggiungi o modifica il tuo profilo URL, indirizzo email e
                     altro
                   </p>
-                  <Link>Modifica le informazioni di contatto</Link>
+                  <Link className="text-decoration-none fs-6 fw-semibold">
+                    Modifica le informazioni di contatto
+                  </Link>
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button variant="primary" className="rounded-pill">
+                  <Button
+                    variant="primary"
+                    className="rounded-pill fw-semibold px-3"
+                  >
                     Salva
                   </Button>
                 </Modal.Footer>
