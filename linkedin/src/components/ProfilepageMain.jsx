@@ -117,7 +117,7 @@ const UserProfile = () => {
                     <Form.Control
                       type="text"
                       autoFocus
-                      placeholder={profileStore.name}
+                      defaultValue={profileStore.name}
                     />
                   </Form.Group>
                   <Form.Group
@@ -130,7 +130,7 @@ const UserProfile = () => {
                     <Form.Control
                       type="text"
                       autoFocus
-                      placeholder={profileStore.surname}
+                      defaultValue={profileStore.surname}
                     />
                   </Form.Group>
                   <Form.Group
