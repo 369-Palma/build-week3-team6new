@@ -203,7 +203,6 @@ const Experiences = () => {
             <p>{exp.area}</p>
           </Row>
         ))}
-        {/*  */}
       </div>
     </>
   );
