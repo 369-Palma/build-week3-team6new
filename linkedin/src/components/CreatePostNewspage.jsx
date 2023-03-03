@@ -33,9 +33,8 @@ const StartAPost = () => {
 
   const handleFile = (ev) => {
     setFd((prev) => {
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
       return prev;
     });
   };
@@ -84,7 +83,7 @@ const StartAPost = () => {
         //POST img VA QUI
 
         let res = await fetch(
-          `https://striveschool-api.herokuapp.com/api/posts/${newPost._id}`,
+          `https://striveschool-api.herokuapp.com/api/posts/`,
           {
             method: "POST",
             body: fd,
@@ -186,7 +185,7 @@ const StartAPost = () => {
             </Row>
             <Row>
               {/* Box per inserire il testo del nuovo post */}
-              <Form className="" onSubmit={createNewPost}>
+              <Form className="" type="post" onSubmit={createNewPost}>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Control
                     as="textarea"
@@ -205,14 +204,17 @@ const StartAPost = () => {
                   />
                 </Form.Group>
                 <div className="d-flex">
-                  <FcPicture
-                    size={26}
-                    className="me-3"
-                    type="file"
-                    value=""
-                    onChange={handleFile}
-                  />
-
+                  {/* Pulsante per caricare un'immagine */}
+                  <Button variant="light" as="label" htmlFor="file-input">
+                    <input
+                      id="file-input"
+                      type="file"
+                      /* value="" */
+                      onChange={(e) => handleFile}
+                      style={{ display: "none" }}
+                    />
+                    <FcPicture />
+                  </Button>
                   {/* Pulsante per pubblicare */}
                   <Button variant="light" type="submit" onSubmit={handleSubmit}>
                     Pubblica

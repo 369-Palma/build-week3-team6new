@@ -27,6 +27,34 @@ const StartAPost = () => {
     text: " ",
   });
 
+  //Upload immagini
+
+  const [fd, setFd] = useState(new FormData());
+
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      return prev;
+    });
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    let res = await fetch(
+      `https://striveschool-api.herokuapp.com/api/posts/6401f7caab3c5e001380bf10`,
+      {
+        method: "POST",
+        body: fd,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU5N2ZiY2ZlYzFjZjAwMTU1YjliMDkiLCJpYXQiOjE2Nzc0ODUyNzYsImV4cCI6MTY3ODY5NDg3Nn0.zZRcvWE_qpD6Gr06xfZqQlVkqzkyl5BJI30JsV9rMqc",
+        },
+      }
+    );
+    console.log(res);
+  };
+
   const createNewPost = async (e) => {
     e.preventDefault();
 
@@ -43,7 +71,7 @@ const StartAPost = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
           },
         }
       );
@@ -51,7 +79,22 @@ const StartAPost = () => {
         const newPostJson = await response.json();
         console.log(newPostJson);
         setNewPost(newPostJson);
-        // Inserire POST dell'immagine qua usando il ._id di newPostJson
+
+        //POST img VA QUI
+
+        let res = await fetch(
+          `https://striveschool-api.herokuapp.com/api/posts/`,
+          {
+            method: "POST",
+            body: fd,
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWU5N2ZiY2ZlYzFjZjAwMTU1YjliMDkiLCJpYXQiOjE2Nzc0ODUyNzYsImV4cCI6MTY3ODY5NDg3Nn0.zZRcvWE_qpD6Gr06xfZqQlVkqzkyl5BJI30JsV9rMqc",
+            },
+          }
+        );
+        console.log(res);
+
         alert("Post was sent!");
       } else {
         console.log("error");
@@ -142,7 +185,7 @@ const StartAPost = () => {
             </Row>
             <Row>
               {/* Box per inserire il testo del nuovo post */}
-              <Form className="" onSubmit={createNewPost}>
+              <Form className="" type="post" onSubmit={createNewPost}>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Control
                     as="textarea"
@@ -161,10 +204,19 @@ const StartAPost = () => {
                   />
                 </Form.Group>
                 <div className="d-flex">
-                  {/* Pulsante per caricare immagine */}
-                  <Button variant="light">Carica immagine</Button>
-                  <Button variant="light" type="submit">
-                    {/* Pulsante per pubblicare il post */}
+                  {/* Pulsante per caricare un'immagine */}
+                  <Button variant="light" as="label" htmlFor="file-input">
+                    <input
+                      id="file-input"
+                      type="file"
+                      value=""
+                      onChange={(e) => handleFile}
+                      style={{ display: "none" }}
+                    />
+                    <FcPicture />
+                  </Button>
+                  {/* Pulsante per pubblicare */}
+                  <Button variant="light" type="submit" onSubmit={handleSubmit}>
                     Pubblica
                   </Button>
                 </div>
