@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
   //const handleShow = () => setLgShow(true);
-  const profileStore = useSelector((state) => state.profile.contentUsers);
+  const profileStore = useSelector((state) => state.contentUsers);
   useEffect(() => {
     dispatch(fetchUser("me"));
   }, []);

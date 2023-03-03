@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 
 const CardSidebar = () => {
-  const users = useSelector((state) => state.profile.content.slice(0, 5));
+  const users = useSelector((state) => state.content.slice(0, 5));
 
   console.log(users);
   return (

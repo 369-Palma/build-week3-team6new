@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteExp } from "../redux/actions";
 
 const ExpSolo = () => {
-  const experiences = useSelector((state) => state.experience.contentExp);
+  const experiences = useSelector((state) => state.contentExp);
   const dispatch = useDispatch();
   // const deleteExp = async (expId) => {
   //     try {

@@ -11,16 +11,16 @@ const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
 const Palma =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY";
 
-const Giacomo =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y";
+// const Giacomo =
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y";
 
-const Michela =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAwODIyYjAzNTgzMjAwMTM1MGJjYTUiLCJpYXQiOjE2Nzc3NTQ5MjYsImV4cCI6MTY3ODk2NDUyNn0.2Hg2KZiQOr8DKuKUgUj0Lb42E8nt9RkFawbYCkPK2CE";
+// const Michela =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDAwODIyYjAzNTgzMjAwMTM1MGJjYTUiLCJpYXQiOjE2Nzc3NTQ5MjYsImV4cCI6MTY3ODk2NDUyNn0.2Hg2KZiQOr8DKuKUgUj0Lb42E8nt9RkFawbYCkPK2CE";
 
-const Feliciano =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmRlN2YxOTNlNjAwMTM4MDdmNTYiLCJpYXQiOjE2Nzc0ODc1OTEsImV4cCI6MTY3ODY5NzE5MX0.eeFyTNotTozHiD5edIJk5_Cpq7MQnFbOovidA9ECJfw";
+// const Feliciano =
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmRlN2YxOTNlNjAwMTM4MDdmNTYiLCJpYXQiOjE2Nzc0ODc1OTEsImV4cCI6MTY3ODY5NzE5MX0.eeFyTNotTozHiD5edIJk5_Cpq7MQnFbOovidA9ECJfw";
 
-const Carlos = "";
+// const Carlos = "";
 
 
 export const fetchProfiles = (query) => {

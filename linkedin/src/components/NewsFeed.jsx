@@ -8,8 +8,8 @@ import { BiCommentDetail, BiShare } from "react-icons/bi";
 
 function NewsFeed() {
   const dispatch = useDispatch();
-  const post = useSelector((state) => state.posts.posts);
-  console.log(post);
+  const post = useSelector((state) => state.posts);
+  // console.log(post)
 
   useEffect(() => {
     dispatch(fetchPosts());

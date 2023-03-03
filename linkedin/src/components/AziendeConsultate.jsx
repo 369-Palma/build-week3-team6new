@@ -6,7 +6,7 @@ import { fetchProfiles } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 
 const AziendeConsultate = () => {
-  const users = useSelector((state) => state.users.content);
+  const users = useSelector((state) => state.content);
   console.log(users);
   const dispatch = useDispatch();
 

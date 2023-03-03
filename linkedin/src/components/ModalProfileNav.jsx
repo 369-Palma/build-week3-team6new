@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ModalNav = () => {
   const dispatch = useDispatch();
-  const profileStore = useSelector((state) => state.users.contentUsers);
+  const profileStore = useSelector((state) => state.contentUsers);
 
   useEffect(() => {
     dispatch(fetchUser("me"));
