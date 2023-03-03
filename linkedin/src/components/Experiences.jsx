@@ -26,7 +26,6 @@ const Experiences = () => {
     dispatch(fetchExp("experiences"));
   }, []);
 
-
   ///fetch
 
   //postExp
@@ -204,9 +203,9 @@ const Experiences = () => {
             <p>{exp.area}</p>
           </Row>
         ))}
+        {/*  */}
       </div>
     </>
   );
 };
 export default Experiences;
-/* eslint-disable react-hooks/exhaustive-deps */
