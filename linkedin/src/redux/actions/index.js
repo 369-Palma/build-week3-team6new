@@ -4,6 +4,8 @@ export const GET_EXP = "GET_EXP";
 export const DELETE_EXP = "DELETE_EXP";
 export const GET_POSTS = "GET_POSTS";
 export const POST_POSTS = "POST_POSTS";
+export const GET_DATA_LOADING_ON = "GET_DATA_LOADING_ON";
+export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -22,17 +24,19 @@ const Palma =
 
 // const Carlos = "";
 
-
 export const fetchProfiles = (query) => {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
+
       const res = await fetch(baseline + query, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            Palma
+          Authorization: Palma,
         },
       });
       if (res.ok) {
@@ -47,6 +51,10 @@ export const fetchProfiles = (query) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
     }
   };
 };
@@ -54,13 +62,15 @@ export const fetchProfiles = (query) => {
 export const fetchUser = (query) => {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
       const res = await fetch(baseline + query, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            Palma
+          Authorization: Palma,
         },
       });
       if (res.ok) {
@@ -74,6 +84,10 @@ export const fetchUser = (query) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
     }
   };
 };
@@ -81,13 +95,15 @@ export const fetchUser = (query) => {
 export const fetchExp = (exp) => {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
       const res = await fetch(baseline + "63fc702df193e60013807f5a/" + exp, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            Palma
+          Authorization: Palma,
         },
       });
       if (res.ok) {
@@ -102,6 +118,10 @@ export const fetchExp = (exp) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
     }
   };
 };
@@ -110,14 +130,14 @@ export const deleteExp = (expid) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` + expid,
+        `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` +
+          expid,
         {
           method: "DELETE",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:
-              Palma
+            Authorization: Palma,
           },
         }
       );
@@ -169,18 +189,18 @@ export const deleteExp = (expid) => {
 //   };
 // };
 
-
-
 export const fetchPosts = () => {
   return async (dispatch) => {
     try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
       const res = await fetch(postBaseline, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            Palma
+          Authorization: Palma,
         },
       });
       if (res.ok) {
@@ -195,6 +215,10 @@ export const fetchPosts = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
     }
   };
 };
@@ -208,8 +232,7 @@ export const fetchPostsSearch = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization:
-            Palma
+          Authorization: Palma,
         },
       });
       if (res.ok) {

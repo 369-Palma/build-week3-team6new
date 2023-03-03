@@ -7,6 +7,7 @@ import {
   Button,
   Form,
   Modal,
+  Spinner,
 } from "react-bootstrap";
 import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
@@ -27,6 +28,8 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   //const handleShow = () => setLgShow(true);
   const profileStore = useSelector((state) => state.contentUsers);
+  const isLoading = useSelector((state) => state.isLoading);
+
   useEffect(() => {
     dispatch(fetchUser("me"));
   }, []);
@@ -35,8 +38,12 @@ const UserProfile = () => {
   return (
     <>
       {/* Profile section */}
+
       <Card>
         <Container>
+          {isLoading && (
+            <Spinner animation="border" variant="primary" className="my-2" />
+          )}
           <Row className="p-background">
             <img
               src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png"
