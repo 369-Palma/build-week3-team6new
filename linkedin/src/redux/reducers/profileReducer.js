@@ -1,7 +1,7 @@
 import { GET_PROFILE } from "../actions/index";
 
 const initialState = {
-  contentUsers: {},
+  contentProfile: {},
 };
 
 const profileReducer = (state = initialState, action) => {
