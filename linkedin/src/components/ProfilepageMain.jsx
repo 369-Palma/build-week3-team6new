@@ -15,6 +15,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ProfileImgModal from "./ProfileImgModal";
 
 const UserProfile = () => {
   // this modal for profile
@@ -49,6 +50,9 @@ const UserProfile = () => {
               alt="userimage"
             />
           </Row>
+          {/**MODALE IMMAGINE PROFILO **/}
+          <ProfileImgModal />
+          {/**MODALE IMMAGINE PROFILO **/}
           <Row>
             <Col className="userdetail" xs={12} md={8}>
               <h4 className="name mb-0">
