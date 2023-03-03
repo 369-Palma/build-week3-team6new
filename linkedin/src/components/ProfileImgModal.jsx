@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
+import HiAcademicCap from "react-icons/hi";
 
 const ProfileImgModal = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -21,18 +22,29 @@ const ProfileImgModal = () => {
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
             Foto profilo
-            <Row>
-              <Col xs={12}>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Row>
+            <Col xs={12}>
+              <div className="d-flex w-100 justify-content-center">
                 <img
                   src={profileStore.image}
                   alt="profileImage"
-                  style={{ width: "11em" }}
+                  style={{ width: "13em" }}
+                  className="rounded rounded-circle"
                 />
-              </Col>
-            </Row>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>...</Modal.Body>
+              </div>
+              {/*dropdown*/}
+              <span className="fs-6 px-2 border rounded-pill px-2">
+                Chiunque
+              </span>
+              <Row>
+                <Col>icona </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Modal.Body>
       </Modal>
     </>
   );
