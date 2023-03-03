@@ -1,24 +1,76 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Col, Row } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare } from "react-icons/bi";
+import { FaTimes } from "react-icons/fa";
 
 function NewsFeed() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
   console.log(post);
 
+  const [image, setImage] = useState(null);
+  const [formData, setformData] = useState(new FormData());
+
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
 
-  // const randomPosts = Array.from(
-  //   { length: 15 },
-  //   () => post[Math.floor(Math.random() * post.length)]
-  // );
+  const handleImageChange = (ev) => {
+    setformData((prev) => {
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
+      return prev;
+    });
+  };
+
+  const handleImageUpload = async (postId) => {
+    try {
+      formData.append("post", image);
+
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+        },
+      });
+      if (response.ok) {
+        alert("Image uploaded!");
+        setImage(null);
+      } else {
+        console.log("error");
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deletePost = async (postId) => {
+    try {
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+        },
+      });
+      if (response.ok) {
+        alert("Post was deleted!");
+        // Aggiorna la lista dei post qui
+      } else {
+        console.log("error");
+        alert("Something went wrong. Be sure to check if the post is yours.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="d-flex justify-content-center">
@@ -50,6 +102,19 @@ function NewsFeed() {
                   <BiShare />
                   Share
                 </p>
+              </Col>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                <div>
+                  <FaTimes className="text-danger" onClick={() => deletePost(post._id)} />
+                </div>
+              </Col>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                <div>
+                  <form onSubmit={() => handleImageUpload(post._id)}>
+                    <input type="file" onChange={handleImageChange} />
+                    <button>Send</button>
+                  </form>
+                </div>
               </Col>
             </Row>
           </Card>
