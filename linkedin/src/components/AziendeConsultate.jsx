@@ -14,13 +14,16 @@ const AziendeConsultate = () => {
     dispatch(fetchProfiles(""));
   }, []);
 
+  // Randomizza gli utenti
+  const shuffledUsers = users.sort(() => Math.random() - 0.5);
+
   return (
     <Container>
       <Row>
         <h4>Altre aziende consultate</h4>
       </Row>
       <Row className="py-2">
-        <CardSidebar />
+        <CardSidebar users={shuffledUsers} />
       </Row>
     </Container>
   );
