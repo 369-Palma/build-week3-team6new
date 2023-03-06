@@ -86,36 +86,37 @@ function NewsFeed() {
             <hr className="my-1" />
             <Row className="text-muted post-actions justify-content-center">
               <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2 text-primary">
-                  <FiThumbsUp />
-                  Like
-                </p>
-              </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2">
-                  <BiCommentDetail />
-                  Comment
-                </p>
-              </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2">
-                  <BiShare />
-                  Share
-                </p>
-              </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <div>
-                  <FaTimes className="text-danger" onClick={() => deletePost(post._id)} />
+                <div className="mb-0 ml-2 text-primary">
+                  <FiThumbsUp /> Like
                 </div>
               </Col>
               <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <div>
-                  <form onSubmit={() => handleImageUpload(post._id)}>
-                    <input type="file" onChange={handleImageChange} />
-                    <button>Send</button>
-                  </form>
+                <div className="mb-0 ml-2">
+                  <BiCommentDetail /> Comment
                 </div>
               </Col>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                <div className="mb-0 ml-2">
+                  <BiShare /> Share
+                </div>
+              </Col>
+              {post?.user?._id === "63fc7944f193e60013807f5e" && (
+                <>
+                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                    <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
+                      <FaTimes /> Delete
+                    </div>
+                  </Col>
+                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                    <div className="d-flex align-items-center">
+                      <form onSubmit={() => handleImageUpload(post._id)}>
+                        <input type="file" onChange={handleImageChange} />
+                        <button className="btn btn-success">Send</button>
+                      </form>
+                    </div>
+                  </Col>
+                </>
+              )}
             </Row>
           </Card>
         ))}

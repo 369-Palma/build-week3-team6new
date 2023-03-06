@@ -119,10 +119,8 @@ const StartAPost = () => {
                   />
                 </Form.Group>
                 <div className="d-flex">
-                  {/* Pulsante per caricare immagine */}
-                  <Button variant="light">Carica immagine</Button>
+                  {/* Pulsante per pubblicare il post */}
                   <Button variant="light" type="submit">
-                    {/* Pulsante per pubblicare il post */}
                     Pubblica
                   </Button>
                 </div>
