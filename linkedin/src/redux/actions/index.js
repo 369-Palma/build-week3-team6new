@@ -10,6 +10,8 @@ export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
 
+const REACT_APP_API_KEY_COMMENT = process.env.REACT_APP_API_KEY_COMMENT;
+
 const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
 /* const REACT_APP_API_KEY_GIACOMO = process.env.REACT_APP_API_KEY_GIACOMO;
 const REACT_APP_API_KEY_MICHELA = process.env.REACT_APP_API_KEY_MICHELA;
@@ -242,3 +244,5 @@ export const fetchPostsSearch = () => {
     }
   };
 };
+
+// FETCH COMMENTI
