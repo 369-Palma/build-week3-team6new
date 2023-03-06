@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Modal, Button, Col, Row, Container } from "react-bootstrap";
-import { fetchUser } from "../redux/actions";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+/* import { fetchUser } from "../redux/actions";
+ */ import React, { useEffect } from "react";
+import { /* useDispatch,  */ useSelector } from "react-redux";
+import { Link /* , useParams */ } from "react-router-dom";
 
 const ModalNav = () => {
   /* const dispatch = useDispatch(); */
