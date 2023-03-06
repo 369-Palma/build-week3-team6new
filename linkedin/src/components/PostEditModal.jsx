@@ -29,8 +29,8 @@ function PostEditModal({ post, onSave }) {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("HTTP error " + response.status);
+      if (response.ok) {
+        alert("Post edited correctly!");
       }
 
       const updatedPost = await response.json();
@@ -44,7 +44,7 @@ function PostEditModal({ post, onSave }) {
     <>
       <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
         <div className="mb-0 ml-2" onClick={handleShow} style={{ cursor: "pointer" }}>
-          <BiEdit /> Edit
+          <BiEdit /> Edit Text
         </div>
       </Col>
 

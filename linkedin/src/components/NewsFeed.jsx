@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { Card, Col, Row, Form, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
-import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
+import { BiCommentDetail, BiShare } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import PostEditModal from "./PostEditModal";
 
