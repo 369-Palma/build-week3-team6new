@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 import CardSidebar from "./CardSidebar";
 import { useEffect } from "react";
 import { fetchProfiles } from "../redux/actions/index";
@@ -9,6 +9,7 @@ const AziendeConsultate = () => {
   const users = useSelector((state) => state.content);
   console.log(users);
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
     dispatch(fetchProfiles(""));
@@ -22,6 +23,9 @@ const AziendeConsultate = () => {
       <Row>
         <h4>Altre aziende consultate</h4>
       </Row>
+      {isLoading && (
+        <Spinner animation="border" variant="primary" className="my-2" />
+      )}
       <Row className="py-2">
         <CardSidebar users={shuffledUsers} />
       </Row>
