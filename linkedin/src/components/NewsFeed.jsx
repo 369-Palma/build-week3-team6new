@@ -2,16 +2,14 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Form, Button } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
-import { BiCommentDetail, BiShare } from "react-icons/bi";
+import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 
 function NewsFeed() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
-  // console.log(post)
-
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
 
@@ -27,6 +25,7 @@ function NewsFeed() {
     });
   };
 
+  // Fetch per aggiungere un'immagine ad un nostro post già creato precedentemente.
   const handleImageUpload = async (postId) => {
     try {
       formData.append("post", image);
@@ -51,6 +50,7 @@ function NewsFeed() {
     }
   };
 
+  // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
     try {
       let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
@@ -62,7 +62,6 @@ function NewsFeed() {
       });
       if (response.ok) {
         alert("Post was deleted!");
-        // Aggiorna la lista dei post qui
       } else {
         console.log("error");
         alert("Something went wrong. Be sure to check if the post is yours.");
@@ -85,29 +84,35 @@ function NewsFeed() {
             </Card.Body>
             <hr className="my-1" />
             <Row className="text-muted post-actions justify-content-center">
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                 <div className="mb-0 ml-2 text-primary">
                   <FiThumbsUp /> Like
                 </div>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                 <div className="mb-0 ml-2">
                   <BiCommentDetail /> Comment
                 </div>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                 <div className="mb-0 ml-2">
                   <BiShare /> Share
                 </div>
               </Col>
               {post?.user?._id === "63fc7944f193e60013807f5e" && (
                 <>
-                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                    <div className="mb-0 ml-2">
+                      <BiEdit /> Edit
+                    </div>
+                  </Col>
+
+                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                     <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
                       <FaTimes /> Delete
                     </div>
                   </Col>
-                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
+                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                     <div className="d-flex align-items-center">
                       <form onSubmit={() => handleImageUpload(post._id)}>
                         <input type="file" onChange={handleImageChange} />
