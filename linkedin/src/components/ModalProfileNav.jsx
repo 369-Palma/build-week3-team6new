@@ -1,17 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Modal, Button, Col, Row, Container } from "react-bootstrap";
-import { fetchUser } from "../redux/actions";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+/* import { fetchUser } from "../redux/actions";
+ */ import React, { useEffect } from "react";
+import { /* useDispatch,  */ useSelector } from "react-redux";
+import { Link /* , useParams */ } from "react-router-dom";
 
 const ModalNav = () => {
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
   const profileStore = useSelector((state) => state.contentUsers);
+  /* 
+  const params = useParams();
 
   useEffect(() => {
-    dispatch(fetchUser("me"));
+    dispatch(fetchUser(params.userId));
   }, []);
+  console.log(profileStore); */
+
   return (
     <div
       className="modal show"
@@ -38,7 +42,7 @@ const ModalNav = () => {
               <Modal.Body>
                 <p className="my-0 occupation">{profileStore.title}</p>
                 <p className="my-0 location text-muted">{profileStore.area}</p>
-                <Link to="/profile/:user.id">
+                <Link to="/profile/me">
                   <Button
                     className="bottoniBlu" /*  variant="light border border-primary text-primary py-0 fs-6" */
                   >
