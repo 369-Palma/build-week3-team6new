@@ -1,4 +1,5 @@
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
+import { FaTimes } from "react-icons/fa";
 import { Image, Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -34,7 +35,6 @@ const StartAPost = () => {
         const newPostJson = await response.json();
         console.log(newPostJson);
         setNewPost(newPostJson);
-        // Inserire POST dell'immagine qua usando il ._id di newPostJson
         alert("Post was sent!");
       } else {
         console.log("error");
@@ -119,10 +119,8 @@ const StartAPost = () => {
                   />
                 </Form.Group>
                 <div className="d-flex">
-                  {/* Pulsante per caricare immagine */}
-                  <Button variant="light">Carica immagine</Button>
+                  {/* Pulsante per pubblicare il post */}
                   <Button variant="light" type="submit">
-                    {/* Pulsante per pubblicare il post */}
                     Pubblica
                   </Button>
                 </div>
