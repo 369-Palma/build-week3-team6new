@@ -4,6 +4,8 @@ import { Image, Form, Card, Modal, Button, Col, Row, Container } from "react-boo
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+
+
 const StartAPost = () => {
   const postInfo = useSelector((state) => state.postInfo);
   const [show, setShow] = useState(false);
@@ -13,6 +15,8 @@ const StartAPost = () => {
   const [newPost, setNewPost] = useState({
     text: " ",
   });
+
+
 
   const createNewPost = async (e) => {
     e.preventDefault();
@@ -44,6 +48,9 @@ const StartAPost = () => {
       console.log(error);
     }
   };
+
+
+
 
   return (
     <>

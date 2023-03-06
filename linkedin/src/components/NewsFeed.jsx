@@ -6,16 +6,29 @@ import { Card, Col, Row, Form, Button } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
+import { fetchComm } from "../redux/actions";
+
+
 
 function NewsFeed() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
+  const comm = useSelector((state) => state.comm)
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
+
+
+  useEffect(() => {
+    dispatch(fetchComm());
+  }, []);
+
+  console.log(comm)
+
+
 
   const handleImageChange = (ev) => {
     setformData((prev) => {
@@ -91,7 +104,11 @@ function NewsFeed() {
               </Col>
               <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                 <div className="mb-0 ml-2">
-                  <BiCommentDetail /> Comment
+                  <Button
+                  // onClick={}
+                  >
+                    <BiCommentDetail /> Comment
+                  </Button>
                 </div>
               </Col>
               <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
@@ -123,6 +140,28 @@ function NewsFeed() {
                 </>
               )}
             </Row>
+            <Row>
+
+              <Card.Body>
+                {comm.map((comm) => (
+                  <>
+                    <Col>
+                      <Card.Text>
+                        {comm.comment}
+                      </Card.Text>
+                    </Col>
+                    <Col>
+
+                      <Card.Text>
+                        {comm.rate}
+                      </Card.Text>
+                    </Col>
+
+                  </>
+                ))}
+              </Card.Body>
+            </Row>
+
           </Card>
         ))}
       </div>
