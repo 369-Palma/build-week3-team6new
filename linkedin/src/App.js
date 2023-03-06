@@ -17,8 +17,10 @@ function App() {
         <CustomNavbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/profile/:user.id" element={<Profile />}></Route>
-          <Route path="/profile/:user.id/:expId" element={<ExpSolo />}></Route>
+
+          <Route path="/profile/:userId" element={<Profile />}></Route>
+
+          <Route path="/profile/:userId/:expId" element={<ExpSolo />}></Route>
 
           {/* <Route path="/profile/:user.id" element={<UserProfile />}></Route> */}
         </Routes>
