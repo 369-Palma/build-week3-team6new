@@ -3,8 +3,6 @@ import {
   GET_PROFILE,
   GET_EXP,
   GET_POSTS,
-  GET_DATA_LOADING_OFF,
-  GET_DATA_LOADING_ON,
   // POST_EXP
   POST_POSTS,
 } from "../actions/index";
@@ -15,7 +13,6 @@ const initialState = {
   contentExp: [],
   posts: [],
   postInfo: [],
-  isLoading: false,
   // postContentExp: []
 };
 
@@ -50,17 +47,6 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         postInfo: [...action.payload],
-      };
-    case GET_DATA_LOADING_ON:
-      return {
-        ...state,
-        isLoading: true,
-      };
-
-    case GET_DATA_LOADING_OFF:
-      return {
-        ...state,
-        isLoading: false,
       };
     default:
       return state;
