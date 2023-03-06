@@ -6,12 +6,18 @@ import { Card, Col, Row, Form, Button } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
+import PostEditModal from "./PostEditModal";
 
 function NewsFeed() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
+
+  const [text, setText] = useState(post.text);
+  const handleSave = (newText) => {
+    setText(newText);
+  };
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -101,11 +107,7 @@ function NewsFeed() {
               </Col>
               {post?.user?._id === "63fc7944f193e60013807f5e" && (
                 <>
-                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                    <div className="mb-0 ml-2">
-                      <BiEdit /> Edit
-                    </div>
-                  </Col>
+                  <PostEditModal post={post} onSave={handleSave} />
 
                   <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                     <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
