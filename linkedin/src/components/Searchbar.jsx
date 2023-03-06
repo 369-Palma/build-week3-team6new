@@ -7,6 +7,7 @@ import {
 } from "react-icons/fc";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPostsSearch } from "../redux/actions/index";
+import { useEffect } from "react";
 
 const Searchbar = () => {
   const postInfo = useSelector((state) => state.postInfo);
