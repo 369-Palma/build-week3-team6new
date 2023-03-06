@@ -9,6 +9,7 @@ export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
+const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
 
 const Palma =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY";
@@ -36,7 +37,7 @@ export const fetchProfiles = (query) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: Palma,
+          Authorization: REACT_APP_API_KEY_PALMA,
         },
       });
       if (res.ok) {
