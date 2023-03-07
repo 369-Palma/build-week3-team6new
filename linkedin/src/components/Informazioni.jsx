@@ -10,6 +10,44 @@ const Informazioni = () => {
   const [lgShow, setLgShow] = useState(false);
   const handleShow = () => setLgShow(true);
 
+  //FUNZIONE PER CAMBIARE LE INFO
+
+  const updateInfo = async (e) => {
+    e.preventDefault();
+
+    const infoUpdated = {
+      ...text,
+    };
+    //inizio fetch - PUT
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/",
+        {
+          method: "PUT",
+          body: JSON.stringify(infoUpdated),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+          },
+        }
+      );
+      if (response.ok) {
+        const newInfoJson = await response.json();
+        console.log(newInfoJson);
+        setText(newInfoJson);
+        alert("Info updated!");
+      } else {
+        console.log("error");
+        alert("something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // fine fetch - PUT
+
   return (
     <Card className="bg-white my-3">
       <Card.Body>
@@ -18,7 +56,7 @@ const Informazioni = () => {
             <Card.Title>Informazioni</Card.Title>
           </Col>
           <Col sx={1} className="d-flex justify-content-end w-25">
-            <HiOutlinePencil onClick={handleShow} />
+            <HiOutlinePencil className="fs-5" onClick={handleShow} />
             {/* inizio modale */}
             <div
               className="modal show"
@@ -30,6 +68,7 @@ const Informazioni = () => {
                 </Modal.Header>
 
                 <Modal.Body>
+                  <p className="textColor-modal">* indica che è obbligatorio</p>
                   <p>
                     Puoi includere anni di esperienza, settore o competenze
                     acquisite. Potresti anche inserire i risultati raggiunti o
@@ -37,13 +76,19 @@ const Informazioni = () => {
                   </p>
                   <Form.Control
                     as="textarea"
-                    value={text}
+                    defaultValue={profileStore.bio}
                     onChange={(e) => setText(e.target.value)}
                   />
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button variant="primary">Salva</Button>
+                  <Button
+                    variant="primary"
+                    className="rounded-pill fw-semibold px-3"
+                    onClick={updateInfo}
+                  >
+                    Salva
+                  </Button>
                 </Modal.Footer>
               </Modal>
             </div>
