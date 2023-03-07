@@ -19,7 +19,7 @@ const UserProfile = () => {
   const params = useParams();
   // Loaders
   const isLoading = useSelector((state) => state.isLoading);
-  // Nuova fetch che va in conflitto con la precedente
+  // State per fetch PUT per aggiornare nome e cognome
   const [profileData, setProfileData] = useState({
     name: "",
     surname: "",
@@ -30,33 +30,23 @@ const UserProfile = () => {
     dispatch(fetchUser(params.userId));
   }, []);
 
-  useEffect(() => {
-    if (profileStore.name && profileStore.surname) {
-      const requestOptions = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: profileStore.name,
-          surname: profileStore.surname,
-        }),
-      };
-      fetch(`https://striveschool-api.herokuapp.com/api/profile/${params.userId}`, requestOptions)
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error(error));
-    }
-  }, [profileStore]);
-
-  // Nuova fetch che va in conflitto con la precedente
-  const handleInputChange = (event) => {
+  // Eventi onClick per gestire modifica di nome e cognome
+  const handleNameChange = (event) => {
     const { name, value } = event.target;
     setProfileData({
       ...profileData,
-      [name]: value,
+      name: value,
+    });
+  };
+  const handleSurnameChange = (event) => {
+    const { surname, value } = event.target;
+    setProfileData({
+      ...profileData,
+      surname: value,
     });
   };
 
-  // Fetch PUT, corretta ma non salva gli elementi nell'API dopo il conflitto. All'inizio prendeva le modifiche
+  // Fetch PUT per modificare nome e cognome nel modale del profilo
   const handleSave = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
@@ -141,7 +131,7 @@ const UserProfile = () => {
                   <p className="textColor-modal">* modificabili in questo modale (il resto è placeholder)</p>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label className="textColor-modal">Nome *</Form.Label>
-                    <Form.Control type="text" autoFocus defaultValue={profileStore.name} onChange={handleInputChange} />
+                    <Form.Control type="text" autoFocus defaultValue={profileStore.name} onChange={handleNameChange} />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label className="textColor-modal">Cognome *</Form.Label>
@@ -149,7 +139,7 @@ const UserProfile = () => {
                       type="text"
                       autoFocus
                       defaultValue={profileStore.surname}
-                      onChange={handleInputChange}
+                      onChange={handleSurnameChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
