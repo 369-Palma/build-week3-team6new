@@ -12,7 +12,7 @@ function PostEditModal({ post, onSave }) {
   const handleShow = () => setShow(true);
   const handleSave = async () => {
     const updatedPost = await updatePost(post._id, text);
-    onSave(updatedPost.text);
+    onSave(updatedPost); // Chiamiamo la funzione onSave con il post aggiornato senza reload pagina
     handleClose();
   };
 
