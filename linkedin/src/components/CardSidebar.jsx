@@ -12,8 +12,11 @@ const CardSidebar = () => {
       {users
         /* .filter((el) => el.image !== "") */
         .map((user) => (
-          <Row className="d-flex flex-row align-items-center px-2">
-            <Card key={user._id} className="cardImgsideBar d-flex flex-row">
+          <Row
+            key={user._id}
+            className="d-flex flex-row align-items-center px-2"
+          >
+            <Card className="cardImgsideBar d-flex flex-row">
               <Card.Img
                 variant="top"
                 src={user.image}
