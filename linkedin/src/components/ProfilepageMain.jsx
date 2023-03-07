@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-
+import ModalProfileImg from "../components/ModalProfileImg";
 import { fetchUser } from "../redux/actions/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,9 +21,12 @@ import { Link, useParams } from "react-router-dom";
 const UserProfile = () => {
   // this modal for profile
   const [lgShow, setLgShow] = useState(false);
+  const [lgShowImg, setLgShowImg] = useState(false);
 
   const handleShow = () => setLgShow(true);
   // this modal for profile
+
+  const handleShowImgEdit = () => setLgShowImg(true);
 
   const dispatch = useDispatch();
   //const handleShow = () => setLgShow(true);
@@ -60,9 +63,18 @@ const UserProfile = () => {
               />
               <HiOutlinePencil
                 className="matitaImgProfile"
-                onClick={handleShow}
                 style={{ cursor: "pointer" }}
+                onClick={handleShowImgEdit}
               />
+              {/* {lgShowImg === true ? <ModalProfileImg /> : null} */}
+              <Modal
+                size="lg"
+                show={lgShowImg}
+                onHide={() => setLgShowImg(false)}
+                aria-labelledby="example-modal-sizes-title-lg"
+              >
+                <ModalProfileImg />
+              </Modal>
             </Col>
           </Row>
           <Row>
