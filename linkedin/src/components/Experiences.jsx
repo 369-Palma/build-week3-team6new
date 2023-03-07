@@ -182,14 +182,10 @@ const Experiences = () => {
             <h3>Esperienza</h3>
           </div>
           <div>
-            <Button onClick={handleShowExp}>
-              <HiPlus className="fs-3 p-1" />
-            </Button>
+            <HiPlus className="fs-3 p-1" onClick={handleShowExp} />
 
             <Link to="/profile/:user.id/:expId">
-              <Button>
-                <HiOutlinePencil className="fs-4 p-1" />
-              </Button>
+              <HiOutlinePencil className="fs-4 p-1 text-dark" />
             </Link>
           </div>
         </div>
