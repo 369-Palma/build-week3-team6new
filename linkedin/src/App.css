@@ -9,6 +9,13 @@
   width: 100vw;
   height: 100vh;
 } */
+.matitaImgProfile {
+  cursor: pointer;
+  position: absolute;
+  left: 160px;
+  bottom: 175px;
+}
+
 .bottoniBlu {
   border: 1.5px solid blue;
   background-color: white;
