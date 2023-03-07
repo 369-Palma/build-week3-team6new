@@ -154,6 +154,45 @@ export const deleteExp = (expid) => {
   };
 };
 
+// COMMENTS FETCH
+export const fetchComm = (comm) => {
+  // const commId = ""
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/comments/" +
+        comm, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: carlosCommKey,
+        },
+      });
+      if (res.ok) {
+        const dataComm = await res.json();
+
+        dispatch({
+          type: GET_COMM,
+          payload: dataComm,
+        });
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
+    }
+  };
+};
+// COMMENTS FETCH
+
+
 // export const postExp = (post) => {
 //   return async (dispatch) => {
 //     dispatch.preventDefault();
@@ -204,7 +243,7 @@ export const fetchPosts = () => {
 
         dispatch({
           type: GET_POSTS,
-          payload: dataPosts.reverse().slice(0, 20),
+          payload: dataPosts.reverse().slice(0, 30),
         });
       } else {
         console.log("Error fetching posts!");
@@ -247,42 +286,6 @@ export const fetchPostsSearch = () => {
   };
 };
 
-
-// COMMENTS FETCH
-export const fetchComm = () => {
-  return async (dispatch) => {
-    try {
-      dispatch({
-        type: GET_DATA_LOADING_ON,
-      });
-      const res = await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: carlosCommKey,
-        },
-      });
-      if (res.ok) {
-        const dataComm = await res.json();
-
-        dispatch({
-          type: GET_COMM,
-          payload: dataComm.filter(comm => comm.elementId === "0316438960"),
-        });
-      } else {
-        console.log("Badoglio!");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      dispatch({
-        type: GET_DATA_LOADING_OFF,
-      });
-    }
-  };
-};
-// COMMENTS FETCH
 
 
 // FETCH COMMENTI

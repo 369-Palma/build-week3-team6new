@@ -13,9 +13,13 @@ import { fetchComm } from "../redux/actions";
 function NewsFeed() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
+  console.log(post)
   const comm = useSelector((state) => state.comm)
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
+
+  const [selectedPostId, setSelectedPostId] = useState(null);
+  const [id, setId] = useState("")
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -23,9 +27,10 @@ function NewsFeed() {
 
 
   useEffect(() => {
-    dispatch(fetchComm());
-  }, []);
+    dispatch(fetchComm(selectedPostId));
+  }, [selectedPostId]);
 
+  console.log(post)
   console.log(comm)
 
 
@@ -41,6 +46,8 @@ function NewsFeed() {
   // Fetch per aggiungere un'immagine ad un nostro post già creato precedentemente.
   const handleImageUpload = async (postId) => {
     try {
+      setId(id)
+
       formData.append("post", image);
 
       let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
@@ -88,7 +95,7 @@ function NewsFeed() {
     <div className="d-flex justify-content-center">
       <div style={{ width: "700px", maxWidth: "100%" }}>
         {post.map((post) => (
-          <Card key={post?.id} style={{ margin: "1rem 0" }}>
+          <Card key={post?._id} style={{ margin: "1rem 0" }}>
             <Card.Img variant="top" src={post?.user?.image} alt="foto" className="fotoTonde ms-2" />
             <Card.Body>
               <Card.Title>{post?.username} said:</Card.Title>
@@ -105,7 +112,9 @@ function NewsFeed() {
               <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                 <div className="mb-0 ml-2">
                   <Button
-                  // onClick={}
+                    // onClick={() => dispatch(fetchComm(post._id))}
+                    onClick={() => setSelectedPostId(post._id)}
+
                   >
                     <BiCommentDetail /> Comment
                   </Button>
@@ -142,28 +151,24 @@ function NewsFeed() {
             </Row>
             <Row>
 
-              <Card.Body>
-                {comm.map((comm) => (
-                  <>
-                    <Col>
-                      <Card.Text>
-                        {comm.comment}
-                      </Card.Text>
-                    </Col>
-                    <Col>
-
-                      <Card.Text>
-                        {comm.rate}
-                      </Card.Text>
-                    </Col>
-
-                  </>
-                ))}
-              </Card.Body>
+              {selectedPostId === post._id && (
+                <Card className="mt-3">
+                  <Card.Body>
+                    {comm
+                      .map((com) => (
+                        <div key={com._id} className="mb-2">
+                          <p className="mb-0">{com.comment}</p>
+                          <small className="text-muted">{com.author}</small>
+                        </div>
+                      ))}
+                  </Card.Body>
+                </Card>
+              )}
             </Row>
 
           </Card>
-        ))}
+        ))
+        }
       </div>
     </div>
   );
