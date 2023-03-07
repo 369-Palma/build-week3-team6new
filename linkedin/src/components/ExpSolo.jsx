@@ -44,7 +44,6 @@ const ExpSolo = () => {
           <Col>
             <Button
               variant="danger"
-              // onClick={() => deleteExp(exp._id)}
               onClick={() => dispatch(deleteExp(exp._id))}
             >
               Delete

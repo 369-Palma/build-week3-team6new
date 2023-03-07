@@ -26,7 +26,6 @@ const Experiences = () => {
     dispatch(fetchExp("experiences"));
   }, []);
 
-
   ///fetch
 
   //postExp
@@ -35,8 +34,8 @@ const Experiences = () => {
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/" +
-        "63fc702df193e60013807f5a/" +
-        "experiences",
+          "63fc702df193e60013807f5a/" +
+          "experiences",
         {
           method: "POST",
           body: JSON.stringify(exp),
