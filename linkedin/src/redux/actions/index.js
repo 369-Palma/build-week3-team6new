@@ -3,9 +3,13 @@ export const GET_PROFILE = "GET_PROFILE";
 export const GET_EXP = "GET_EXP";
 export const DELETE_EXP = "DELETE_EXP";
 export const GET_POSTS = "GET_POSTS";
+export const GET_COMM = "GET_COMM";
 export const POST_POSTS = "POST_POSTS";
 export const GET_DATA_LOADING_ON = "GET_DATA_LOADING_ON";
 export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
+
+const carlosCommKey =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -150,6 +154,46 @@ export const deleteExp = (expid) => {
   };
 };
 
+// COMMENTS FETCH
+export const fetchComm = (comm) => {
+  // const commId = ""
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: GET_DATA_LOADING_ON,
+      });
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" + comm,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: carlosCommKey,
+          },
+        }
+      );
+      if (res.ok) {
+        const dataComm = await res.json();
+
+        dispatch({
+          type: GET_COMM,
+          payload: dataComm,
+        });
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({
+        type: GET_DATA_LOADING_OFF,
+      });
+    }
+  };
+};
+// COMMENTS FETCH
+
 // export const postExp = (post) => {
 //   return async (dispatch) => {
 //     dispatch.preventDefault();
@@ -200,7 +244,7 @@ export const fetchPosts = () => {
 
         dispatch({
           type: GET_POSTS,
-          payload: dataPosts.reverse().slice(0, 20),
+          payload: dataPosts.reverse().slice(0, 30),
         });
       } else {
         console.log("Error fetching posts!");

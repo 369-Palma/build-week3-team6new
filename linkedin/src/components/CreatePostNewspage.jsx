@@ -2,6 +2,8 @@ import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
 
+
+
 const StartAPost = () => {
   const [show, setShow] = useState(false);
 
@@ -10,6 +12,8 @@ const StartAPost = () => {
   const [newPost, setNewPost] = useState({
     text: "",
   });
+
+
 
   const createNewPost = async (e) => {
     e.preventDefault();
@@ -41,6 +45,9 @@ const StartAPost = () => {
       console.log(error);
     }
   };
+
+
+
 
   return (
     <>
