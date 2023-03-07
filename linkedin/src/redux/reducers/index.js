@@ -3,11 +3,11 @@ import {
   GET_PROFILE,
   GET_EXP,
   GET_POSTS,
-  GET_DATA_LOADING_OFF,
-  GET_DATA_LOADING_ON,
   // POST_EXP
   POST_POSTS,
-  GET_COMM
+  GET_COMM,
+  GET_DATA_LOADING_OFF,
+  GET_DATA_LOADING_ON
 } from "../actions/index";
 
 const initialState = {

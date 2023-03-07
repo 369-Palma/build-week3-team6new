@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { Card, Col, Row, Form, Button } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
-import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
+import { BiCommentDetail, BiShare } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import { fetchComm } from "../redux/actions";
 
 
+import PostEditModal from "./PostEditModal";
 
 function NewsFeed() {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ function NewsFeed() {
   const comm = useSelector((state) => state.comm)
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
+
+  const [text, setText] = useState(post.text);
+  const handleSave = (newText) => {
+    setText(newText);
+  };
 
   const [selectedPostId, setSelectedPostId] = useState(null);
   // const [id, setId] = useState("")
@@ -127,23 +133,11 @@ function NewsFeed() {
               </Col>
               {post?.user?._id === "63fc7944f193e60013807f5e" && (
                 <>
-                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                    <div className="mb-0 ml-2">
-                      <BiEdit /> Edit
-                    </div>
-                  </Col>
+                  <PostEditModal post={post} onSave={handleSave} />
 
                   <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                     <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
                       <FaTimes /> Delete
-                    </div>
-                  </Col>
-                  <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                    <div className="d-flex align-items-center">
-                      <form onSubmit={() => handleImageUpload(post._id)}>
-                        <input type="file" onChange={handleImageChange} />
-                        <button className="btn btn-success">Send</button>
-                      </form>
                     </div>
                   </Col>
                 </>

@@ -1,19 +1,16 @@
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
-import { FaTimes } from "react-icons/fa";
-import { Image, Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 
 
 const StartAPost = () => {
-  const postInfo = useSelector((state) => state.postInfo);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [newPost, setNewPost] = useState({
-    text: " ",
+    text: "",
   });
 
 
@@ -59,34 +56,30 @@ const StartAPost = () => {
           <Card>
             <Card.Body>
               <Form className="my-4 ">
-                <Form.Control className="nav-pills" type="search" placeholder="Avvia un post" onClick={handleShow} />
+                <Form.Control type="search" placeholder="Scrivi un post..." onClick={handleShow} />
               </Form>
             </Card.Body>
             <Row className="text-muted justify-content-center">
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2 text-primary">
-                  <FcPicture size={26} />
-                  Foto
-                </p>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <div className="mb-0 ml-2 text-primary">
+                  <FcPicture size={26} /> Foto
+                </div>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2">
-                  <FcClapperboard size={26} />
-                  Video
-                </p>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <div className="mb-0 ml-2">
+                  <FcClapperboard size={26} /> Video
+                </div>
               </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2">
-                  <FcPlanner size={26} />
-                  Eventi
-                </p>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <div className="mb-0 ml-2">
+                  <FcPlanner size={26} /> Eventi
+                </div>
               </Col>
 
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-3 rounded">
-                <p className="mb-0 ml-2">
-                  <FcViewDetails size={26} />
-                  Scrivi un articolo
-                </p>
+              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <div className="mb-0 ml-2">
+                  <FcViewDetails size={26} /> Articolo
+                </div>
               </Col>
             </Row>
           </Card>
@@ -95,16 +88,15 @@ const StartAPost = () => {
       {/* Modale che si apre quando si clicca sull'input field */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <span id="modal__title">Crea un post</span>
+          <span>Crea un post</span>
         </Modal.Header>
         <Modal.Body className="show-grid">
           <Container>
             <Row>
               <Card.Body>
                 <div className="d-flex flex-row">
-                  <Image src="profile-photo.jpg" alt="" className="start__img" />
                   <span className="d-flex flex-column ml-3">
-                    <Card.Text className="">Ciao, cosa vuoi postare?</Card.Text>
+                    <Card.Text className="">Ciao, che testo vuoi postare?</Card.Text>
                   </span>
                 </div>
               </Card.Body>
@@ -116,7 +108,7 @@ const StartAPost = () => {
                   <Form.Control
                     as="textarea"
                     rows={5}
-                    style={{ border: "transparent", width: "40vh", marginBottom: "5px" }}
+                    style={{ border: "transparent", width: "46vh", marginBottom: "5px" }}
                     value={newPost.text}
                     onChange={(e) =>
                       setNewPost({
@@ -127,7 +119,7 @@ const StartAPost = () => {
                 </Form.Group>
                 <div className="d-flex">
                   {/* Pulsante per pubblicare il post */}
-                  <Button variant="light" type="submit">
+                  <Button variant="outline-success" type="submit">
                     Pubblica
                   </Button>
                 </div>
@@ -136,7 +128,7 @@ const StartAPost = () => {
           </Container>
         </Modal.Body>
         {/* Pulsante chiudi */}
-        <Button variant="light" className="ml-2" onClick={handleClose}>
+        <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleClose}>
           Chiudi
         </Button>
       </Modal>
