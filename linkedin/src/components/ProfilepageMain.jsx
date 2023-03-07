@@ -10,22 +10,44 @@ import { Link, useParams } from "react-router-dom";
 import UpdatePropic from "../components/UpdatePropic";
 
 const UserProfile = () => {
+  // Modali
   const [lgShow, setLgShow] = useState(false);
   const handleShow = () => setLgShow(true);
+  // Dispatch per ottenere info utenti e del profilo
   const dispatch = useDispatch();
   const profileStore = useSelector((state) => state.contentUsers);
-  const isLoading = useSelector((state) => state.isLoading);
   const params = useParams();
+  // Loaders
+  const isLoading = useSelector((state) => state.isLoading);
+  // Nuova fetch che va in conflitto con la precedente
   const [profileData, setProfileData] = useState({
     name: "",
     surname: "",
   });
 
+  // Dispatch per ottenere info utenti e del profilo
   useEffect(() => {
     dispatch(fetchUser(params.userId));
   }, []);
-  console.log(profileStore);
 
+  useEffect(() => {
+    if (profileStore.name && profileStore.surname) {
+      const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: profileStore.name,
+          surname: profileStore.surname,
+        }),
+      };
+      fetch(`https://striveschool-api.herokuapp.com/api/profile/${params.userId}`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+    }
+  }, [profileStore]);
+
+  // Nuova fetch che va in conflitto con la precedente
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setProfileData({
@@ -34,6 +56,7 @@ const UserProfile = () => {
     });
   };
 
+  // Fetch PUT, corretta ma non salva gli elementi nell'API dopo il conflitto. All'inizio prendeva le modifiche
   const handleSave = () => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/", {
       method: "PUT",
@@ -59,7 +82,6 @@ const UserProfile = () => {
   return (
     <>
       {/* Profile section */}
-
       <Card>
         <Container>
           {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
@@ -79,7 +101,6 @@ const UserProfile = () => {
                 <p className="my-0 me-1 location text-muted ">{profileStore.area} • </p>
                 <span className="fw-bold text-primary ">Informazioni di contatto</span>
               </div>
-
               <p className="my-2 connections">580 follower - 951 collegamenti</p>
               <div className="d-flex justify-content-start w-100 mb-3">
                 <Button>Disponibile per</Button>
@@ -107,7 +128,7 @@ const UserProfile = () => {
                 id="buttonModal-profile">
                 <HiOutlinePencil className="fs-5" />
               </Button>
-              {/* Inizio Modale profilo */}
+              {/* Modale per la modifica del profilo */}
               <Modal
                 size="lg"
                 show={lgShow}
@@ -187,18 +208,17 @@ const UserProfile = () => {
                   <p>Aggiungi o modifica il tuo profilo URL, indirizzo email e altro</p>
                   <Link className="text-decoration-none fs-6 fw-semibold">Modifica le informazioni di contatto</Link>
                 </Modal.Body>
-
                 <Modal.Footer>
                   <Button variant="primary" className="rounded-pill fw-semibold px-3" onClick={handleSave}>
                     Salva
                   </Button>
                 </Modal.Footer>
               </Modal>
-              {/* Fine Modale profilo */}
             </Col>
           </Row>
         </Container>
       </Card>
+      {/* Box informazioni */}
       <Card className="bg-white my-3">
         <Card.Body>
           <Row className="d-flex flex-space-between">
