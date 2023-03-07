@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Informazioni = () => {
   const profileStore = useSelector((state) => state.contentUsers);
-  const [text, setText] = useState(profileStore.bio);
+  const [text, setText] = useState("");
 
   const [lgShow, setLgShow] = useState(false);
   const handleShow = () => setLgShow(true);
@@ -15,16 +15,13 @@ const Informazioni = () => {
   const updateInfo = async (e) => {
     e.preventDefault();
 
-    const infoUpdated = {
-      ...text,
-    };
     //inizio fetch - PUT
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/",
         {
           method: "PUT",
-          body: JSON.stringify(infoUpdated),
+          body: JSON.stringify(text),
           headers: {
             "Content-Type": "application/json",
             Authorization:
@@ -55,8 +52,11 @@ const Informazioni = () => {
           <Col sx={11} className="d-flex align-self-start">
             <Card.Title>Informazioni</Card.Title>
           </Col>
-          <Col sx={1} className="d-flex justify-content-end w-25">
-            <HiOutlinePencil className="fs-5" onClick={handleShow} />
+          <Col sx={1}>
+            <HiOutlinePencil
+              className="fs-5 d-flex justify-content-end"
+              onClick={handleShow}
+            />
             {/* inizio modale */}
             <div
               className="modal show"
@@ -75,14 +75,19 @@ const Informazioni = () => {
                     le esperienze di lavoro precedenti.
                   </p>
                   <Form.Control
-                    as="textarea"
+                    type="textarea"
                     defaultValue={profileStore.bio}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) =>
+                      setText({
+                        text: e.target.value,
+                      })
+                    }
                   />
                 </Modal.Body>
 
                 <Modal.Footer>
                   <Button
+                    type="submit"
                     variant="primary"
                     className="rounded-pill fw-semibold px-3"
                     onClick={updateInfo}
