@@ -10,9 +10,9 @@ export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
 
-const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
-/* const REACT_APP_API_KEY_GIACOMO = process.env.REACT_APP_API_KEY_GIACOMO;
-const REACT_APP_API_KEY_MICHELA = process.env.REACT_APP_API_KEY_MICHELA;
+// const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
+const REACT_APP_API_KEY_GIACOMO = process.env.REACT_APP_API_KEY_GIACOMO;
+/* const REACT_APP_API_KEY_MICHELA = process.env.REACT_APP_API_KEY_MICHELA;
 const REACT_APP_API_KEY_FELICIANO = process.env.REACT_APP_API_KEY_FELICIANO;
 const REACT_APP_API_KEY_CARLOS = process.env.REACT_APP_API_KEY_CARLOS; */
 
@@ -28,7 +28,7 @@ export const fetchProfiles = (query) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -62,7 +62,7 @@ export const fetchUser = (query) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -95,7 +95,7 @@ export const fetchExp = (exp) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -128,7 +128,7 @@ export const deleteExp = (expid) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: REACT_APP_API_KEY_PALMA,
+            Authorization: REACT_APP_API_KEY_GIACOMO,
           },
         }
       );
@@ -191,7 +191,7 @@ export const fetchPosts = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -223,7 +223,7 @@ export const fetchPostsSearch = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {

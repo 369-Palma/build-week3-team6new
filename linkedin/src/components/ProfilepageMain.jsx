@@ -7,24 +7,54 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import UpdatePropic from "../components/UpdatePropic";
 
 const UserProfile = () => {
-  // this modal for profile
   const [lgShow, setLgShow] = useState(false);
-
   const handleShow = () => setLgShow(true);
-  // this modal for profile
-
   const dispatch = useDispatch();
-  //const handleShow = () => setLgShow(true);
   const profileStore = useSelector((state) => state.contentUsers);
   const isLoading = useSelector((state) => state.isLoading);
   const params = useParams();
+  const [profileData, setProfileData] = useState({
+    name: "",
+    surname: "",
+  });
 
   useEffect(() => {
     dispatch(fetchUser(params.userId));
   }, []);
   console.log(profileStore);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setProfileData({
+      ...profileData,
+      [name]: value,
+    });
+  };
+
+  const handleSave = () => {
+    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+      method: "PUT",
+      body: JSON.stringify(profileData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Profile updated successfully");
+          setLgShow(false);
+        } else {
+          alert("An error occurred while updating the profile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -57,6 +87,7 @@ const UserProfile = () => {
                   Aggiungi sezione profilo
                 </Button>
                 <Button variant="outline-secondary">Altro</Button>
+                <UpdatePropic />
               </div>
             </Col>
             <Col className="d-flex flex-column-reverse justify-content-end">
@@ -83,17 +114,22 @@ const UserProfile = () => {
                 onHide={() => setLgShow(false)}
                 aria-labelledby="example-modal-sizes-title-lg">
                 <Modal.Header closeButton>
-                  <Modal.Title>Modal title</Modal.Title>
+                  <Modal.Title>Edit your profile info</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modal-body-profile">
-                  <p className="textColor-modal">* indica che è obbligatorio</p>
+                  <p className="textColor-modal">* modificabili in questo modale (il resto è placeholder)</p>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label className="textColor-modal">Nome*</Form.Label>
-                    <Form.Control type="text" autoFocus defaultValue={profileStore.name} />
+                    <Form.Label className="textColor-modal">Nome *</Form.Label>
+                    <Form.Control type="text" autoFocus defaultValue={profileStore.name} onChange={handleInputChange} />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label className="textColor-modal">Cognome*</Form.Label>
-                    <Form.Control type="text" autoFocus defaultValue={profileStore.surname} />
+                    <Form.Label className="textColor-modal">Cognome *</Form.Label>
+                    <Form.Control
+                      type="text"
+                      autoFocus
+                      defaultValue={profileStore.surname}
+                      onChange={handleInputChange}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label className="textColor-modal">Nome aggiuntivo</Form.Label>
@@ -115,7 +151,7 @@ const UserProfile = () => {
                     Scopri di più sui <strong>pronomi di genere.</strong>
                   </p>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label className="textColor-modal">Sommario*</Form.Label>
+                    <Form.Label className="textColor-modal">Sommario</Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <h4>Posizione attuale</h4>
@@ -125,7 +161,7 @@ const UserProfile = () => {
                     </p>
                   </Link>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label className="textColor-modal">Settore*</Form.Label>
+                    <Form.Label className="textColor-modal">Settore</Form.Label>
                     <Form.Control type="text" autoFocus />
                     <Form.Label className="textColor-modal">
                       Scopri di più sulle
@@ -153,7 +189,7 @@ const UserProfile = () => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button variant="primary" className="rounded-pill fw-semibold px-3">
+                  <Button variant="primary" className="rounded-pill fw-semibold px-3" onClick={handleSave}>
                     Salva
                   </Button>
                 </Modal.Footer>
