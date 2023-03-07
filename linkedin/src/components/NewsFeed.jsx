@@ -19,7 +19,7 @@ function NewsFeed() {
   const [formData, setformData] = useState(new FormData());
 
   const [selectedPostId, setSelectedPostId] = useState(null);
-  const [id, setId] = useState("")
+  // const [id, setId] = useState("")
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -46,7 +46,7 @@ function NewsFeed() {
   // Fetch per aggiungere un'immagine ad un nostro post già creato precedentemente.
   const handleImageUpload = async (postId) => {
     try {
-      setId(id)
+      // setId(id)
 
       formData.append("post", image);
 
