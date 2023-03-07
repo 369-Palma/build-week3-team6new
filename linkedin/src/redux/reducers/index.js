@@ -5,6 +5,9 @@ import {
   GET_POSTS,
   // POST_EXP
   POST_POSTS,
+  GET_COMM,
+  GET_DATA_LOADING_OFF,
+  GET_DATA_LOADING_ON
 } from "../actions/index";
 
 const initialState = {
@@ -13,6 +16,8 @@ const initialState = {
   contentExp: [],
   posts: [],
   postInfo: [],
+  isLoading: false,
+  comm: []
   // postContentExp: []
 };
 
@@ -47,6 +52,24 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         postInfo: [...action.payload],
+      };
+
+    case GET_COMM:
+      return {
+        ...state,
+        comm: [...action.payload],
+      };
+
+    case GET_DATA_LOADING_ON:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case GET_DATA_LOADING_OFF:
+      return {
+        ...state,
+        isLoading: false,
       };
     default:
       return state;
