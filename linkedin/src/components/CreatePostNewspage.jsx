@@ -8,7 +8,7 @@ const StartAPost = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [newPost, setNewPost] = useState({
-    text: " ",
+    text: "",
   });
 
   const createNewPost = async (e) => {
@@ -121,7 +121,7 @@ const StartAPost = () => {
           </Container>
         </Modal.Body>
         {/* Pulsante chiudi */}
-        <Button variant="danger" className="mx-5 mb-2" onClick={handleClose}>
+        <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleClose}>
           Chiudi
         </Button>
       </Modal>
