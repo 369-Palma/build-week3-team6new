@@ -1,19 +1,22 @@
-import Pagination from "react-bootstrap/Pagination";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import React, { useState } from "react";
+import { PaginationControl } from "react-bootstrap-pagination-control";
 const PaginationNews = () => {
-  let active = 1;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+  const [page, setPage] = useState(1);
+
   return (
-    <div>
-      <Pagination>{items}</Pagination>
-    </div>
+    <PaginationControl
+      page={page}
+      between={4}
+      total={250}
+      limit={20}
+      changePage={(page) => {
+        setPage(page);
+        console.log(page);
+      }}
+      ellipsis={1}
+    />
   );
 };
 

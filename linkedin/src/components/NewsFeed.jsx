@@ -27,6 +27,8 @@ function NewsFeed() {
   const [selectedPostId, setSelectedPostId] = useState(null);
   // const [id, setId] = useState("")
 
+  //logica per paginazione post
+
   useEffect(() => {
     dispatch(fetchPosts());
   }, [post]);
