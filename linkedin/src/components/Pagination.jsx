@@ -20,7 +20,7 @@ const PaginationNews = () => {
   const indexFirstPost = indexLastPost - postsPerPage;
   const currentPosts = post.slice(indexFirstPost, indexLastPost);
   //cambiare pagina al click
-  const paginate = () => setCurrentPage();
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   /* const pageCount = Math.ceil(post.length / postsPerPage);
    */ return (
     <>
