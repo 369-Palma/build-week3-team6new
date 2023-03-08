@@ -16,7 +16,7 @@ const Home = () => {
           <Col xs={3} className="order-1 mt-2">
             <HomeLeftSidebar />
           </Col>
-          <Col xs={6} className="order-2">
+          <Col xs={6} className="order-2 mt-2">
             <StartAPost />
 
             {/* <Searchbar /> */}
