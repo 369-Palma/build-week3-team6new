@@ -103,9 +103,18 @@ function NewsFeed() {
   // logica per paginazione
 
   const [contentToShow, setContentToShow] = useState(false);
+  const [posts, setPosts] = useState(post);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostPerPage] = useState(5);
+  //gestione posts per pagina
+  const indexLastPost = currentPage * postsPerPage;
+  const indexFirstPost = indexLastPost - postsPerPage;
+  const currentPosts = post.slice(indexFirstPost, indexLastPost);
+  //cambiare pagina al click
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const show5more = () => {
-    setContentToShow();
+    post.slice(indexFirstPost, indexLastPost);
   };
 
   /*   const toggleShowMore = () => {
@@ -119,7 +128,7 @@ function NewsFeed() {
     <div>
       <Row className="d-flex justify-content-center">
         <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
-          {post.slice(0, 9).map((post) => (
+          {post.slice(0, 4).map((post) => (
             <Card key={post?._id} style={{ margin: "1rem 0" }}>
               <Card.Img
                 variant="top"
@@ -206,7 +215,7 @@ function NewsFeed() {
       </Row>
       <Button
         className="btn-connect card-bottom d-flex justify-content-center align-items-center"
-        onClick={() => show5More()}
+        onClick={() => show5more()}
       >
         {contentToShow ? `Show less` : "Show more"}{" "}
         {contentToShow ? ArrowUp() : ArrowDown()}
