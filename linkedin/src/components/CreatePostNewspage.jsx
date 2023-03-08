@@ -1,8 +1,8 @@
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
-
-
+import HomeLeftSidebar from "./HomeLeftSidebar";
+import HomeRightSidebar from "./HomeRightSidebar";
 
 const StartAPost = () => {
   const [show, setShow] = useState(false);
@@ -12,8 +12,6 @@ const StartAPost = () => {
   const [newPost, setNewPost] = useState({
     text: "",
   });
-
-
 
   const createNewPost = async (e) => {
     e.preventDefault();
@@ -46,45 +44,37 @@ const StartAPost = () => {
     }
   };
 
-
-
-
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <div style={{ width: "700px", maxWidth: "100%" }}>
-          <Card>
-            <Card.Body>
-              <Form className="my-4 ">
-                <Form.Control type="search" placeholder="Scrivi un post..." onClick={handleShow} />
-              </Form>
-            </Card.Body>
-            <Row className="text-muted justify-content-center">
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                <div className="mb-0 ml-2 text-primary">
-                  <FcPicture size={26} /> Foto
-                </div>
-              </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                <div className="mb-0 ml-2">
-                  <FcClapperboard size={26} /> Video
-                </div>
-              </Col>
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                <div className="mb-0 ml-2">
-                  <FcPlanner size={26} /> Eventi
-                </div>
-              </Col>
-
-              <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                <div className="mb-0 ml-2">
-                  <FcViewDetails size={26} /> Articolo
-                </div>
-              </Col>
-            </Row>
-          </Card>
-        </div>
-      </div>
+      <Card>
+        <Card.Body>
+          <Form className="my-4 ">
+            <Form.Control type="search" placeholder="Scrivi un post..." onClick={handleShow} />
+          </Form>
+        </Card.Body>
+        <Row className="text-muted justify-content-center flex-nowrap">
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
+            <div className="mb-0 ml-2 text-primary">
+              <FcPicture size={26} /> Foto
+            </div>
+          </Col>
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
+            <div className="mb-0 ml-2">
+              <FcClapperboard size={26} /> Video
+            </div>
+          </Col>
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
+            <div className="mb-0 ml-2">
+              <FcPlanner size={26} /> Eventi
+            </div>
+          </Col>
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
+            <div className="mb-0 ml-2">
+              <FcViewDetails size={26} /> Articolo
+            </div>
+          </Col>
+        </Row>
+      </Card>
       {/* Modale che si apre quando si clicca sull'input field */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
