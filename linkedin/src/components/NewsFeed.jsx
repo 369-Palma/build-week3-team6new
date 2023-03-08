@@ -53,14 +53,17 @@ function NewsFeed() {
 
       formData.append("post", image);
 
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
-        },
-      });
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+          },
+        }
+      );
       if (response.ok) {
         alert("Image uploaded!");
         setImage(null);
@@ -76,13 +79,16 @@ function NewsFeed() {
   // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
     try {
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
-        },
-      });
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+          },
+        }
+      );
       if (response.ok) {
         alert("Post was deleted!");
       } else {
@@ -94,35 +100,67 @@ function NewsFeed() {
     }
   };
 
+  // logica per paginazione
+
+  const [contentToShow, setContentToShow] = useState(false);
+
+  const show5more = () => {
+    setContentToShow();
+  };
+
+  /*   const toggleShowMore = () => {
+    setContentToShow(!contentToShow);
+  }; */
+
+  const ArrowDown = () => <i className="bi bi-chevron-compact-down ml-1"></i>;
+  const ArrowUp = () => <i class="bi bi-chevron-compact-up ml-1"></i>;
+
   return (
     <div>
       <Row className="d-flex justify-content-center">
         <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
-          {post.map((post) => (
+          {post.slice(0, 9).map((post) => (
             <Card key={post?._id} style={{ margin: "1rem 0" }}>
-              <Card.Img variant="top" src={post?.user?.image} alt="foto" className="fotoTonde ms-2" />
+              <Card.Img
+                variant="top"
+                src={post?.user?.image}
+                alt="foto"
+                className="fotoTonde ms-2"
+              />
               <Card.Body>
                 <Card.Title>{post?.username} said:</Card.Title>
                 <Card.Text>{post?.text}</Card.Text>
-                {post?.image ? <Card.Img variant="bottom" src={post?.image} alt="fotopost" /> : null}
+                {post?.image ? (
+                  <Card.Img variant="bottom" src={post?.image} alt="fotopost" />
+                ) : null}
               </Card.Body>
               <hr className="my-1" />
               <Row className="text-muted post-actions justify-content-center">
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2 text-primary">
                     <FiThumbsUp /> Like
                   </div>
                 </Col>
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2">
                     <Button
                       // onClick={() => dispatch(fetchComm(post._id))}
-                      onClick={() => setSelectedPostId(post._id)}>
+                      onClick={() => setSelectedPostId(post._id)}
+                    >
                       <BiCommentDetail /> Comment
                     </Button>
                   </div>
                 </Col>
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2">
                     <BiShare /> Share
                   </div>
@@ -131,8 +169,15 @@ function NewsFeed() {
                   <>
                     <PostEditModal post={post} onSave={handleSave} />
 
-                    <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                      <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
+                    <Col
+                      xs="2"
+                      className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                    >
+                      <div
+                        className="text-danger"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => deletePost(post._id)}
+                      >
                         <FaTimes /> Delete
                       </div>
                     </Col>
@@ -156,7 +201,16 @@ function NewsFeed() {
             </Card>
           ))}
         </Col>
+
+        {post.slice(10, post.length)}
       </Row>
+      <Button
+        className="btn-connect card-bottom d-flex justify-content-center align-items-center"
+        onClick={() => show5More()}
+      >
+        {contentToShow ? `Show less` : "Show more"}{" "}
+        {contentToShow ? ArrowUp() : ArrowDown()}
+      </Button>
     </div>
   );
 }
