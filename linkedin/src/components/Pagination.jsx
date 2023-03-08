@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 /* import { PaginationControl } from "react-bootstrap-pagination-control";
- */ import NewsFeed from "./NewsFeed";
+ */ import PostTemplate from "./SinglePost";
 import MyPagination from "./Mypagination";
 
 const PaginationNews = () => {
@@ -19,14 +19,17 @@ const PaginationNews = () => {
   const indexLastPost = currentPage * postsPerPage;
   const indexFirstPost = indexLastPost - postsPerPage;
   const currentPosts = post.slice(indexFirstPost, indexLastPost);
-
+  //cambiare pagina al click
+  const paginate = () => setCurrentPage();
   /* const pageCount = Math.ceil(post.length / postsPerPage);
    */ return (
     <>
-      <NewsFeed {...setPosts(currentPosts)}></NewsFeed>
+      <PostTemplate {...setPosts(currentPosts)}></PostTemplate>
+
       <MyPagination
         postsPerPage={postsPerPage}
         totalPosts={post.length}
+        paginate={paginate}
       ></MyPagination>
     </>
     /*  <PaginationControl
