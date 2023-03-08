@@ -29,7 +29,7 @@ function NewsFeed() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, []);
+  }, [post]);
 
   useEffect(() => {
     dispatch(fetchComm(selectedPostId));
