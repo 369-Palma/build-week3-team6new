@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteExp } from "../redux/actions";
 
 const ExpSolo = () => {
-
   const [putExp, setExp] = useState({
     role: "",
     company: "",
@@ -13,8 +12,6 @@ const ExpSolo = () => {
     description: "",
     area: "",
   });
-
-
 
   const experiences = useSelector((state) => state.contentExp);
   const dispatch = useDispatch();
@@ -43,15 +40,13 @@ const ExpSolo = () => {
   //     }
   // };
 
-
-
   const putExpfetch = async (e) => {
     e.preventDefault();
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/" +
-        "63fc702df193e60013807f5a/" +
-        "experiences",
+          "63fc702df193e60013807f5a/" +
+          "experiences",
         {
           method: "POST",
           body: JSON.stringify(),
@@ -73,14 +68,11 @@ const ExpSolo = () => {
     }
   };
 
-
-
   // this modal for exp
   const [lgPutExp, setPutExp] = useState(false);
 
   const handlePutExp = () => setPutExp(true);
   // this modal for exp
-
 
   return (
     <>
@@ -94,9 +86,7 @@ const ExpSolo = () => {
           <Modal.Title>Add Exp</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form
-            onSubmit={putExpfetch}
-          >
+          <Form onSubmit={putExpfetch}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Role*</Form.Label>
               <Form.Control
@@ -117,7 +107,6 @@ const ExpSolo = () => {
               <Form.Control
                 type="text"
                 placeholder="company"
-
                 value={putExp.company}
                 onChange={(e) =>
                   setExp({
@@ -132,7 +121,6 @@ const ExpSolo = () => {
               <Form.Control
                 type="text"
                 placeholder="description"
-
                 value={putExp.description}
                 onChange={(e) =>
                   setExp({
@@ -148,7 +136,6 @@ const ExpSolo = () => {
               <Form.Control
                 type="text"
                 placeholder="area"
-
                 value={putExp.area}
                 onChange={(e) =>
                   setExp({
@@ -164,7 +151,6 @@ const ExpSolo = () => {
               <Form.Control
                 type="date"
                 placeholder="startDate"
-
                 value={putExp.startDate}
                 onChange={(e) =>
                   setExp({
@@ -179,7 +165,6 @@ const ExpSolo = () => {
               <Form.Control
                 type="date"
                 placeholder="endDate"
-
                 value={putExp.endDate}
                 onChange={(e) =>
                   setExp({
@@ -197,7 +182,6 @@ const ExpSolo = () => {
         <Modal.Footer></Modal.Footer>
       </Modal>
       <Container>
-
         {experiences.map((exp) => (
           <Row key={exp._id} className="d-flex text-start">
             <Col>

@@ -8,15 +8,15 @@ export const POST_POSTS = "POST_POSTS";
 export const GET_DATA_LOADING_ON = "GET_DATA_LOADING_ON";
 export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF";
 
-
-const carlosCommKey = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8"
+const carlosCommKey =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/";
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/";
 
-const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
-/* const REACT_APP_API_KEY_GIACOMO = process.env.REACT_APP_API_KEY_GIACOMO;
-const REACT_APP_API_KEY_MICHELA = process.env.REACT_APP_API_KEY_MICHELA;
+// const REACT_APP_API_KEY_PALMA = process.env.REACT_APP_API_KEY_PALMA;
+const REACT_APP_API_KEY_GIACOMO = process.env.REACT_APP_API_KEY_GIACOMO;
+/* const REACT_APP_API_KEY_MICHELA = process.env.REACT_APP_API_KEY_MICHELA;
 const REACT_APP_API_KEY_FELICIANO = process.env.REACT_APP_API_KEY_FELICIANO;
 const REACT_APP_API_KEY_CARLOS = process.env.REACT_APP_API_KEY_CARLOS; */
 
@@ -32,7 +32,7 @@ export const fetchProfiles = (query) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -66,7 +66,7 @@ export const fetchUser = (query) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -99,7 +99,7 @@ export const fetchExp = (exp) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -133,7 +133,7 @@ export const deleteExp = (expid) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: REACT_APP_API_KEY_PALMA,
+            Authorization: REACT_APP_API_KEY_GIACOMO,
           },
         }
       );
@@ -162,15 +162,17 @@ export const fetchComm = (comm) => {
       dispatch({
         type: GET_DATA_LOADING_ON,
       });
-      const res = await fetch("https://striveschool-api.herokuapp.com/api/comments/" +
-        comm, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: carlosCommKey,
-        },
-      });
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" + comm,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: carlosCommKey,
+          },
+        }
+      );
       if (res.ok) {
         const dataComm = await res.json();
 
@@ -191,7 +193,6 @@ export const fetchComm = (comm) => {
   };
 };
 // COMMENTS FETCH
-
 
 // export const postExp = (post) => {
 //   return async (dispatch) => {
@@ -235,7 +236,7 @@ export const fetchPosts = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -267,7 +268,7 @@ export const fetchPostsSearch = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: REACT_APP_API_KEY_PALMA,
+          Authorization: REACT_APP_API_KEY_GIACOMO,
         },
       });
       if (res.ok) {
@@ -285,8 +286,6 @@ export const fetchPostsSearch = () => {
     }
   };
 };
-
-
 
 // FETCH COMMENTI
 const REACT_APP_API_KEY_COMMENT = process.env.REACT_APP_API_KEY_COMMENT;

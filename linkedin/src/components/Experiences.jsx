@@ -34,8 +34,8 @@ const Experiences = () => {
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/profile/" +
-        "63fc702df193e60013807f5a/" +
-        "experiences",
+          "63fc702df193e60013807f5a/" +
+          "experiences",
         {
           method: "POST",
           body: JSON.stringify(exp),
@@ -182,14 +182,10 @@ const Experiences = () => {
             <h3>Esperienza</h3>
           </div>
           <div>
-            <Button onClick={handleShowExp}>
-              <HiPlus className="fs-3 p-1" />
-            </Button>
+            <HiPlus className="fs-3 p-1" onClick={handleShowExp} />
 
             <Link to="/profile/:user.id/:expId">
-              <Button>
-                <HiOutlinePencil className="fs-4 p-1" />
-              </Button>
+              <HiOutlinePencil className="fs-4 p-1 text-dark" />
             </Link>
           </div>
         </div>
