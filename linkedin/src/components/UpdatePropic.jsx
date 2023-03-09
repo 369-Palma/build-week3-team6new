@@ -19,13 +19,16 @@ const UpdatePropic = ({ userId }) => {
     formData.append("profile", file);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y`,
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

@@ -24,7 +24,7 @@ const Informazioni = () => {
           body: JSON.stringify(text),
           headers: {
             "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_API_KEY_PALMA,
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
