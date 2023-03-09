@@ -99,13 +99,20 @@ function NewsFeed() {
     }
   };
 
-  // pagination logica
+  // PAGINATION
 
   const [showed, setShowed] = useState(5);
 
-  //funzione per mostrare i posts successivi
-  const showMoreItems = () => {
+  //funzione per mostrare i post successivi
+  const showMore = () => {
     setShowed((prevValue) => prevValue + 5);
+  };
+
+  // funzione per mostrare meno post
+  const showLess = () => {
+    if (showed !== 5) {
+      setShowed((prevValue) => prevValue - 5);
+    }
   };
 
   return (
@@ -195,7 +202,12 @@ function NewsFeed() {
           ))}
         </Col>
       </Row>
-      <Button onClick={showMoreItems}>Show more</Button>
+      <div className="d-flex justify-content-around me-3">
+        <Button onClick={showMore}>Show more</Button>
+        <Button variant="danger" onClick={showLess}>
+          Show less
+        </Button>
+      </div>
     </div>
   );
 }
