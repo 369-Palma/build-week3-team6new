@@ -19,11 +19,9 @@ const PeopleYouMightKnow = () => {
   return (
     <Container>
       <Row>
-        <h4>Persone che potresti conoscere</h4>
+        <h4 className=" fw-bold">Persone che potresti conoscere</h4>
       </Row>
-      {isLoading && (
-        <Spinner animation="border" variant="primary" className="my-2" />
-      )}
+      {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
       <Row className="py-2">
         <CardSidebar users={shuffledUsers} />
       </Row>
