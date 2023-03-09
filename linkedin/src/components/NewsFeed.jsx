@@ -65,7 +65,7 @@ function NewsFeed() {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_API_KEY,
+          Authorization: process.env.REACT_APP_API_KEY_COMMENT,
         },
       });
       if (res.ok) {
@@ -86,7 +86,7 @@ function NewsFeed() {
       let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + commId, {
         method: "DELETE",
         headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
+          Authorization: process.env.REACT_APP_API_KEY_COMMENT,
         },
       });
       if (response.ok) {
@@ -143,7 +143,7 @@ function NewsFeed() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_API_KEY,
+          Authorization: process.env.REACT_APP_API_KEY_COMMENT,
         },
         body: JSON.stringify({
           text: newComment.comment,
