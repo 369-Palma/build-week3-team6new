@@ -21,13 +21,16 @@ function UpdatePropic({ userId }) {
     formData.append("profile", file);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -41,7 +44,11 @@ function UpdatePropic({ userId }) {
 
   return (
     <>
-      <Button onClick={() => setShowModal(true)} variant="outline-primary" className="mx-3">
+      <Button
+        onClick={() => setShowModal(true)}
+        variant="outline-primary"
+        className="mx-3"
+      >
         <BiEdit className="me-2" />
         Aggiorna Propic
       </Button>

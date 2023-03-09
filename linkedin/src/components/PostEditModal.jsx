@@ -19,16 +19,19 @@ function PostEditModal({ post, onSave }) {
   // Fetch per aggiornare un nostro post già creato precedentemente.
   const updatePost = async (postId, newText) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-        body: JSON.stringify({
-          text: newText,
-        }),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+          body: JSON.stringify({
+            text: newText,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("Post edited correctly!");
@@ -56,13 +59,17 @@ function PostEditModal({ post, onSave }) {
     try {
       formData.append("post", image);
 
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+          },
+        }
+      );
       if (response.ok) {
         alert("Image uploaded!");
         setImage(null);
@@ -77,8 +84,15 @@ function PostEditModal({ post, onSave }) {
 
   return (
     <>
-      <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-        <div className="mb-0 ml-2" onClick={handleShow} style={{ cursor: "pointer" }}>
+      <Col
+        xs="2"
+        className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+      >
+        <div
+          className="mb-0 ml-2"
+          onClick={handleShow}
+          style={{ cursor: "pointer" }}
+        >
           <BiEdit /> Edit Post
         </div>
       </Col>
@@ -88,7 +102,11 @@ function PostEditModal({ post, onSave }) {
         </Modal.Header>
         <Modal.Body>
           <h5>Change the text</h5>
-          <Form.Control as="textarea" value={text} onChange={(e) => setText(e.target.value)} />
+          <Form.Control
+            as="textarea"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
           <h5>Add an image (select the file and press "Add" before saving)</h5>
           <form onSubmit={(e) => handleImageUpload(post._id, e)}>
             <input type="file" onChange={handleImageChange} />
