@@ -11,8 +11,6 @@ import { fetchComm } from "../redux/actions";
 import PostEditModal from "./PostEditModal";
 
 function NewsFeed() {
-
-
   // MODAL COMMENTS
   const [showComm, setShowComm] = useState(false);
   const handleCloseComm = () => setShowComm(false);
@@ -25,19 +23,15 @@ function NewsFeed() {
   const handleShowEditComm = () => setShowEditComm(true);
   // MODAL EDIT COMM
 
-
-
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
-  console.log(post)
-  const comm = useSelector((state) => state.comm)
+  console.log(post);
+  const comm = useSelector((state) => state.comm);
   const [newComment, setNewComment] = useState({
-
     comment: "",
     rate: "",
-    elementId: ""
-
-  })
+    elementId: "",
+  });
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
 
@@ -57,32 +51,26 @@ function NewsFeed() {
     dispatch(fetchComm(selectedPostId));
   }, [selectedPostId]);
 
-  console.log(post)
-  console.log(comm)
-  console.log(newComment)
-
+  console.log(post);
+  console.log(comm);
+  console.log(newComment);
 
   // POSTA I COMMENTS>>>>>>>
   const postComm = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments",
-        {
-          method: "POST",
-          body: JSON.stringify(newComment),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8",
-          },
-        }
-      );
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
+        method: "POST",
+        body: JSON.stringify(newComment),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: process.env.REACT_APP_API_KEY,
+        },
+      });
       if (res.ok) {
         // const data = await res.json();
         alert("comment was send to the shadow realm!");
-
       } else {
         console.log("Badoglio!");
       }
@@ -92,21 +80,15 @@ function NewsFeed() {
   };
   // <<<<<<<POSTA I COMMENTS
 
-
   // DELETE COMMENTS>>>>
   const deleteComm = async (commId) => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-        commId,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8",
-          },
-        }
-      );
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + commId, {
+        method: "DELETE",
+        headers: {
+          Authorization: process.env.REACT_APP_API_KEY,
+        },
+      });
       if (response.ok) {
         alert("comment was deleted!");
       } else {
@@ -119,7 +101,6 @@ function NewsFeed() {
   };
 
   // <<<<<<<DELETE COMMENTS
-
 
   const handleImageChange = (ev) => {
     setformData((prev) => {
@@ -155,21 +136,17 @@ function NewsFeed() {
     }
   };
 
-
-
   // PUT DEI COMMENTS
   const postCommEdit = async (commId) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` +
-        commId, {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` + commId, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8"
+          Authorization: process.env.REACT_APP_API_KEY,
         },
         body: JSON.stringify({
-          text: newComment.comment
+          text: newComment.comment,
         }),
       });
 
@@ -183,7 +160,7 @@ function NewsFeed() {
       console.error("Error:", error);
     }
     // PUT DEI COMMENTS
-  }
+  };
 
   // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
@@ -191,8 +168,7 @@ function NewsFeed() {
       let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
         method: "DELETE",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+          Authorization: process.env.REACT_APP_API_KEY,
         },
       });
       if (response.ok) {
@@ -278,9 +254,7 @@ function NewsFeed() {
                           <small className="text-muted">{com.author}</small>
 
                           <Button onClick={handleShowEditComm}>Edit</Button>
-                          <Button
-                            onClick={() => deleteComm(com._id)}
-                            variant="danger">
+                          <Button onClick={() => deleteComm(com._id)} variant="danger">
                             Delete
                           </Button>
 
@@ -293,22 +267,26 @@ function NewsFeed() {
                               <Container>
                                 <Row>
                                   {/* Box per inserire il testo del post editato*/}
-                                  <Form className=""
+                                  <Form
+                                    className=""
                                     onSubmit={
                                       // console.log(com._id)
                                       () => postCommEdit(com._id)
-                                    }
-                                  >
+                                    }>
                                     <Form.Group controlId="exampleForm.ControlTextarea1">
                                       <Form.Control
                                         as="textarea"
                                         rows={5}
-                                        style={{ border: "transparent", width: "46vh", marginBottom: "5px" }}
+                                        style={{
+                                          border: "transparent",
+                                          width: "46vh",
+                                          marginBottom: "5px",
+                                        }}
                                         value={com.comment}
                                         // onChange={(e) => setText(e.target.value)}
                                         onChange={(e) =>
                                           setNewComment({
-                                            comment: e.target.value
+                                            comment: e.target.value,
                                           })
                                         }
                                       />
@@ -330,11 +308,10 @@ function NewsFeed() {
                             </Button>
                           </Modal>
                           {/* MODAL FOR EDIT COMMENT */}
-
                         </div>
                       ))}
-                    </Card.Body >
-                    <Button onClick={handleShowComm} >Add Comment</Button>
+                    </Card.Body>
+                    <Button onClick={handleShowComm}>Add Comment</Button>
                     {/* // MODAL COMMENTS */}
 
                     <Modal show={showComm} onHide={handleCloseComm}>
@@ -359,15 +336,18 @@ function NewsFeed() {
                                 <Form.Control
                                   as="textarea"
                                   rows={5}
-                                  style={{ border: "transparent", width: "46vh", marginBottom: "5px" }}
+                                  style={{
+                                    border: "transparent",
+                                    width: "46vh",
+                                    marginBottom: "5px",
+                                  }}
                                   value={newComment.comment}
                                   onChange={(e) =>
                                     setNewComment({
                                       ...newComment,
                                       comment: e.currentTarget.value,
                                       elementId: post?._id,
-                                      rate: 2
-
+                                      rate: 2,
                                     })
                                   }
                                 />
@@ -389,22 +369,22 @@ function NewsFeed() {
                       </Button>
                     </Modal>
                     {/* // MODAL COMMENTS */}
-
-                  </Card >
-                )
-                }
-              </Row >
-
-            </Card >
-          ))
-          }
-        </Col >
+                  </Card>
+                )}
+              </Row>
+            </Card>
+          ))}
+        </Col>
       </Row>
       <div className="d-flex justify-content-around me-3 mt-4">
         <Button onClick={showMore}>Show more</Button>
-        <Button variant="danger" onClick={showLess}>
-          Show less
-        </Button>
+        {showed !== 5 ? (
+          <Button variant="danger" onClick={showLess}>
+            Show less
+          </Button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
