@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Modal, Button, Col, Row, Container } from "react-bootstrap";
+import { Modal, Button, Col, Row, Container, Card } from "react-bootstrap";
 /* import { fetchUser } from "../redux/actions";
   import React, { useEffect } from "react";*/
 import { /* useDispatch,  */ useSelector } from "react-redux";
@@ -33,11 +33,23 @@ const ModalNav = () => {
             </Col> */}
             <Col>
               <Modal.Header closeButton>
-                <Modal.Title>
-                  <h4 className="name mb-0">
-                    {profileStore.name} {profileStore.surname}
-                  </h4>
-                </Modal.Title>
+                <Row className="d-flex">
+                  <Col xs={1}>
+                    <Card.Img
+                      /* variant="top" */
+                      src={profileStore?.image}
+                      alt="foto"
+                      className="fotoTonde"
+                    />
+                  </Col>
+                  <Col xs={11}>
+                    <Modal.Title>
+                      <h4 className="name mb-0">
+                        {profileStore.name} {profileStore.surname}
+                      </h4>
+                    </Modal.Title>
+                  </Col>
+                </Row>
               </Modal.Header>
               <Modal.Body>
                 <p className="my-0 occupation">{profileStore.title}</p>
