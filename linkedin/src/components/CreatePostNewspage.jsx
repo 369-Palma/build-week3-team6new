@@ -13,17 +13,28 @@ import {
   Row,
   Container,
 } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchUser } from "../redux/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const StartAPost = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [newPost, setNewPost] = useState({
     text: "",
   });
 
+  const dispatch = useDispatch();
+  const params = useParams();
+  const profileStore = useSelector((state) => state.contentUsers);
+
+  useEffect(() => {
+    dispatch(fetchUser(params.userId));
+  }, []);
+
+  console.log(profileStore);
   const createNewPost = async (e) => {
     e.preventDefault();
 
@@ -61,13 +72,24 @@ const StartAPost = () => {
     <>
       <Card>
         <Card.Body>
-          <Form className="my-4 ">
-            <Form.Control
-              type="search"
-              placeholder="Scrivi un post..."
-              onClick={handleShow}
-            />
-          </Form>
+          <Row className="d-flex">
+            <Col xs={2}>
+              <img
+                className="img-fluid fotoUser"
+                src={profileStore?.image}
+                alt="userimage"
+              />
+            </Col>
+            <Col xs={10}>
+              <Form className="my-4 ">
+                <Form.Control
+                  type="search"
+                  placeholder="Scrivi un post..."
+                  onClick={handleShow}
+                />
+              </Form>
+            </Col>
+          </Row>
         </Card.Body>
         <Row className="text-muted justify-content-center flex-nowrap">
           <Col
