@@ -75,7 +75,7 @@ const StartAPost = () => {
           <Row className="d-flex">
             <Col xs={2}>
               <Card.Img
-                variant="top"
+                /* variant="top" */
                 src={profileStore?.image}
                 alt="foto"
                 className="fotoTonde"
