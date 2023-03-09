@@ -219,12 +219,8 @@ function NewsFeed() {
                   </div>
                 </Col>
                 <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                  <div className="mb-0 ml-2">
-                    <Button
-                      // onClick={() => dispatch(fetchComm(post._id))}
-                      onClick={() => setSelectedPostId(post._id)}>
-                      <BiCommentDetail /> Comment
-                    </Button>
+                  <div className="mb-0 ml-2" onClick={() => setSelectedPostId(post._id)} style={{ cursor: "pointer" }}>
+                    <BiCommentDetail /> Comment
                   </div>
                 </Col>
                 <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
