@@ -202,7 +202,7 @@ function NewsFeed() {
           ))}
         </Col>
       </Row>
-      <div className="d-flex justify-content-around me-3">
+      <div className="d-flex justify-content-around me-3 mt-4">
         <Button onClick={showMore}>Show more</Button>
         <Button variant="danger" onClick={showLess}>
           Show less
