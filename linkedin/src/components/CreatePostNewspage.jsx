@@ -1,18 +1,5 @@
-import {
-  FcClapperboard,
-  FcPicture,
-  FcPlanner,
-  FcViewDetails,
-} from "react-icons/fc";
-import {
-  Form,
-  Card,
-  Modal,
-  Button,
-  Col,
-  Row,
-  Container,
-} from "react-bootstrap";
+import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
+import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
 
 const StartAPost = () => {
@@ -32,17 +19,14 @@ const StartAPost = () => {
     };
 
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
-        {
-          method: "POST",
-          body: JSON.stringify(newPostToSend),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_API_KEY,
-          },
-        }
-      );
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+        method: "POST",
+        body: JSON.stringify(newPostToSend),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: process.env.REACT_APP_API_KEY,
+        },
+      });
       if (response.ok) {
         const newPostJson = await response.json();
         console.log(newPostJson);
@@ -62,42 +46,26 @@ const StartAPost = () => {
       <Card>
         <Card.Body>
           <Form className="my-4 ">
-            <Form.Control
-              type="search"
-              placeholder="Scrivi un post..."
-              onClick={handleShow}
-            />
+            <Form.Control type="search" placeholder="Scrivi un post..." onClick={handleShow} />
           </Form>
         </Card.Body>
         <Row className="text-muted justify-content-center flex-nowrap">
-          <Col
-            xs={3}
-            className="d-flex align-items-center justify-content-center p-2 rounded"
-          >
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
             <div className="mb-0 ml-2 text-primary">
               <FcPicture size={26} /> Foto
             </div>
           </Col>
-          <Col
-            xs={3}
-            className="d-flex align-items-center justify-content-center p-2 rounded"
-          >
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
             <div className="mb-0 ml-2">
               <FcClapperboard size={26} /> Video
             </div>
           </Col>
-          <Col
-            xs={3}
-            className="d-flex align-items-center justify-content-center p-2 rounded"
-          >
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
             <div className="mb-0 ml-2">
               <FcPlanner size={26} /> Eventi
             </div>
           </Col>
-          <Col
-            xs={3}
-            className="d-flex align-items-center justify-content-center p-2 rounded"
-          >
+          <Col xs={3} className="d-flex align-items-center justify-content-center p-2 rounded">
             <div className="mb-0 ml-2">
               <FcViewDetails size={26} /> Articolo
             </div>
@@ -115,9 +83,7 @@ const StartAPost = () => {
               <Card.Body>
                 <div className="d-flex flex-row">
                   <span className="d-flex flex-column ml-3">
-                    <Card.Text className="">
-                      Ciao, che testo vuoi postare?
-                    </Card.Text>
+                    <Card.Text className="">Ciao, che testo vuoi postare?</Card.Text>
                   </span>
                 </div>
               </Card.Body>
@@ -153,11 +119,7 @@ const StartAPost = () => {
           </Container>
         </Modal.Body>
         {/* Pulsante chiudi */}
-        <Button
-          variant="outline-danger"
-          className="mx-5 mb-2"
-          onClick={handleClose}
-        >
+        <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleClose}>
           Chiudi
         </Button>
       </Modal>

@@ -276,6 +276,3 @@ export const fetchPostsSearch = () => {
     }
   };
 };
-
-// FETCH COMMENTI
-const REACT_APP_API_KEY_COMMENT = process.env.REACT_APP_API_KEY_COMMENT;
