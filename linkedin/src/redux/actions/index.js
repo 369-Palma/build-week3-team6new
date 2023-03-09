@@ -166,7 +166,7 @@ export const fetchComm = (comm) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: REACT_APP_API_KEY_COMMENT,
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
