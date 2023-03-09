@@ -268,7 +268,7 @@ const UserProfile = () => {
         </Container>
       </Card>
       {/* Box informazioni */}
-      <Card className="bg-white my-3">
+      {/*  <Card className="bg-white my-3">
         <Card.Body>
           <Row className="d-flex flex-space-between">
             <Col sx={11} className="d-flex align-self-start">
@@ -284,7 +284,7 @@ const UserProfile = () => {
             </Col>
           </Row>
         </Card.Body>
-      </Card>
+      </Card> */}
       <Informazioni />
     </>
   );

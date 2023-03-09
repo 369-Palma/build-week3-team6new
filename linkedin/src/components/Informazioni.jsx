@@ -24,7 +24,7 @@ const Informazioni = () => {
           body: JSON.stringify(text),
           headers: {
             "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_API_KEY_PALMA,
+            Authorization: process.env.REACT_APP_API_KEY_GIACOMO,
           },
         }
       );
@@ -51,7 +51,7 @@ const Informazioni = () => {
           <Col sx={11} className="d-flex align-self-start">
             <Card.Title>Informazioni</Card.Title>
           </Col>
-          <Col sx={1}>
+          <Col sx={1} className="d-flex justify-content-end w-25">
             <HiOutlinePencil
               className="fs-5 d-flex justify-content-end"
               onClick={handleShow}
