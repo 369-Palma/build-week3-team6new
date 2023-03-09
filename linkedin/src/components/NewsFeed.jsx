@@ -2,7 +2,15 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+} from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
@@ -59,15 +67,18 @@ function NewsFeed() {
   const postComm = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
-        method: "POST",
-        body: JSON.stringify(newComment),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments",
+        {
+          method: "POST",
+          body: JSON.stringify(newComment),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
       if (res.ok) {
         // const data = await res.json();
         alert("comment was send to the shadow realm!");
@@ -83,12 +94,15 @@ function NewsFeed() {
   // DELETE COMMENTS>>>>
   const deleteComm = async (commId) => {
     try {
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + commId, {
-        method: "DELETE",
-        headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" + commId,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
       if (response.ok) {
         alert("comment was deleted!");
       } else {
@@ -117,13 +131,16 @@ function NewsFeed() {
 
       formData.append("post", image);
 
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
       if (response.ok) {
         alert("Image uploaded!");
         setImage(null);
@@ -139,16 +156,19 @@ function NewsFeed() {
   // PUT DEI COMMENTS
   const postCommEdit = async (commId) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` + commId, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-        body: JSON.stringify({
-          text: newComment.comment,
-        }),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/` + commId,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+          body: JSON.stringify({
+            text: newComment.comment,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("Post edited correctly!");
@@ -165,12 +185,15 @@ function NewsFeed() {
   // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
     try {
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: process.env.REACT_APP_API_KEY,
-        },
-      });
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
       if (response.ok) {
         alert("Post was deleted!");
       } else {
@@ -205,40 +228,63 @@ function NewsFeed() {
         <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
           {post.slice(0, showed).map((post) => (
             <Card key={post?._id} style={{ margin: "1rem 0" }}>
-              <Card.Img variant="top" src={post?.user?.image} alt="foto" className="fotoTonde ms-2" />
+              <Card.Img
+                variant="top"
+                src={post?.user?.image}
+                alt="foto"
+                className="fotoTonde ms-2"
+              />
               <Card.Body>
                 <Card.Title>{post?.username} said:</Card.Title>
                 <Card.Text>{post?.text}</Card.Text>
-                {post?.image ? <Card.Img variant="bottom" src={post?.image} alt="fotopost" /> : null}
+                {post?.image ? (
+                  <Card.Img variant="bottom" src={post?.image} alt="fotopost" />
+                ) : null}
               </Card.Body>
               <hr className="my-1" />
               <Row className="text-muted post-actions justify-content-center">
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2 text-primary">
                     <FiThumbsUp /> Like
                   </div>
                 </Col>
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2">
                     <Button
                       // onClick={() => dispatch(fetchComm(post._id))}
-                      onClick={() => setSelectedPostId(post._id)}>
+                      onClick={() => setSelectedPostId(post._id)}
+                    >
                       <BiCommentDetail /> Comment
                     </Button>
                   </div>
                 </Col>
-                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                <Col
+                  xs="2"
+                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                >
                   <div className="mb-0 ml-2">
                     <BiShare /> Share
                   </div>
                 </Col>
-                {post?.user?._id === "63fc7944f193e60013807f5e" && (
-                  // Hardcodato con ID di Giacomo
+                {post?.user?._id === post.user._id && (
                   <>
                     <PostEditModal post={post} onSave={handleSave} />
 
-                    <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
-                      <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
+                    <Col
+                      xs="2"
+                      className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
+                    >
+                      <div
+                        className="text-danger"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => deletePost(post._id)}
+                      >
                         <FaTimes /> Delete
                       </div>
                     </Col>
@@ -255,12 +301,18 @@ function NewsFeed() {
                           <small className="text-muted">{com.author}</small>
 
                           <Button onClick={handleShowEditComm}>Edit</Button>
-                          <Button onClick={() => deleteComm(com._id)} variant="danger">
+                          <Button
+                            onClick={() => deleteComm(com._id)}
+                            variant="danger"
+                          >
                             Delete
                           </Button>
 
                           {/* MODAL FOR EDIT COMMENT */}
-                          <Modal show={showEditComm} onHide={handleCloseEditComm}>
+                          <Modal
+                            show={showEditComm}
+                            onHide={handleCloseEditComm}
+                          >
                             <Modal.Header closeButton>
                               <span>Edit your comment</span>
                             </Modal.Header>
@@ -273,7 +325,8 @@ function NewsFeed() {
                                     onSubmit={
                                       // console.log(com._id)
                                       () => postCommEdit(com._id)
-                                    }>
+                                    }
+                                  >
                                     <Form.Group controlId="exampleForm.ControlTextarea1">
                                       <Form.Control
                                         as="textarea"
@@ -295,7 +348,10 @@ function NewsFeed() {
 
                                     <div className="d-flex">
                                       {/* Pulsante per pubblicare il post editato*/}
-                                      <Button variant="outline-success" type="submit">
+                                      <Button
+                                        variant="outline-success"
+                                        type="submit"
+                                      >
                                         Salva
                                       </Button>
                                     </div>
@@ -304,7 +360,11 @@ function NewsFeed() {
                               </Container>
                             </Modal.Body>
                             {/* Pulsante chiudi */}
-                            <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleCloseEditComm}>
+                            <Button
+                              variant="outline-danger"
+                              className="mx-5 mb-2"
+                              onClick={handleCloseEditComm}
+                            >
                               Chiudi
                             </Button>
                           </Modal>
@@ -325,7 +385,9 @@ function NewsFeed() {
                             <Card.Body>
                               <div className="d-flex flex-row">
                                 <span className="d-flex flex-column ml-3">
-                                  <Card.Text className="">Ciao, cosa vuoi commentare</Card.Text>
+                                  <Card.Text className="">
+                                    Ciao, cosa vuoi commentare
+                                  </Card.Text>
                                 </span>
                               </div>
                             </Card.Body>
@@ -365,7 +427,11 @@ function NewsFeed() {
                         </Container>
                       </Modal.Body>
                       {/* Pulsante chiudi */}
-                      <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleCloseComm}>
+                      <Button
+                        variant="outline-danger"
+                        className="mx-5 mb-2"
+                        onClick={handleCloseComm}
+                      >
                         Chiudi
                       </Button>
                     </Modal>
