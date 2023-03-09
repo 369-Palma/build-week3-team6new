@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
@@ -11,10 +11,33 @@ import { fetchComm } from "../redux/actions";
 import PostEditModal from "./PostEditModal";
 
 function NewsFeed() {
+
+
+  // MODAL COMMENTS
+  const [showComm, setShowComm] = useState(false);
+  const handleCloseComm = () => setShowComm(false);
+  const handleShowComm = () => setShowComm(true);
+  // MODAL COMMENTS
+
+  // MODAL EDIT COMM
+  const [showEditComm, setShowEditComm] = useState(false);
+  const handleCloseEditComm = () => setShowEditComm(false);
+  const handleShowEditComm = () => setShowEditComm(true);
+  // MODAL EDIT COMM
+
+
+
   const dispatch = useDispatch();
   const post = useSelector((state) => state.posts);
-  console.log(post);
-  const comm = useSelector((state) => state.comm);
+  console.log(post)
+  const comm = useSelector((state) => state.comm)
+  const [newComment, setNewComment] = useState({
+
+    comment: "",
+    rate: "",
+    elementId: ""
+
+  })
   const [image, setImage] = useState(null);
   const [formData, setformData] = useState(new FormData());
 
@@ -28,14 +51,75 @@ function NewsFeed() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, [post]);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchComm(selectedPostId));
   }, [selectedPostId]);
 
-  console.log(post);
-  console.log(comm);
+  console.log(post)
+  console.log(comm)
+  console.log(newComment)
+
+
+  // POSTA I COMMENTS>>>>>>>
+  const postComm = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments",
+        {
+          method: "POST",
+          body: JSON.stringify(newComment),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8",
+          },
+        }
+      );
+      if (res.ok) {
+        // const data = await res.json();
+        alert("comment was send to the shadow realm!");
+
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // <<<<<<<POSTA I COMMENTS
+
+
+  // DELETE COMMENTS>>>>
+  const deleteComm = async (commId) => {
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+        commId,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8",
+          },
+        }
+      );
+      if (response.ok) {
+        alert("comment was deleted!");
+      } else {
+        console.log("error");
+        alert("Something went wrong. Be sure to check if the post is yours.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // <<<<<<<DELETE COMMENTS
+
 
   const handleImageChange = (ev) => {
     setformData((prev) => {
@@ -52,17 +136,13 @@ function NewsFeed() {
 
       formData.append("post", image);
 
-      let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
-          },
-        }
-      );
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: process.env.REACT_APP_API_KEY,
+        },
+      });
       if (response.ok) {
         alert("Image uploaded!");
         setImage(null);
@@ -75,19 +155,46 @@ function NewsFeed() {
     }
   };
 
+
+
+  // PUT DEI COMMENTS
+  const postCommEdit = async (commId) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` +
+        commId, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8"
+        },
+        body: JSON.stringify({
+          text: newComment.comment
+        }),
+      });
+
+      if (response.ok) {
+        alert("Post edited correctly!");
+      }
+
+      const updatedPost = await response.json();
+      return updatedPost;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    // PUT DEI COMMENTS
+  }
+
   // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
     try {
-      let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
-          },
-        }
-      );
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y",
+        },
+      });
       if (response.ok) {
         alert("Post was deleted!");
       } else {
@@ -98,6 +205,7 @@ function NewsFeed() {
       console.log(error);
     }
   };
+  // Fetch per eliminare un nostro post già creato precedentemente.
 
   // PAGINATION
 
@@ -121,46 +229,29 @@ function NewsFeed() {
         <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
           {post.slice(0, showed).map((post) => (
             <Card key={post?._id} style={{ margin: "1rem 0" }}>
-              <Card.Img
-                variant="top"
-                src={post?.user?.image}
-                alt="foto"
-                className="fotoTonde ms-2"
-              />
+              <Card.Img variant="top" src={post?.user?.image} alt="foto" className="fotoTonde ms-2" />
               <Card.Body>
                 <Card.Title>{post?.username} said:</Card.Title>
                 <Card.Text>{post?.text}</Card.Text>
-                {post?.image ? (
-                  <Card.Img variant="bottom" src={post?.image} alt="fotopost" />
-                ) : null}
+                {post?.image ? <Card.Img variant="bottom" src={post?.image} alt="fotopost" /> : null}
               </Card.Body>
               <hr className="my-1" />
               <Row className="text-muted post-actions justify-content-center">
-                <Col
-                  xs="2"
-                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
-                >
+                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                   <div className="mb-0 ml-2 text-primary">
                     <FiThumbsUp /> Like
                   </div>
                 </Col>
-                <Col
-                  xs="2"
-                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
-                >
+                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                   <div className="mb-0 ml-2">
                     <Button
                       // onClick={() => dispatch(fetchComm(post._id))}
-                      onClick={() => setSelectedPostId(post._id)}
-                    >
+                      onClick={() => setSelectedPostId(post._id)}>
                       <BiCommentDetail /> Comment
                     </Button>
                   </div>
                 </Col>
-                <Col
-                  xs="2"
-                  className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
-                >
+                <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
                   <div className="mb-0 ml-2">
                     <BiShare /> Share
                   </div>
@@ -169,15 +260,8 @@ function NewsFeed() {
                   <>
                     <PostEditModal post={post} onSave={handleSave} />
 
-                    <Col
-                      xs="2"
-                      className="d-flex align-items-center justify-content-center p-2 mx-2 rounded"
-                    >
-                      <div
-                        className="text-danger"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => deletePost(post._id)}
-                      >
+                    <Col xs="2" className="d-flex align-items-center justify-content-center p-2 mx-2 rounded">
+                      <div className="text-danger" style={{ cursor: "pointer" }} onClick={() => deletePost(post._id)}>
                         <FaTimes /> Delete
                       </div>
                     </Col>
@@ -192,15 +276,129 @@ function NewsFeed() {
                         <div key={com._id} className="mb-2">
                           <p className="mb-0">{com.comment}</p>
                           <small className="text-muted">{com.author}</small>
+
+                          <Button onClick={handleShowEditComm}>Edit</Button>
+                          <Button
+                            onClick={() => deleteComm(com._id)}
+                            variant="danger">
+                            Delete
+                          </Button>
+
+                          {/* MODAL FOR EDIT COMMENT */}
+                          <Modal show={showEditComm} onHide={handleCloseEditComm}>
+                            <Modal.Header closeButton>
+                              <span>Edit your comment</span>
+                            </Modal.Header>
+                            <Modal.Body className="show-grid">
+                              <Container>
+                                <Row>
+                                  {/* Box per inserire il testo del post editato*/}
+                                  <Form className=""
+                                    onSubmit={
+                                      // console.log(com._id)
+                                      () => postCommEdit(com._id)
+                                    }
+                                  >
+                                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                                      <Form.Control
+                                        as="textarea"
+                                        rows={5}
+                                        style={{ border: "transparent", width: "46vh", marginBottom: "5px" }}
+                                        value={com.comment}
+                                        // onChange={(e) => setText(e.target.value)}
+                                        onChange={(e) =>
+                                          setNewComment({
+                                            comment: e.target.value
+                                          })
+                                        }
+                                      />
+                                    </Form.Group>
+
+                                    <div className="d-flex">
+                                      {/* Pulsante per pubblicare il post editato*/}
+                                      <Button variant="outline-success" type="submit">
+                                        Salva
+                                      </Button>
+                                    </div>
+                                  </Form>
+                                </Row>
+                              </Container>
+                            </Modal.Body>
+                            {/* Pulsante chiudi */}
+                            <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleCloseEditComm}>
+                              Chiudi
+                            </Button>
+                          </Modal>
+                          {/* MODAL FOR EDIT COMMENT */}
+
                         </div>
                       ))}
-                    </Card.Body>
-                  </Card>
-                )}
-              </Row>
-            </Card>
-          ))}
-        </Col>
+                    </Card.Body >
+                    <Button onClick={handleShowComm} >Add Comment</Button>
+                    {/* // MODAL COMMENTS */}
+
+                    <Modal show={showComm} onHide={handleCloseComm}>
+                      <Modal.Header closeButton>
+                        <span>Crea un post</span>
+                      </Modal.Header>
+                      <Modal.Body className="show-grid">
+                        <Container>
+                          <Row>
+                            <Card.Body>
+                              <div className="d-flex flex-row">
+                                <span className="d-flex flex-column ml-3">
+                                  <Card.Text className="">Ciao, cosa vuoi commentare</Card.Text>
+                                </span>
+                              </div>
+                            </Card.Body>
+                          </Row>
+                          <Row>
+                            {/* Box per inserire il testo del nuovo post */}
+                            <Form className="" onSubmit={postComm}>
+                              <Form.Group controlId="exampleForm.ControlTextarea1">
+                                <Form.Control
+                                  as="textarea"
+                                  rows={5}
+                                  style={{ border: "transparent", width: "46vh", marginBottom: "5px" }}
+                                  value={newComment.comment}
+                                  onChange={(e) =>
+                                    setNewComment({
+                                      ...newComment,
+                                      comment: e.currentTarget.value,
+                                      elementId: post?._id,
+                                      rate: 2
+
+                                    })
+                                  }
+                                />
+                              </Form.Group>
+
+                              <div className="d-flex">
+                                {/* Pulsante per pubblicare il post */}
+                                <Button variant="outline-success" type="submit">
+                                  Pubblica
+                                </Button>
+                              </div>
+                            </Form>
+                          </Row>
+                        </Container>
+                      </Modal.Body>
+                      {/* Pulsante chiudi */}
+                      <Button variant="outline-danger" className="mx-5 mb-2" onClick={handleCloseComm}>
+                        Chiudi
+                      </Button>
+                    </Modal>
+                    {/* // MODAL COMMENTS */}
+
+                  </Card >
+                )
+                }
+              </Row >
+
+            </Card >
+          ))
+          }
+        </Col >
       </Row>
       <div className="d-flex justify-content-around me-3 mt-4">
         <Button onClick={showMore}>Show more</Button>

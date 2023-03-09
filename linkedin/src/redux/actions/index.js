@@ -127,7 +127,7 @@ export const deleteExp = (expid) => {
     try {
       const res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/` +
-          expid,
+        expid,
         {
           method: "DELETE",
           headers: {

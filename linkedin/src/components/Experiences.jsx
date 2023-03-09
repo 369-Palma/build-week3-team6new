@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchExp } from "../redux/actions";
 import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 // import { BsFillInfoSquareFill } from "react-icons/bs";
-import { Row, Button, Modal, Form } from "react-bootstrap";
+import { Row, Button, Modal, Form, Card, Col } from "react-bootstrap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
@@ -33,17 +33,14 @@ const Experiences = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-          "63fc702df193e60013807f5a/" +
-          "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc702df193e60013807f5a/" + "experiences",
         {
           method: "POST",
           body: JSON.stringify(exp),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
@@ -69,8 +66,7 @@ const Experiences = () => {
         size="lg"
         show={lgShowExp}
         onHide={() => setLgShowExp(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
-      >
+        aria-labelledby="example-modal-sizes-title-lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Exp</Modal.Title>
         </Modal.Header>
@@ -179,7 +175,7 @@ const Experiences = () => {
       <div>
         <div className="d-flex justify-content-between">
           <div>
-            <h3>Esperienza</h3>
+            <h3>Esperienze</h3>
           </div>
           <div>
             <HiPlus className="fs-3 p-1" onClick={handleShowExp} />
@@ -190,15 +186,25 @@ const Experiences = () => {
           </div>
         </div>
 
-        {experiences.map((exp) => (
-          <Row key={exp._id} className="d-flex text-start">
-            <h4>{exp.role}</h4>
-            <h4>{exp.company}</h4>
-            <p>{exp.description}</p>
-            <p>{exp.startDate}</p>
-            <p>{exp.area}</p>
-          </Row>
-        ))}
+        <Row>
+          {experiences.map((exp) => (
+            <Col key={exp._id} md={6} lg={4} className="mb-4">
+              <Card>
+                <Card.Body>
+                  <Card.Title>{exp.role}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">{exp.company}</Card.Subtitle>
+                  <Card.Text>{exp.description}</Card.Text>
+                  <Card.Text>
+                    <small>{exp.startDate}</small>
+                  </Card.Text>
+                  <Card.Text>
+                    <small>{exp.area}</small>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
         {/*  */}
       </div>
     </>
