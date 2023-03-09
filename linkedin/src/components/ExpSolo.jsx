@@ -44,17 +44,14 @@ const ExpSolo = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-          "63fc702df193e60013807f5a/" +
-          "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc702df193e60013807f5a/" + "experiences",
         {
           method: "POST",
           body: JSON.stringify(),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
@@ -76,12 +73,7 @@ const ExpSolo = () => {
 
   return (
     <>
-      <Modal
-        size="lg"
-        show={lgPutExp}
-        onHide={() => setPutExp(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
-      >
+      <Modal size="lg" show={lgPutExp} onHide={() => setPutExp(false)} aria-labelledby="example-modal-sizes-title-lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Exp</Modal.Title>
         </Modal.Header>
@@ -182,8 +174,8 @@ const ExpSolo = () => {
         <Modal.Footer></Modal.Footer>
       </Modal>
       <Container>
-        {experiences.map((exp) => (
-          <Row key={exp._id} className="d-flex text-start">
+        {experiences.map((exp, index) => (
+          <Row key={exp._id} className={`d-flex text-start ${index % 2 === 0 ? "bg-light" : "bg-secondary"} p-3 my-3`}>
             <Col>
               <h1>{exp._id} </h1>
               <h4>{exp.role}</h4>
@@ -193,18 +185,10 @@ const ExpSolo = () => {
               <p>{exp.area}</p>
             </Col>
             <Col>
-              <Button
-                variant="danger"
-                // onClick={() => deleteExp(exp._id)}
-                onClick={() => dispatch(deleteExp(exp._id))}
-              >
+              <Button variant="danger" onClick={() => dispatch(deleteExp(exp._id))}>
                 Delete
               </Button>
-              <Button
-                variant="primary"
-                // onClick={() => deleteExp(exp._id)}
-                onClick={() => handlePutExp()}
-              >
+              <Button variant="primary" onClick={() => handlePutExp()}>
                 Modify
               </Button>
             </Col>

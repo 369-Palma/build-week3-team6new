@@ -51,9 +51,9 @@ const Informazioni = () => {
           <Col sx={11} className="d-flex align-self-start">
             <Card.Title>Informazioni</Card.Title>
           </Col>
-          <Col sx={1}>
+          <Col sx={1} className="d-flex flex-column h-100">
             <HiOutlinePencil
-              className="fs-5 d-flex justify-content-end"
+              className="fs-5 d-flex align-self-end"
               onClick={handleShow}
             />
             {/* inizio modale */}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { BiEdit } from "react-icons/bi";
 
-const UpdatePropic = ({ userId }) => {
+function UpdatePropic({ userId }) {
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
 
@@ -19,16 +21,20 @@ const UpdatePropic = ({ userId }) => {
     formData.append("profile", file);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzk0NGYxOTNlNjAwMTM4MDdmNWUiLCJpYXQiOjE2Nzc0OTA1MDAsImV4cCI6MTY3ODcwMDEwMH0.pf9G3SwntDHg3iUJZF-olKYGync7u8VErUGV_JFF91Y`,
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
+        alert("Propic updated!");
         console.log(data);
       }
     } catch (error) {
@@ -37,19 +43,28 @@ const UpdatePropic = ({ userId }) => {
   };
 
   return (
-    // Da aggiornare la parte grafica, per il momento la lascio così
-    <div>
-      <button onClick={() => setShowModal(true)}>Update Profile Picture</button>
-      {showModal && (
-        <div>
+    <>
+      <Button
+        onClick={() => setShowModal(true)}
+        variant="outline-primary"
+        className="mx-3"
+      >
+        <BiEdit className="me-2" />
+        Aggiorna Propic
+      </Button>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Aggiorna Propic</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <form onSubmit={handleSubmit}>
             <input type="file" accept="image/*" onChange={handleFileChange} />
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
           </form>
-        </div>
-      )}
-    </div>
+        </Modal.Body>
+      </Modal>
+    </>
   );
-};
+}
 
 export default UpdatePropic;
