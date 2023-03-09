@@ -233,6 +233,7 @@ function NewsFeed() {
                   </div>
                 </Col>
                 {post?.user?._id === "63fc7944f193e60013807f5e" && (
+                  // Hardcodato con ID di Giacomo
                   <>
                     <PostEditModal post={post} onSave={handleSave} />
 
