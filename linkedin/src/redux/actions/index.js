@@ -88,7 +88,7 @@ export const fetchExp = (exp) => {
       dispatch({
         type: GET_DATA_LOADING_ON,
       });
-      const res = await fetch(baseline + "63fc702df193e60013807f5a/" + exp, {
+      const res = await fetch(baseline + "63fc7944f193e60013807f5e/" + exp, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -120,7 +120,7 @@ export const deleteExp = (expid) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/6409fa9c61fa770013a78e42/experiences/` + expid,
+        `https://striveschool-api.herokuapp.com/api/profile/63fc7944f193e60013807f5e/experiences/` + expid,
         {
           method: "DELETE",
           headers: {
