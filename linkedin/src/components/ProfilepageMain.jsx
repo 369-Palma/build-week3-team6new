@@ -118,12 +118,16 @@ const UserProfile = () => {
                 580 follower - 951 collegamenti
               </p>
               <div className="d-flex justify-content-start w-100 mb-3">
-                <Button>Disponibile per</Button>
-                <Button variant="outline-primary" className="mx-3">
+                <Button className="text-nowrap">Disponibile per</Button>
+                <Button variant="outline-primary" className="mx-3 text-nowrap">
                   Aggiungi sezione profilo
                 </Button>
-                <Button variant="outline-secondary">Altro</Button>
-                <UpdatePropic />
+                <Button variant="outline-secondary" className="text-nowrap">
+                  Altro
+                </Button>
+                <div className="d-flex justify-content-start w-100 mb-3">
+                  <UpdatePropic />
+                </div>
               </div>
             </Col>
             <Col className="d-flex flex-column-reverse justify-content-end">

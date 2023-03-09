@@ -9,6 +9,11 @@
   width: 100vw;
   height: 100vh;
 } */
+
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
 .bottoniBlu {
   border: 1.5px solid blue;
   background-color: white;

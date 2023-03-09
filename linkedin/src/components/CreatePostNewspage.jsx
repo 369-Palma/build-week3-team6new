@@ -1,8 +1,6 @@
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
-import HomeLeftSidebar from "./HomeLeftSidebar";
-import HomeRightSidebar from "./HomeRightSidebar";
 
 const StartAPost = () => {
   const [show, setShow] = useState(false);
