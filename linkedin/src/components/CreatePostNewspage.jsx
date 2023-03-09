@@ -32,7 +32,7 @@ const StartAPost = () => {
 
   useEffect(() => {
     dispatch(fetchUser(params.userId));
-  }, []);
+  }, [profileStore]);
 
   console.log(profileStore);
   const createNewPost = async (e) => {
@@ -74,10 +74,11 @@ const StartAPost = () => {
         <Card.Body>
           <Row className="d-flex">
             <Col xs={2}>
-              <img
-                className="img-fluid fotoUser"
+              <Card.Img
+                variant="top"
                 src={profileStore?.image}
-                alt="userimage"
+                alt="foto"
+                className="fotoTonde"
               />
             </Col>
             <Col xs={10}>
