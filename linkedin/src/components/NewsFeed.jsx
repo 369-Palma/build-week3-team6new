@@ -7,7 +7,6 @@ import { FiThumbsUp } from "react-icons/fi";
 import { BiCommentDetail, BiShare } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import { fetchComm } from "../redux/actions";
-import PaginationNews from "./Pagination";
 
 import PostEditModal from "./PostEditModal";
 
@@ -215,11 +214,27 @@ function NewsFeed() {
   };
   // Fetch per eliminare un nostro post già creato precedentemente.
 
+  // PAGINATION
+
+  const [showed, setShowed] = useState(5);
+
+  //funzione per mostrare i post successivi
+  const showMore = () => {
+    setShowed((prevValue) => prevValue + 5);
+  };
+
+  // funzione per mostrare meno post
+  const showLess = () => {
+    if (showed !== 5) {
+      setShowed((prevValue) => prevValue - 5);
+    }
+  };
+
   return (
-    <Container>
+    <div>
       <Row className="d-flex justify-content-center">
-        <Col sm={10} style={{ width: "700px", maxWidth: "100%" }}>
-          {post.map((post) => (
+        <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
+          {post.slice(0, showed).map((post) => (
             <Card key={post?._id} style={{ margin: "1rem 0" }}>
               <Card.Img
                 variant="top"
@@ -416,7 +431,13 @@ function NewsFeed() {
           }
         </Col >
       </Row>
-    </Container >
+      <div className="d-flex justify-content-around me-3 mt-4">
+        <Button onClick={showMore}>Show more</Button>
+        <Button variant="danger" onClick={showLess}>
+          Show less
+        </Button>
+      </div>
+    </div>
   );
 }
 
