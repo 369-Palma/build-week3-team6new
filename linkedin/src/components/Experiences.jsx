@@ -69,7 +69,7 @@ const Experiences = () => {
         onHide={() => setLgShowExp(false)}
         aria-labelledby="example-modal-sizes-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title>Add Exp</Modal.Title>
+          <Modal.Title>Add one experience to your profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={postExp}>
@@ -136,7 +136,7 @@ const Experiences = () => {
             </Form.Group>
             <h4>Date</h4>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data Inizio </Form.Label>
+              <Form.Label>Data Inizio*</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="startDate"
@@ -151,7 +151,7 @@ const Experiences = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data Fine </Form.Label>
+              <Form.Label>Data Fine*</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="endDate"
@@ -210,7 +210,6 @@ const Experiences = () => {
             </Card>
           </Col>
         </Row>
-        {/*  */}
       </div>
     </>
   );
