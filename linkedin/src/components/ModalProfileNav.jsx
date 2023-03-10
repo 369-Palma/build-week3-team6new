@@ -34,7 +34,7 @@ const ModalNav = () => {
                       /* variant="top" */
                       src={profileStore?.image}
                       alt="foto"
-                      className="fotoTonde"
+                      className="fotoTondeProf"
                     />
                   </Col>
                 </Row>
