@@ -174,24 +174,27 @@ const Experiences = () => {
       </Modal>
 
       <div>
-        <div className="d-flex justify-content-between">
-          <div>
-            <h3>Esperienze</h3>
-          </div>
-          <div>
-            <HiPlus className="fs-3 p-1" onClick={handleShowExp} />
-
-            <Link to="/profile/:user.id/:expId">
-              <HiOutlinePencil className="fs-4 p-1 text-dark" />
-            </Link>
-          </div>
-        </div>
-
         <Row>
-          {experiences.map((exp) => (
-            <Col key={exp._id} md={6} lg={4} className="mb-4">
-              <Card>
-                <Card.Body>
+          <Col key={exp._id} col={12} className="mb-4">
+            <Card className="border-1 border-light">
+              <div className="d-flex justify-content-between ">
+                <div>
+                  <h4 className="m-3 my-4">Esperienze</h4>
+                </div>
+                <div className="d-flex align-items-center me-3">
+                  <HiPlus
+                    className="fs-2 p-1 cursor-pointer icon-experiences"
+                    onClick={handleShowExp}
+                    style={{ cursor: "pointer" }}
+                  />
+
+                  <Link to="/profile/:user.id/:expId">
+                    <HiOutlinePencil className="fs-5 m-2 text-dark icon-experiences" />
+                  </Link>
+                </div>
+              </div>
+              {experiences.map((exp) => (
+                <Card.Body className="text-start p-0 px-3">
                   <Card.Title>{exp.role}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">{exp.company}</Card.Subtitle>
                   <Card.Text>{exp.description}</Card.Text>
@@ -201,11 +204,13 @@ const Experiences = () => {
                   <Card.Text>
                     <small>{exp.area}</small>
                   </Card.Text>
+                  <hr />
                 </Card.Body>
-              </Card>
-            </Col>
-          ))}
+              ))}
+            </Card>
+          </Col>
         </Row>
+        {/*  */}
       </div>
     </>
   );
