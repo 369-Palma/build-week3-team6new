@@ -8,53 +8,53 @@ import {
   Form,
   Modal,
   Spinner,
-} from "react-bootstrap";
-import { HiPlus, HiOutlinePencil } from "react-icons/hi";
-import { BsFillInfoSquareFill } from "react-icons/bs";
-import { fetchUser } from "../redux/actions/index";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Informazioni from "./Informazioni";
-import UpdatePropic from "../components/UpdatePropic";
+} from "react-bootstrap"
+import { HiPlus, HiOutlinePencil } from "react-icons/hi"
+import { BsFillInfoSquareFill } from "react-icons/bs"
+import { fetchUser } from "../redux/actions/index"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import Informazioni from "./Informazioni"
+import UpdatePropic from "../components/UpdatePropic"
 
 const UserProfile = () => {
   // Modali
-  const [lgShow, setLgShow] = useState(false);
-  const handleShow = () => setLgShow(true);
+  const [lgShow, setLgShow] = useState(false)
+  const handleShow = () => setLgShow(true)
   // Dispatch per ottenere info utenti e del profilo
-  const dispatch = useDispatch();
-  const profileStore = useSelector((state) => state.contentUsers);
-  const params = useParams();
+  const dispatch = useDispatch()
+  const profileStore = useSelector((state) => state.contentUsers)
+  const params = useParams()
   // Loaders
-  const isLoading = useSelector((state) => state.isLoading);
+  const isLoading = useSelector((state) => state.isLoading)
   // State per fetch PUT per aggiornare nome e cognome
   const [profileData, setProfileData] = useState({
     name: "",
     surname: "",
-  });
+  })
 
   // Dispatch per ottenere info utenti e del profilo
   useEffect(() => {
-    dispatch(fetchUser(params.userId));
-  }, [params.userId]);
+    dispatch(fetchUser(params.userId))
+  }, [params.userId])
 
   // Eventi onClick per gestire modifica di nome e cognome
   const handleNameChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setProfileData({
       ...profileData,
       name: value,
-    });
-  };
+    })
+  }
   const handleSurnameChange = (event) => {
-    const { surname, value } = event.target;
+    const { surname, value } = event.target
     setProfileData({
       ...profileData,
       surname: value,
-    });
-  };
+    })
+  }
 
   // Fetch PUT per modificare nome e cognome nel modale del profilo
   const handleSave = () => {
@@ -68,16 +68,17 @@ const UserProfile = () => {
     })
       .then((response) => {
         if (response.ok) {
-          alert("Profile updated successfully");
-          setLgShow(false);
+          dispatch(fetchUser("me"))
+
+          setLgShow(false)
         } else {
-          alert("An error occurred while updating the profile");
+          alert("An error occurred while updating the profile")
         }
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return (
     <>
@@ -93,13 +94,13 @@ const UserProfile = () => {
               alt=""
             />
           </Row>
-          <Row className="profile ml-1">
+          <div className="profile ml-1">
             <img
               className="img-fluid fotoUser"
               src={profileStore.image}
               alt="userimage"
             />
-          </Row>
+          </div>
           <Row>
             <Col className="userdetail" xs={12} md={8}>
               <h4 className="name mb-0">
@@ -274,6 +275,6 @@ const UserProfile = () => {
       {/* Box informazioni */}
       <Informazioni />
     </>
-  );
-};
-export default UserProfile;
+  )
+}
+export default UserProfile

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Button, Modal, Form, Col } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { fetchPosts } from "../redux/actions";
 
 function PostEditModal({ post, onSave }) {
+  const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const [text, setText] = useState(post.text);
   const [image, setImage] = useState(null);
@@ -29,6 +32,7 @@ function PostEditModal({ post, onSave }) {
           text: newText,
         }),
       });
+      dispatch(fetchPosts())
 
       if (response.ok) {
         alert("Post edited correctly!");

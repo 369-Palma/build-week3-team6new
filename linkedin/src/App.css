@@ -37,9 +37,10 @@ body {
 }
 
 .fotoUser {
-  overflow: hidden;
   border-radius: 50%;
   position: absolute;
+  aspect-ratio: 1/1;
+  object-fit: cover;
   top: 200px;
   left: 25px;
   width: 170px;
