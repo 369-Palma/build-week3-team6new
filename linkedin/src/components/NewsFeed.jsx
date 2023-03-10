@@ -1,66 +1,74 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react"
-import { fetchPosts, fetchUser } from "../redux/actions/index"
-import { useSelector, useDispatch } from "react-redux"
-import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap"
-import { FiThumbsUp } from "react-icons/fi"
-import { BiCommentDetail, BiShare } from "react-icons/bi"
-import { FaTimes } from "react-icons/fa"
-import { fetchComm } from "../redux/actions"
+import "../components/style/comment.css";
+import { useEffect, useState } from "react";
+import { fetchPosts, fetchUser } from "../redux/actions/index";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+} from "react-bootstrap";
+import { FiThumbsUp } from "react-icons/fi";
+import { BiCommentDetail, BiShare } from "react-icons/bi";
+import { FaTimes } from "react-icons/fa";
+import { fetchComm } from "../redux/actions";
 
-import PostEditModal from "./PostEditModal"
+import PostEditModal from "./PostEditModal";
 
 function NewsFeed() {
   // MODAL COMMENTS
-  const [showComm, setShowComm] = useState(false)
-  const handleCloseComm = () => setShowComm(false)
-  const handleShowComm = () => setShowComm(true)
+  const [showComm, setShowComm] = useState(false);
+  const handleCloseComm = () => setShowComm(false);
+  const handleShowComm = () => setShowComm(true);
   // MODAL COMMENTS
 
   // MODAL EDIT COMM
-  const [showEditComm, setShowEditComm] = useState(false)
-  const handleCloseEditComm = () => setShowEditComm(false)
-  const handleShowEditComm = () => setShowEditComm(true)
+  const [showEditComm, setShowEditComm] = useState(false);
+  const handleCloseEditComm = () => setShowEditComm(false);
+  const handleShowEditComm = () => setShowEditComm(true);
   // MODAL EDIT COMM
 
-  const dispatch = useDispatch()
-  const post = useSelector((state) => state.posts)
-  console.log(post)
-  const comm = useSelector((state) => state.comm)
-  const me = useSelector((state) => state.contentUsers)
+  const dispatch = useDispatch();
+  const post = useSelector((state) => state.posts);
+  console.log(post);
+  const comm = useSelector((state) => state.comm);
+  const me = useSelector((state) => state.contentUsers);
 
   const [newComment, setNewComment] = useState({
     comment: "",
     rate: "",
     elementId: "",
-  })
-  const [image, setImage] = useState(null)
-  const [formData, setformData] = useState(new FormData())
+  });
+  const [image, setImage] = useState(null);
+  const [formData, setformData] = useState(new FormData());
 
-  const [text, setText] = useState(post.text)
+  const [text, setText] = useState(post.text);
   const handleSave = (newText) => {
-    setText(newText)
-  }
+    setText(newText);
+  };
 
-  const [selectedPostId, setSelectedPostId] = useState(null)
+  const [selectedPostId, setSelectedPostId] = useState(null);
   // const [id, setId] = useState("")
 
   useEffect(() => {
-    dispatch(fetchPosts())
-    dispatch(fetchUser("me"))
-  }, [])
+    dispatch(fetchPosts());
+    dispatch(fetchUser("me"));
+  }, []);
 
   useEffect(() => {
-    dispatch(fetchComm(selectedPostId))
-  }, [selectedPostId])
+    dispatch(fetchComm(selectedPostId));
+  }, [selectedPostId]);
 
-  console.log(post)
-  console.log(comm)
-  console.log(newComment)
+  console.log(post);
+  console.log(comm);
+  console.log(newComment);
 
   // POSTA I COMMENTS>>>>>>>
   const postComm = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments",
@@ -73,17 +81,17 @@ function NewsFeed() {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (res.ok) {
         // const data = await res.json();
-        alert("comment was send to the shadow realm!")
+        alert("comment was send to the shadow realm!");
       } else {
-        console.log("Badoglio!")
+        console.log("Badoglio!");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   // <<<<<<<POSTA I COMMENTS
 
   // DELETE COMMENTS>>>>
@@ -97,28 +105,26 @@ function NewsFeed() {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (response.ok) {
-        alert("comment was deleted!")
+        alert("comment was deleted!");
       } else {
-        console.log("error")
-        alert("Something went wrong. Be sure to check if the post is yours.")
+        console.log("error");
+        alert("Something went wrong. Be sure to check if the post is yours.");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   // <<<<<<<DELETE COMMENTS
-
-
 
   // Fetch per aggiungere un'immagine ad un nostro post già creato precedentemente.
   const handleImageUpload = async (postId) => {
     try {
       // setId(id)
 
-      formData.append("post", image)
+      formData.append("post", image);
 
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
@@ -129,18 +135,18 @@ function NewsFeed() {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (response.ok) {
-        alert("Image uploaded!")
-        setImage(null)
+        alert("Image uploaded!");
+        setImage(null);
       } else {
-        console.log("error")
-        alert("Something went wrong. Please try again.")
+        console.log("error");
+        alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   // PUT DEI COMMENTS
   const postCommEdit = async (commId) => {
@@ -157,19 +163,19 @@ function NewsFeed() {
             text: newComment.comment,
           }),
         }
-      )
+      );
 
       if (response.ok) {
-        alert("Post edited correctly!")
+        alert("Post edited correctly!");
       }
 
-      const updatedPost = await response.json()
-      return updatedPost
+      const updatedPost = await response.json();
+      return updatedPost;
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error:", error);
     }
     // PUT DEI COMMENTS
-  }
+  };
 
   // Fetch per eliminare un nostro post già creato precedentemente.
   const deletePost = async (postId) => {
@@ -182,35 +188,34 @@ function NewsFeed() {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (response.ok) {
-        dispatch(fetchPosts())
-
+        dispatch(fetchPosts());
       } else {
-        console.log("error")
-        alert("Something went wrong. Be sure to check if the post is yours.")
+        console.log("error");
+        alert("Something went wrong. Be sure to check if the post is yours.");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   // Fetch per eliminare un nostro post già creato precedentemente.
 
   // PAGINATION
 
-  const [showed, setShowed] = useState(5)
+  const [showed, setShowed] = useState(5);
 
   //funzione per mostrare i post successivi
   const showMore = () => {
-    setShowed((prevValue) => prevValue + 5)
-  }
+    setShowed((prevValue) => prevValue + 5);
+  };
 
   // funzione per mostrare meno post
   const showLess = () => {
     if (showed !== 5) {
-      setShowed((prevValue) => prevValue - 5)
+      setShowed((prevValue) => prevValue - 5);
     }
-  }
+  };
 
   return (
     <div>
@@ -444,7 +449,7 @@ function NewsFeed() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default NewsFeed
+export default NewsFeed;
