@@ -12,9 +12,3 @@
   font-weight: bold;
   padding: 5px;
 }
-
-.icon-experiences:hover {
-  border-radius: 50%;
-  background-color: #ebebeb;
-  cursor: pointer;
-}

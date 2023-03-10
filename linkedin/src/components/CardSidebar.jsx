@@ -10,7 +10,12 @@ const CardSidebar = ({ users }) => {
       {users.map((user) => (
         <Row key={user._id} className="d-flex flex-row align-items-center px-2">
           <Card className="cardImgsideBar d-flex flex-row mt-1">
-            <Card.Img variant="top" src={user.image} alt="foto" className="fotoTonde align-self-start" />
+            <Card.Img
+              variant="top"
+              src={user.image}
+              alt="foto"
+              className="fotoTonde align-self-start"
+            />
             <Card.Body className="flex-column">
               <Card.Title className="ms-5">
                 <Link to={`/profile/${user._id}`} className="link-sidebar">
