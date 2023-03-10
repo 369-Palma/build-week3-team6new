@@ -20,9 +20,7 @@ const ExpSolo = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" +
-        "63fc7944f193e60013807f5e/" +
-        "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc7944f193e60013807f5e/" + "experiences",
         {
           method: "POST",
           body: JSON.stringify(),
@@ -53,11 +51,11 @@ const ExpSolo = () => {
     <>
       <Modal size="lg" show={lgPutExp} onHide={() => setPutExp(false)} aria-labelledby="example-modal-sizes-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title>Add Exp</Modal.Title>
+          <Modal.Title>Add one experience to your profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={putExpfetch}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Label>Role*</Form.Label>
               <Form.Control
                 type="text"
@@ -72,7 +70,7 @@ const ExpSolo = () => {
                 }
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Label>Company*</Form.Label>
               <Form.Control
                 type="text"
@@ -86,8 +84,8 @@ const ExpSolo = () => {
                 }
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Description</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Description*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="description"
@@ -101,7 +99,7 @@ const ExpSolo = () => {
               />
             </Form.Group>
             <h4>Posizione attuale</h4>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3">
               <Form.Label>Area*</Form.Label>
               <Form.Control
                 type="text"
@@ -116,8 +114,8 @@ const ExpSolo = () => {
               />
             </Form.Group>
             <h4>Date</h4>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data Inizio </Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Data Inizio*</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="startDate"
@@ -130,8 +128,8 @@ const ExpSolo = () => {
                 }
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data Fine </Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Data Fine*</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="endDate"
@@ -153,10 +151,9 @@ const ExpSolo = () => {
       </Modal>
       <Container>
         {experiences.map((exp, index) => (
-          <Row key={exp._id} className={`d-flex text-start ${index % 2 === 0 ? "bg-light" : "bg-secondary"} p-3 my-3`}>
+          <Row key={exp._id} className={`d-flex text-start ${index % 2 === 0 ? "bg-light" : "bg-white"} p-3 my-3`}>
             <Col>
-              <h1>{exp._id} </h1>
-              <h4>{exp.role}</h4>
+              <h1>{exp.role}</h1>
               <h4>{exp.company}</h4>
               <p>{exp.description}</p>
               <p>{exp.startDate}</p>
@@ -165,9 +162,6 @@ const ExpSolo = () => {
             <Col>
               <Button variant="danger" onClick={() => dispatch(deleteExp(exp._id))}>
                 Delete
-              </Button>
-              <Button variant="primary" onClick={() => handlePutExp()}>
-                Modify
               </Button>
             </Col>
           </Row>

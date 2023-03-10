@@ -1,13 +1,5 @@
 import React from "react";
-
-import {
-  Row,
-  Nav,
-  Navbar,
-  Container,
-  Form,
-  FormControl
-} from "react-bootstrap";
+import { Row, Nav, Navbar, Container, Form, FormControl } from "react-bootstrap";
 import ModalNav from "../components/ModalProfileNav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {
@@ -54,85 +46,88 @@ const CustomNavbar = () => {
           </div>
         </div>
         <div>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Link to="/" className="nav-icon LinkModale">
-                <Row className="d-flex flex-column me-3">
-                  <Col className="ml-3 nav-link">
-                    <BsHouseDoorFill className="nav-icon" size="22" />
-                  </Col>
-                  <Col>
-                    <p> Home </p>
-                  </Col>
-                </Row>
-              </Link>
-
-              <Link to="#" className="nav-icon LinkModale">
-                <Row className="d-flex flex-column me-3">
-                  <Col className="ml-3 nav-link">
-                    <BsFillPeopleFill className="nav-icon" size="22" />
-                  </Col>
-                  <Col>
-                    <p> Rete </p>
-                  </Col>
-                </Row>
-              </Link>
-
-              <Link to="#" className="nav-icon LinkModale">
-                <Row className="d-flex flex-column me-3">
-                  <Col className="ml-3 nav-link">
-                    <BsFillBriefcaseFill className="nav-icon" size="22" />
-                  </Col>
-                  <Col>
-                    <p> Lavoro </p>
-                  </Col>
-                </Row>
-              </Link>
-
-              <Link to="#" className="nav-icon LinkModale">
-                <Row className="d-flex flex-column me-3">
-                  <Col className="ml-3 nav-link">
-                    <BsFillChatDotsFill className="nav-icon" size="22" />
-                  </Col>
-                  <Col>
-                    <p> Messaggistica </p>
-                  </Col>
-                </Row>
-              </Link>
-
-              <Link to="#" className="nav-icon LinkModale">
-                <Row className="d-flex flex-column me-3">
-                  <Col className="ml-3 nav-link">
-                    <BsFillBellFill className="nav-icon" size="22" />
-                  </Col>
-                  <Col>
-                    <p> Notifiche </p>
-                  </Col>
-                </Row>
-              </Link>
-              <Row>
+          <Nav className="me-auto">
+            <Link to="/" className="nav-icon LinkModale">
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsHouseDoorFill className="nav-icon" size="22" />
+                </Col>
                 <Col>
-                  <div className="nav-link">
-                    <BsFillPersonFill className="nav-icon" size="22" />
-                    <NavDropdown title="Tu" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="#action/3.1">
-                        <ModalNav />
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </div>
+                  <p> Home </p>
                 </Col>
               </Row>
+            </Link>
+
+            <Link to="#" className="nav-icon LinkModale">
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsFillPeopleFill className="nav-icon" size="22" />
+                </Col>
+                <Col>
+                  <p> Rete </p>
+                </Col>
+              </Row>
+            </Link>
+
+            <Link to="#" className="nav-icon LinkModale">
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsFillBriefcaseFill className="nav-icon" size="22" />
+                </Col>
+                <Col>
+                  <p> Lavoro </p>
+                </Col>
+              </Row>
+            </Link>
+
+            <Link to="#" className="nav-icon LinkModale">
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsFillChatDotsFill className="nav-icon" size="22" />
+                </Col>
+                <Col>
+                  <p> Messaggistica </p>
+                </Col>
+              </Row>
+            </Link>
+
+            <Link to="#" className="nav-icon LinkModale">
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsFillBellFill className="nav-icon" size="22" />
+                </Col>
+                <Col>
+                  <p> Notifiche </p>
+                </Col>
+              </Row>
+            </Link>
+            <Row>
+              <Col>
+                <Link to="#" className="nav-icon LinkModale">
+                  <Row className="d-flex flex-column me-3">
+                    <Col className="ml-3 nav-link">
+                      <BsFillPersonFill className="nav-icon" size="22" />
+                      <NavDropdown title="Tu">
+                        <NavDropdown.Item>
+                          <ModalNav />
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </Col>
+                  </Row>
+                </Link>
+              </Col>
+            </Row>
+            <Link to="#" className="nav-icon LinkModale">
               <Row className="d-flex flex-column me-3">
                 <Col className="ml-3 nav-link">
                   <BsFillGrid3X3GapFill className="nav-icon" size="22" />
                 </Col>
-                <Col className="ps-4" >
+                <Col>
                   <p> Per le aziende </p>
                 </Col>
               </Row>
-            </Nav>
-          </Navbar.Collapse>
+            </Link>
+          </Nav>
         </div>
       </Container>
     </Navbar>

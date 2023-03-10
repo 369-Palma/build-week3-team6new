@@ -2,3 +2,19 @@
 - focus modale in alto subito  
 - stilare experiences cards su ExpSolo.jsx
 - centrare img epicode sul profilo*/
+
+.text-nowrap{
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 8px;
+}
+.addPropButt{
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 5px;
+
+}

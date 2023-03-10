@@ -8,15 +8,13 @@ const PeopleYouMightKnow = () => {
   const isLoading = useSelector((state) => state.isLoading);
 
   return (
-    <Container className="bg-white">
+    <Container className="bg-white rounded mt-3 pb-3">
       <Row className="d-flex flex-column">
         <Col>
           <h4 className="fw-bold mt-2">Persone che potresti conoscere</h4>
         </Col>
         <Col>
-          {isLoading && (
-            <Spinner animation="border" variant="primary" className="my-2" />
-          )}
+          {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
           {!isLoading && <CardSidebar users={users.slice(0, 5)} />}
         </Col>
       </Row>

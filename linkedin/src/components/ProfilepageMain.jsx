@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Informazioni from "./Informazioni";
 import UpdatePropic from "../components/UpdatePropic";
+import "./style/profile.css";
 
 const UserProfile = () => {
   // Modali
@@ -119,11 +120,17 @@ const UserProfile = () => {
                 580 follower - 951 collegamenti
               </p>
               <div className="d-flex justify-content-start w-100 mb-3">
-                <Button className="text-nowrap">Disponibile per</Button>
-                <Button variant="outline-primary" className="mx-3 text-nowrap">
+                <Button className="text-nowrap my-4">Disponibile per</Button>
+                <Button
+                  variant="outline-primary"
+                  className="mx-3 my-4 text-nowrap"
+                >
                   Aggiungi sezione profilo
                 </Button>
-                <Button variant="outline-secondary" className="text-nowrap">
+                <Button
+                  variant="outline-secondary"
+                  className="text-nowrap my-4"
+                >
                   Altro
                 </Button>
                 <div className="d-flex justify-content-start w-100 mb-3">
