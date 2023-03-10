@@ -1,5 +1,4 @@
-/* - cursor pointer sul tasto + (sulla pagina profilo)
-
-- focus modale in alto subito  
-- stilare experiences cards su ExpSolo.jsx
-- centrare img epicode sul profilo*/
+.icon-experiences:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+}
