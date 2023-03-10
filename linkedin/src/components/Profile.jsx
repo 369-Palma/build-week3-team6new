@@ -14,11 +14,15 @@ const Profile = () => {
           <Experiences />
         </Col>
       </Row>
-      <Col className="d-none d-lg-block col-md-4 ms-4">
-        <AziendeConsultate></AziendeConsultate>
-        <PeopleYouMightKnow></PeopleYouMightKnow>
-        <Row className="my-2"></Row>
-      </Col>
+
+      <Row className="d-none d-lg-block col-md-4 ms-4">
+        <Col>
+          <AziendeConsultate></AziendeConsultate>
+        </Col>
+        <Col>
+          <PeopleYouMightKnow></PeopleYouMightKnow>
+        </Col>
+      </Row>
     </Container>
   );
 };
