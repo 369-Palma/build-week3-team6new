@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Modal, Button, Col, Row, Container } from "react-bootstrap";
+import { Modal, Button, Col, Row, Container, Card } from "react-bootstrap";
 /* import { fetchUser } from "../redux/actions";
   import React, { useEffect } from "react";*/
 import { /* useDispatch,  */ useSelector } from "react-redux";
 import { Link /* , useParams */ } from "react-router-dom";
+import "./style/navbar.css"
+
 
 const ModalNav = () => {
   /* const dispatch = useDispatch(); */
@@ -24,20 +26,27 @@ const ModalNav = () => {
       <Modal.Dialog>
         <Row>
           <Container className="d-flex justify-content-around">
-            {/* <Col>
-              <img
-                className="img-fluid fotoUser"
-                src={profileStore.image}
-                alt="userimage"
-              />
-            </Col> */}
             <Col>
               <Modal.Header closeButton>
-                <Modal.Title>
-                  <h4 className="name mb-0">
-                    {profileStore.name} {profileStore.surname}
-                  </h4>
-                </Modal.Title>
+                <Row >
+                  <Col >
+                    <Card.Img
+                      /* variant="top" */
+                      src={profileStore?.image}
+                      alt="foto"
+                      className="fotoTonde"
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Modal.Title>
+                      <h4 className="name mb-0">
+                        {profileStore.name} {profileStore.surname}
+                      </h4>
+                    </Modal.Title>
+                  </Col>
+                </Row>
               </Modal.Header>
               <Modal.Body>
                 <p className="my-0 occupation">{profileStore.title}</p>
@@ -54,37 +63,69 @@ const ModalNav = () => {
           </Container>
         </Row>
 
-        <Modal.Footer className="d-flex flex-column flex-align-items-start">
+        <Modal.Footer >
           <Row>
-            <h4>Account</h4>
-            <Link to="#" className="LinkModale">
-              Impostazioni e privacy
-            </Link>
-            <Link to="#" className="LinkModale">
-              Guida
-            </Link>
-            <Link to="#" className="LinkModale">
-              Lingua
-            </Link>
+            <Row>
+              <Col>
+                <h4>Account</h4>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Impostazioni e privacy
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Guida
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Lingua
+                </Link>
+              </Col>
+            </Row>
           </Row>
 
-          <Row className="d-flex flex-column flex-align-items-start">
-            <h4>Gestisci</h4>
-            <Link to="#" className="LinkModale">
-              Post e attività
-            </Link>
-            <Link to="#" className="LinkModale">
-              Account per la pubb...
-            </Link>
+          <Row>
+            <Row>
+              <Col>
+                <h4>Gestisci</h4>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Post e attività
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Account per la pubb...
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link to="#" className="LinkModale">
+                  Esci
+                </Link>
+              </Col>
+            </Row>
           </Row>
-          <Row className="d-flex flex-column align-items-start">
-            <Link to="#" className="LinkModale">
-              Esci
-            </Link>
-          </Row>
+
+
         </Modal.Footer>
       </Modal.Dialog>
-    </div>
+    </div >
   );
 };
 

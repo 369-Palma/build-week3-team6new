@@ -36,7 +36,7 @@ const mainReducer = (state = initialState, action) => {
     case GET_EXP:
       return {
         ...state,
-        contentExp: [...state.content, ...action.payload],
+        contentExp: action.payload,
       };
     case GET_POSTS:
       return {

@@ -1,35 +1,73 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   FcClapperboard,
   FcPicture,
   FcPlanner,
   FcViewDetails,
-} from "react-icons/fc";
-import {
-  Form,
-  Card,
-  Modal,
-  Button,
-  Col,
-  Row,
-  Container,
-} from "react-bootstrap";
-import { useState } from "react";
+} from "react-icons/fc"
+import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap"
+import { useState, useEffect } from "react"
+import { fetchPosts, fetchUser } from "../redux/actions/index"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
 const StartAPost = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const [formData, setformData] = useState(new FormData())
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   const [newPost, setNewPost] = useState({
     text: "",
-  });
+  })
 
+  const dispatch = useDispatch()
+  const params = useParams()
+  const profileStore = useSelector((state) => state.contentUsers)
+
+  useEffect(() => {
+    dispatch(fetchUser(params.userId))
+  }, [])
+
+  console.log(profileStore)
+  const handleImageUpload = async (postId) => {
+    try {
+      // setId(id)
+
+
+      let response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
+        }
+      )
+      if (response.ok) {
+        alert("Image uploaded!")
+      } else {
+        console.log("error")
+        alert("Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleImageChange = (ev) => {
+    setformData((prev) => {
+      prev.delete("post")
+      prev.append("post", ev.target.files[0])
+      return prev
+    })
+  }
+  // PUT DEI COMMENTS
   const createNewPost = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const newPostToSend = {
       ...newPost,
-    };
+    }
 
     try {
       let response = await fetch(
@@ -42,32 +80,47 @@ const StartAPost = () => {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      );
+      )
       if (response.ok) {
-        const newPostJson = await response.json();
-        console.log(newPostJson);
-        setNewPost(newPostJson);
-        alert("Post was sent!");
+        const newPostJson = await response.json()
+        console.log(newPostJson)
+        setNewPost(newPostJson)
+        await handleImageUpload(newPostJson._id)
+        dispatch(fetchPosts())
+
+        alert("Post was sent!")
       } else {
-        console.log("error");
-        alert("something went wrong");
+        console.log("error")
+        alert("something went wrong")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <>
       <Card>
         <Card.Body>
-          <Form className="my-4 ">
-            <Form.Control
-              type="search"
-              placeholder="Scrivi un post..."
-              onClick={handleShow}
-            />
-          </Form>
+          <Row className="d-flex">
+            <Col xs={2}>
+              <Card.Img
+                /* variant="top" */
+                src={profileStore?.image}
+                alt="foto"
+                className="fotoTonde"
+              />
+            </Col>
+            <Col xs={10}>
+              <Form className="my-4 ">
+                <Form.Control
+                  type="search"
+                  placeholder="Scrivi un post..."
+                  onClick={handleShow}
+                />
+              </Form>
+            </Col>
+          </Row>
         </Card.Body>
         <Row className="text-muted justify-content-center flex-nowrap">
           <Col
@@ -141,6 +194,7 @@ const StartAPost = () => {
                       })
                     }
                   />
+                  <input type="file" onChange={handleImageChange} />
                 </Form.Group>
                 <div className="d-flex">
                   {/* Pulsante per pubblicare il post */}
@@ -162,7 +216,7 @@ const StartAPost = () => {
         </Button>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default StartAPost;
+export default StartAPost

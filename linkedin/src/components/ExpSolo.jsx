@@ -16,35 +16,13 @@ const ExpSolo = () => {
   const experiences = useSelector((state) => state.contentExp);
   const dispatch = useDispatch();
 
-  // const deleteExp = async (expId) => {
-  //     try {
-  //         const res = await fetch(
-  //             `https://striveschool-api.herokuapp.com/api/profile/63fc702df193e60013807f5a/experiences/${expId}`,
-  //             {
-  //                 method: "DELETE",
-  //                 headers: {
-  //                     Accept: "application/json",
-  //                     "Content-Type": "application/json",
-  //                     Authorization:
-  //                         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNzAyZGYxOTNlNjAwMTM4MDdmNWEiLCJpYXQiOjE2Nzc0ODgxNzMsImV4cCI6MTY3ODY5Nzc3M30.v4RvPvwPrNqMf1jT8g6IRxX0XpB361UjIv66UzPhULY",
-  //                 },
-  //             }
-  //         );
-  //         if (res.ok) {
-  //             // do something
-  //         } else {
-  //             console.log("Badoglio!");
-  //         }
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  // };
-
   const putExpfetch = async (e) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc8596f193e60013807f64/" + "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+        "63fc7944f193e60013807f5e/" +
+        "experiences",
         {
           method: "POST",
           body: JSON.stringify(),

@@ -12,10 +12,9 @@ const AziendeConsultate = () => {
 
   useEffect(() => {
     dispatch(fetchProfiles(""));
-  }, [dispatch]);
+  }, []);
 
   // Randomizza gli utenti solo quando la lista cambia
-  const shuffledUsers = useMemo(() => users.sort(() => Math.random() - 0.5), [users]);
 
   return (
     <Container>
@@ -25,7 +24,7 @@ const AziendeConsultate = () => {
       <Row className="my-4">
         <div className="d-flex align-items-center">
           {isLoading && <Spinner animation="border" variant="primary" className="mx-auto me-3" />}
-          {!isLoading && <CardSidebar users={shuffledUsers} />}
+          {!isLoading && <CardSidebar users={users.slice(5,10)} />}
         </div>
       </Row>
     </Container>
