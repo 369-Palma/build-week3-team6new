@@ -12,7 +12,7 @@ import {
   Row,
 } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
-import { BiCommentDetail, BiShare } from "react-icons/bi";
+import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import { fetchComm } from "../redux/actions";
 
@@ -267,7 +267,6 @@ function NewsFeed() {
                   </div>
                 </Col>
                 {post?.user?._id === me._id && (
-                  // Hardcodato con l'user._id di Giacomo, cambiare!
                   <>
                     <PostEditModal post={post} onSave={handleSave} />
 
@@ -287,22 +286,33 @@ function NewsFeed() {
                 )}
               </Row>
               <Row>
+                {/* Card commenti */}
                 {selectedPostId === post._id && (
                   <Card className="mt-3">
                     <Card.Body>
                       {comm.map((com) => (
-                        <div key={com._id} className="mb-2">
-                          <p className="mb-0">{com.comment}</p>
-                          <small className="text-muted">{com.author}</small>
-
-                          <Button onClick={handleShowEditComm}>Edit</Button>
-                          <Button
-                            onClick={() => deleteComm(com._id)}
-                            variant="danger"
-                          >
-                            Delete
-                          </Button>
-
+                        <Row
+                          key={com._id}
+                          className="mb-2 d-flex flex-column my-4"
+                        >
+                          <Col xs={8}>
+                            <small className="text-muted">{com.author}</small>
+                          </Col>
+                          <Row className="d-flex">
+                            <Col>
+                              <p className="mb-0">{com.comment}</p>
+                            </Col>
+                            <Col xs={4} className="d-flex align-items-center ">
+                              <BiEdit onClick={handleShowEditComm} />
+                              <div
+                                className="text-danger me-3 w-100"
+                                style={{ cursor: "pointer" }}
+                                onClick={() => deleteComm(com._id)}
+                              >
+                                <FaTimes className="me-3 w-100" />
+                              </div>
+                            </Col>
+                          </Row>
                           {/* MODAL FOR EDIT COMMENT */}
                           <Modal
                             show={showEditComm}
@@ -364,7 +374,7 @@ function NewsFeed() {
                             </Button>
                           </Modal>
                           {/* MODAL FOR EDIT COMMENT */}
-                        </div>
+                        </Row>
                       ))}
                     </Card.Body>
                     <Button onClick={handleShowComm}>Add Comment</Button>
