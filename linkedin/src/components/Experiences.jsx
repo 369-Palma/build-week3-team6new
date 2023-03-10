@@ -189,13 +189,13 @@ const Experiences = () => {
                 </div>
                 <div className="d-flex align-items-center me-3">
                   <HiPlus
-                    className="fs-2 p-1 cursor-pointer"
+                    className="fs-2 p-1 cursor-pointer icon-experiences"
                     onClick={handleShowExp}
                     style={{ cursor: "pointer" }}
                   />
 
                   <Link to="/profile/:user.id/:expId">
-                    <HiOutlinePencil className="fs-3 p-1 text-dark" />
+                    <HiOutlinePencil className="fs-5 m-2 text-dark icon-experiences" />
                   </Link>
                 </div>
               </div>
