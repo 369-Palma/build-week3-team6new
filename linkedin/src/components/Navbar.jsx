@@ -111,23 +111,26 @@ const CustomNavbar = () => {
                   </Col>
                 </Row>
               </Link>
-
-              <div className="ml-3 nav-link">
-                <BsFillPersonFill className="nav-icon" size="22" />
-                <NavDropdown title="Tu" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    <ModalNav />
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </div>
-              <div className="ml-3 nav-link">
-                <BsFillGrid3X3GapFill className="nav-icon" size="22" />
-                <NavDropdown title="Lavoro" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    <ModalNav></ModalNav>
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </div>
+              <Row>
+                <Col>
+                  <div className="nav-link">
+                    <BsFillPersonFill className="nav-icon" size="22" />
+                    <NavDropdown title="Tu" id="basic-nav-dropdown">
+                      <NavDropdown.Item href="#action/3.1">
+                        <ModalNav />
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="d-flex flex-column me-3">
+                <Col className="ml-3 nav-link">
+                  <BsFillGrid3X3GapFill className="nav-icon" size="22" />
+                </Col>
+                <Col className="ps-4" >
+                  <p> Per le aziende </p>
+                </Col>
+              </Row>
             </Nav>
           </Navbar.Collapse>
         </div>
