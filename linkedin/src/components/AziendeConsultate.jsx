@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Row, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import CardSidebar from "./CardSidebar";
 import { useEffect } from "react";
 import { fetchProfiles } from "../redux/actions/index";
@@ -15,12 +15,18 @@ const AziendeConsultate = () => {
   }, []);
 
   return (
-    <Container>
-      <Row>
-        <h4 className="fw-bold mt-2">Altre aziende consultate</h4>
+    <Container className="bg-white">
+      <Row className="d-flex flex-column">
+        <Col>
+          <h4 className="fw-bold mt-2">Altre aziende consultate</h4>
+        </Col>
+        <Col>
+          {isLoading && (
+            <Spinner animation="border" variant="primary" className="my-2" />
+          )}
+          {!isLoading && <CardSidebar users={users.slice(5, 10)} />}
+        </Col>
       </Row>
-      {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
-      {!isLoading && <CardSidebar users={users.slice(5, 10)} />}
     </Container>
   );
 };
