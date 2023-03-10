@@ -1,40 +1,15 @@
-/* .fotoUser {
-  position: absolute;
-  top: 200px;
-  left: 50px;
-  
-} */
-
-/* html {
-  width: 100vw;
-  height: 100vh;
-} */
-
 body {
   overflow-x: hidden;
   /* Hide horizontal scrollbar */
 }
 
-.bottoniBlu {
-  border: 1.5px solid blue;
-  background-color: white;
-  color: blue;
-  padding: 0, auto;
-}
-
-.bottoniBlu:hover {
-  border: 2px solid blue;
-}
-
 .LinkModale {
   text-decoration: none;
   color: black;
-  cursor: pointer;
 }
 
 .LinkModale:hover {
   text-decoration: underline;
-  color: black;
 }
 
 .fotoUser {
@@ -72,7 +47,6 @@ body {
 .App {
   text-align: center;
   background-color: #f3f2ef;
-  /*AGGIUNTO */
 }
 
 .App-logo {
@@ -120,26 +94,6 @@ body {
 #navbar-logo {
   height: 34px;
   width: 34px;
-}
-
-.navbar-right-section {
-  border-left: 1px solid #d1d1d1;
-  padding-left: 20px;
-}
-
-#form-control-search-form-control {
-  border: none;
-  border-radius: 0;
-  font-size: 0.9rem;
-  background-color: #eef3f8;
-}
-
-#navbar-search-container {
-  background-color: #eef3f8;
-}
-
-#navbar-search-icon {
-  color: #666666;
 }
 
 .navbar-icon-container {
@@ -236,10 +190,6 @@ h5 {
 
 #footer .drop-menu:hover {
   text-decoration: none;
-}
-
-#buttonModal-profile:hover {
-  background-color: #ebebeb;
 }
 
 /*****MODAL BODY******/

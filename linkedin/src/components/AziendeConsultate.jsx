@@ -15,15 +15,13 @@ const AziendeConsultate = () => {
   }, []);
 
   return (
-    <Container className="bg-white">
+    <Container className="bg-white rounded pb-3">
       <Row className="d-flex flex-column">
         <Col>
           <h4 className="fw-bold mt-2">Altre aziende consultate</h4>
         </Col>
         <Col>
-          {isLoading && (
-            <Spinner animation="border" variant="primary" className="my-2" />
-          )}
+          {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
           {!isLoading && <CardSidebar users={users.slice(5, 10)} />}
         </Col>
       </Row>

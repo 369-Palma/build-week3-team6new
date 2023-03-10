@@ -1,5 +1,12 @@
 /* - togliere dropdown lavoro
 - drop-down profilo (propic da ridimensionare) */
 .modal-footer {
-    justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: none;
+  --bs-dropdown-link-active-color: none;
+  --bs-dropdown-link-active-bg: none;
+  --bs-dropdown-link-disabled-color: none;
 }
