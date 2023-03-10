@@ -9,12 +9,10 @@ const PeopleYouMightKnow = () => {
   const users = useSelector((state) => state.content);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.isLoading);
-  useEffect(() => {
-    dispatch(fetchProfiles(""));
-  }, []);
+
 
   // Randomizza gli utenti
-  const shuffledUsers = users.sort(() => Math.random() - 0.5);
+
 
   return (
     <Container>
@@ -23,7 +21,7 @@ const PeopleYouMightKnow = () => {
       </Row>
       {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
       <Row className="py-2">
-        <CardSidebar users={shuffledUsers} />
+        <CardSidebar users={users.slice(0,5)} />
       </Row>
     </Container>
   );

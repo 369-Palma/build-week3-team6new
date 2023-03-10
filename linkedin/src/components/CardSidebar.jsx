@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const CardSidebar = () => {
-  const users = useSelector((state) => state.content.slice(0, 5));
+const CardSidebar = ({users}) => {
 
   console.log(users);
   return (
@@ -15,7 +14,9 @@ const CardSidebar = () => {
             <Card.Img variant="top" src={user.image} alt="foto" className="fotoTonde" />
             <Card.Body>
               <Card.Title>
+                <Link to={`/profile/${user._id}`}>
                 {user.name} {user.surname}
+                </Link>
                 <span className="text-muted fs-6 ms-1">• 3°+</span>
               </Card.Title>
               <Card.Text>{user.title}</Card.Text>

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { fetchPosts } from "../redux/actions/index";
+import { fetchPosts, fetchUser } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Card, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { FiThumbsUp } from "react-icons/fi";
@@ -44,7 +44,8 @@ function NewsFeed() {
   // const [id, setId] = useState("")
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts())
+    dispatch(fetchUser("me"))
   }, []);
 
   useEffect(() => {

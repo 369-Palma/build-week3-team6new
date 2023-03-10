@@ -38,7 +38,7 @@ const UserProfile = () => {
   // Dispatch per ottenere info utenti e del profilo
   useEffect(() => {
     dispatch(fetchUser(params.userId));
-  }, []);
+  }, [params.userId]);
 
   // Eventi onClick per gestire modifica di nome e cognome
   const handleNameChange = (event) => {

@@ -32,7 +32,7 @@ const StartAPost = () => {
 
   useEffect(() => {
     dispatch(fetchUser(params.userId));
-  }, [profileStore]);
+  }, []);
 
   console.log(profileStore);
   const createNewPost = async (e) => {

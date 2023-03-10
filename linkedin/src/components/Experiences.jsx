@@ -6,7 +6,7 @@ import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 // import { BsFillInfoSquareFill } from "react-icons/bs";
 import { Row, Button, Modal, Form, Card, Col } from "react-bootstrap";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Experiences = () => {
@@ -18,13 +18,14 @@ const Experiences = () => {
     description: "",
     area: "",
   });
+  const params = useParams()
   ///fetch
   const dispatch = useDispatch();
   const experiences = useSelector((state) => state.contentExp);
-
+  const personaLoggata = useSelector(state => state.contentUsers)
   useEffect(() => {
-    dispatch(fetchExp("experiences"));
-  }, []);
+   if(personaLoggata._id) dispatch(fetchExp(params.userId == "me" ? personaLoggata._id : params.userId ));
+  }, [personaLoggata._id]);
 
   ///fetch
 
