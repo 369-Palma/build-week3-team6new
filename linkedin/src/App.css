@@ -11,7 +11,8 @@
 } */
 
 body {
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
 }
 
 .bottoniBlu {
@@ -53,6 +54,13 @@ body {
   align-items: flex-start;
 }
 
+.fotoTondeProf {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  top: 10px;
+}
+
 .fotoTonde {
   border-radius: 50%;
   width: 70px;
@@ -60,9 +68,11 @@ body {
   position: absolute;
   top: 10px;
 }
+
 .App {
   text-align: center;
-  background-color: #f3f2ef; /*AGGIUNTO */
+  background-color: #f3f2ef;
+  /*AGGIUNTO */
 }
 
 .App-logo {
@@ -95,6 +105,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -105,26 +116,32 @@ body {
   font-size: 0.8rem;
   border-bottom: #d1d1d1;
 }
+
 #navbar-logo {
   height: 34px;
   width: 34px;
 }
+
 .navbar-right-section {
   border-left: 1px solid #d1d1d1;
   padding-left: 20px;
 }
+
 #form-control-search-form-control {
   border: none;
   border-radius: 0;
   font-size: 0.9rem;
   background-color: #eef3f8;
 }
+
 #navbar-search-container {
   background-color: #eef3f8;
 }
+
 #navbar-search-icon {
   color: #666666;
 }
+
 .navbar-icon-container {
   display: flex;
   flex-direction: column;
@@ -132,6 +149,7 @@ body {
   align-items: center;
   margin-right: 22px;
 }
+
 .navbar-icon-container:hover {
   color: black;
   cursor: pointer;
@@ -145,15 +163,19 @@ body {
 h5 {
   font-size: 1rem;
 }
+
 #basic-navbar-nav {
   cursor: pointer;
 }
+
 .nav-link:hover {
   color: black;
 }
+
 .nav-icons:hover {
   color: black;
 }
+
 #footer {
   height: 200px;
   width: 100%;
@@ -162,6 +184,7 @@ h5 {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+
 #footer ul {
   list-style: none;
   padding-left: 0px;
@@ -192,6 +215,7 @@ h5 {
 #footer form {
   width: 220px;
 }
+
 #dropdown-basic {
   font-size: 0.7rem;
   background-color: #f2f2f2;
@@ -200,13 +224,16 @@ h5 {
   border: none;
   padding-left: 0px;
 }
+
 #dropdown-basic:hover {
   text-decoration: underline;
   color: #0a66c2;
 }
+
 #footer .drop-menu {
   color: black;
 }
+
 #footer .drop-menu:hover {
   text-decoration: none;
 }
