@@ -77,8 +77,8 @@ const UserProfile = () => {
       <Card>
         <Container>
           {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
-          <Row className="p-background">
-            <img src="https://www.e26.it/wp-content/uploads/2018/07/fb-luglio-2018.png" alt="" />
+          <Row className="p-background mt-1">
+            <img src="https://i.postimg.cc/g2y3NY9M/ghandi.png" alt="ghandi-mio-padre" />
           </Row>
           <div className="profile ml-1">
             <img className="img-fluid fotoUser" src={profileStore.image} alt="userimage" />
