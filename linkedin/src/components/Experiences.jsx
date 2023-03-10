@@ -24,7 +24,7 @@ const Experiences = () => {
   const experiences = useSelector((state) => state.contentExp);
   const personaLoggata = useSelector(state => state.contentUsers)
   useEffect(() => {
-   if(personaLoggata._id) dispatch(fetchExp(params.userId == "me" ? personaLoggata._id : params.userId ));
+    if (personaLoggata._id) dispatch(fetchExp(params.userId === "me" ? personaLoggata._id : params.userId));
   }, [personaLoggata._id]);
 
   ///fetch
@@ -34,7 +34,9 @@ const Experiences = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc7944f193e60013807f5e/" + "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+        "63fc7944f193e60013807f5e/" +
+        "experiences",
         {
           method: "POST",
           body: JSON.stringify(exp),
