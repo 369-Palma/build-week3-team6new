@@ -8,7 +8,7 @@ import { Row, Button, Modal, Form, Card, Col } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
-
+import "./style/profile.css";
 const Experiences = () => {
   const [exp, setExp] = useState({
     role: "",
@@ -18,13 +18,16 @@ const Experiences = () => {
     description: "",
     area: "",
   });
-  const params = useParams()
+  const params = useParams();
   ///fetch
   const dispatch = useDispatch();
   const experiences = useSelector((state) => state.contentExp);
-  const personaLoggata = useSelector(state => state.contentUsers)
+  const personaLoggata = useSelector((state) => state.contentUsers);
   useEffect(() => {
-   if(personaLoggata._id) dispatch(fetchExp(params.userId == "me" ? personaLoggata._id : params.userId ));
+    if (personaLoggata._id)
+      dispatch(
+        fetchExp(params.userId == "me" ? personaLoggata._id : params.userId)
+      );
   }, [personaLoggata._id]);
 
   ///fetch
@@ -34,7 +37,9 @@ const Experiences = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + "63fc7944f193e60013807f5e/" + "experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/" +
+          "63fc7944f193e60013807f5e/" +
+          "experiences",
         {
           method: "POST",
           body: JSON.stringify(exp),
@@ -67,11 +72,12 @@ const Experiences = () => {
         size="lg"
         show={lgShowExp}
         onHide={() => setLgShowExp(false)}
-        aria-labelledby="example-modal-sizes-title-lg">
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Exp</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="display-block ">
           <Form onSubmit={postExp}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Role*</Form.Label>
@@ -174,26 +180,31 @@ const Experiences = () => {
       </Modal>
 
       <div>
-        <div className="d-flex justify-content-between">
-          <div>
-            <h3>Esperienze</h3>
-          </div>
-          <div>
-            <HiPlus className="fs-3 p-1" onClick={handleShowExp} />
-
-            <Link to="/profile/:user.id/:expId">
-              <HiOutlinePencil className="fs-4 p-1 text-dark" />
-            </Link>
-          </div>
-        </div>
-
         <Row>
-          {experiences.map((exp) => (
-            <Col key={exp._id} md={6} lg={4} className="mb-4">
-              <Card>
-                <Card.Body>
+          <Col key={exp._id} col={12} className="mb-4">
+            <Card className="border-1 border-light">
+              <div className="d-flex justify-content-between ">
+                <div>
+                  <h4 className="m-3 my-4">Esperienze</h4>
+                </div>
+                <div className="d-flex align-items-center me-3">
+                  <HiPlus
+                    className="fs-2 p-1 cursor-pointer"
+                    onClick={handleShowExp}
+                    style={{ cursor: "pointer" }}
+                  />
+
+                  <Link to="/profile/:user.id/:expId">
+                    <HiOutlinePencil className="fs-3 p-1 text-dark" />
+                  </Link>
+                </div>
+              </div>
+              {experiences.map((exp) => (
+                <Card.Body className="text-start p-0 px-3">
                   <Card.Title>{exp.role}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">{exp.company}</Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {exp.company}
+                  </Card.Subtitle>
                   <Card.Text>{exp.description}</Card.Text>
                   <Card.Text>
                     <small>{exp.startDate}</small>
@@ -201,10 +212,11 @@ const Experiences = () => {
                   <Card.Text>
                     <small>{exp.area}</small>
                   </Card.Text>
+                  <hr />
                 </Card.Body>
-              </Card>
-            </Col>
-          ))}
+              ))}
+            </Card>
+          </Col>
         </Row>
         {/*  */}
       </div>
