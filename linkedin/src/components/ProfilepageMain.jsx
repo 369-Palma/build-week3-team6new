@@ -1,5 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Col, Card, Row, Button, Form, Modal, Spinner } from "react-bootstrap";
+import {
+  Container,
+  Col,
+  Card,
+  Row,
+  Button,
+  Form,
+  Modal,
+  Spinner,
+} from "react-bootstrap";
 import { HiPlus, HiOutlinePencil } from "react-icons/hi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { fetchUser } from "../redux/actions/index";
@@ -9,6 +18,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Informazioni from "./Informazioni";
 import UpdatePropic from "../components/UpdatePropic";
+import "./style/profile.css";
 
 const UserProfile = () => {
   // Modali
@@ -76,12 +86,21 @@ const UserProfile = () => {
       {/* Profile section */}
       <Card>
         <Container>
-          {isLoading && <Spinner animation="border" variant="primary" className="my-2" />}
+          {isLoading && (
+            <Spinner animation="border" variant="primary" className="my-2" />
+          )}
           <Row className="p-background mt-1">
-            <img src="https://i.postimg.cc/g2y3NY9M/ghandi.png" alt="ghandi-mio-padre" />
+            <img
+              src="https://i.postimg.cc/g2y3NY9M/ghandi.png"
+              alt="ghandi-mio-padre"
+            />
           </Row>
           <div className="profile ml-1">
-            <img className="img-fluid fotoUser" src={profileStore.image} alt="userimage" />
+            <img
+              className="img-fluid fotoUser"
+              src={profileStore.image}
+              alt="userimage"
+            />
           </div>
           <Row>
             <Col className="userdetail" xs={12} md={8}>
@@ -90,16 +109,28 @@ const UserProfile = () => {
               </h4>
               <p className="my-0 occupation">{profileStore.title}</p>
               <div className="d-flex align-items-center">
-                <p className="my-0 me-1 location text-muted ">{profileStore.area} • </p>
-                <span className="fw-bold text-primary ">Informazioni di contatto</span>
+                <p className="my-0 me-1 location text-muted ">
+                  {profileStore.area} •{" "}
+                </p>
+                <span className="fw-bold text-primary ">
+                  Informazioni di contatto
+                </span>
               </div>
-              <p className="my-2 connections">580 follower - 951 collegamenti</p>
+              <p className="my-2 connections">
+                580 follower - 951 collegamenti
+              </p>
               <div className="d-flex justify-content-start w-100 mb-3">
-                <Button className="text-nowrap">Disponibile per</Button>
-                <Button variant="outline-primary" className="mx-3 text-nowrap">
+                <Button className="text-nowrap my-4">Disponibile per</Button>
+                <Button
+                  variant="outline-primary"
+                  className="mx-3 my-4 text-nowrap"
+                >
                   Aggiungi sezione profilo
                 </Button>
-                <Button variant="outline-secondary" className="text-nowrap">
+                <Button
+                  variant="outline-secondary"
+                  className="text-nowrap my-4"
+                >
                   Altro
                 </Button>
                 <div className="d-flex justify-content-start w-100 mb-3">
@@ -108,7 +139,11 @@ const UserProfile = () => {
               </div>
             </Col>
             <Col className="d-flex flex-column-reverse justify-content-end">
-              <Col xs={12} md={4} className="d-flex justify-content-between h-auto">
+              <Col
+                xs={12}
+                md={4}
+                className="d-flex justify-content-between h-auto"
+              >
                 <img
                   src="https://reteinformaticalavoro.it/images/company/6013edb782d88_300_300.png"
                   alt=""
@@ -121,7 +156,8 @@ const UserProfile = () => {
                 className="align-self-end m-3 rounded-circle"
                 variant="transparent"
                 onClick={handleShow}
-                id="buttonModal-profile">
+                id="buttonModal-profile"
+              >
                 <HiOutlinePencil className="fs-5" />
               </Button>
               {/* Modale per la modifica del profilo */}
@@ -129,18 +165,28 @@ const UserProfile = () => {
                 size="lg"
                 show={lgShow}
                 onHide={() => setLgShow(false)}
-                aria-labelledby="example-modal-sizes-title-lg">
+                aria-labelledby="example-modal-sizes-title-lg"
+              >
                 <Modal.Header closeButton>
                   <Modal.Title>Edit your profile info</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modal-body-profile">
-                  <p className="textColor-modal">* modificabili in questo modale (il resto è placeholder)</p>
+                  <p className="textColor-modal">
+                    * modificabili in questo modale (il resto è placeholder)
+                  </p>
                   <Form.Group className="mb-3">
                     <Form.Label className="textColor-modal">Nome *</Form.Label>
-                    <Form.Control type="text" autoFocus defaultValue={profileStore.name} onChange={handleNameChange} />
+                    <Form.Control
+                      type="text"
+                      autoFocus
+                      defaultValue={profileStore.name}
+                      onChange={handleNameChange}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label className="textColor-modal">Cognome *</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Cognome *
+                    </Form.Label>
                     <Form.Control
                       type="text"
                       autoFocus
@@ -149,26 +195,34 @@ const UserProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label className="textColor-modal">Nome aggiuntivo</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Nome aggiuntivo
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <p className="textColor-modal">Pronuncia del nome</p>
                   <p className="textColor-modal">
                     <BsFillInfoSquareFill className="me-2" />
-                    Può essere aggiunta solo usando la nostra app per dispositivi mobili
+                    Può essere aggiunta solo usando la nostra app per
+                    dispositivi mobili
                   </p>
                   <Form.Group className="mb-3">
-                    <Form.Label className="textColor-modal">Inserisci pronomi personalizzati</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Inserisci pronomi personalizzati
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                     <Form.Label className="textColor-modal">
-                      Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te
+                      Indica i pronomi di genere che vuoi che gli altri usino
+                      per riferirsi a te
                     </Form.Label>
                   </Form.Group>
                   <p className="textColor-modal">
                     Scopri di più sui <strong>pronomi di genere.</strong>
                   </p>
                   <Form.Group className="mb-3">
-                    <Form.Label className="textColor-modal">Sommario</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Sommario
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <h4>Posizione attuale</h4>
@@ -193,7 +247,9 @@ const UserProfile = () => {
                   </Link>
                   <h4>Località</h4>
                   <Form.Group className="mb-3">
-                    <Form.Label className="textColor-modal">Paese/Area geografica</Form.Label>
+                    <Form.Label className="textColor-modal">
+                      Paese/Area geografica
+                    </Form.Label>
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <Form.Group className="mb-3">
@@ -201,11 +257,20 @@ const UserProfile = () => {
                     <Form.Control type="text" autoFocus />
                   </Form.Group>
                   <h4>Informazioni di contatto</h4>
-                  <p>Aggiungi o modifica il tuo profilo URL, indirizzo email e altro</p>
-                  <Link className="text-decoration-none fs-6 fw-semibold">Modifica le informazioni di contatto</Link>
+                  <p>
+                    Aggiungi o modifica il tuo profilo URL, indirizzo email e
+                    altro
+                  </p>
+                  <Link className="text-decoration-none fs-6 fw-semibold">
+                    Modifica le informazioni di contatto
+                  </Link>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="primary" className="rounded-pill fw-semibold px-3" onClick={handleSave}>
+                  <Button
+                    variant="primary"
+                    className="rounded-pill fw-semibold px-3"
+                    onClick={handleSave}
+                  >
                     Salva
                   </Button>
                 </Modal.Footer>

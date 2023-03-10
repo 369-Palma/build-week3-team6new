@@ -1,27 +1,28 @@
-import React, { useState } from "react"
-import { Button, Modal } from "react-bootstrap"
-import { BiEdit } from "react-icons/bi"
-import { useDispatch } from "react-redux"
-import { fetchUser } from "../redux/actions"
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { BiEdit } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../redux/actions";
+import "./style/profile.css";
 
 function UpdatePropic({ userId }) {
-  const [showModal, setShowModal] = useState(false)
-  const [file, setFile] = useState(null)
-  const dispatch = useDispatch()
+  const [showModal, setShowModal] = useState(false);
+  const [file, setFile] = useState(null);
+  const dispatch = useDispatch();
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0])
-  }
+    setFile(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!file) {
-      return
+      return;
     }
 
-    const formData = new FormData()
-    formData.append("profile", file)
+    const formData = new FormData();
+    formData.append("profile", file);
 
     try {
       const response = await fetch(
@@ -33,24 +34,24 @@ function UpdatePropic({ userId }) {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
 
       if (response.ok) {
-        const data = await response.json()
-        dispatch(fetchUser("me"))
-        setShowModal(false)
+        const data = await response.json();
+        dispatch(fetchUser("me"));
+        setShowModal(false);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <>
       <Button
         onClick={() => setShowModal(true)}
         variant="outline-primary"
-        className="mx-3"
+        className="addPropButt mx-3 my-4"
       >
         <BiEdit className="me-2" />
         Aggiorna Propic
@@ -67,7 +68,7 @@ function UpdatePropic({ userId }) {
         </Modal.Body>
       </Modal>
     </>
-  )
+  );
 }
 
-export default UpdatePropic
+export default UpdatePropic;
