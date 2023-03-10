@@ -66,6 +66,7 @@ function NewsFeed() {
   console.log(newComment);
 
   // POSTA I COMMENTS>>>>>>>
+
   const postComm = async (e) => {
     e.preventDefault();
     try {
@@ -82,7 +83,6 @@ function NewsFeed() {
         }
       );
       if (res.ok) {
-        // const data = await res.json();
         alert("comment was send to the shadow realm!");
       } else {
         console.log("Badoglio!");
