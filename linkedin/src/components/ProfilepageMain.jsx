@@ -83,7 +83,7 @@ const UserProfile = () => {
   return (
     <>
       {/* Profile section */}
-      <Card className="mt-4">
+      <Card>
         <Container>
           {isLoading && (
             <Spinner animation="border" variant="primary" className="my-2" />

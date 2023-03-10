@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-4">
         <Row className="d-flex justify-content-center">
           <Col xs={3} className="order-1 mt-2">
             <HomeLeftSidebar />

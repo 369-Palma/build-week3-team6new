@@ -7,7 +7,7 @@ import Experiences from "./Experiences";
 
 const Profile = () => {
   return (
-    <Container className="d-flex">
+    <Container className="d-flex mt-4">
       <Row>
         <Col className="col-xs-12 col-md-8 w-100">
           <UserProfile />
