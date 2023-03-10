@@ -54,10 +54,18 @@ body {
   align-items: flex-start;
 }
 
+.fotoTondeProf {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  top: 10px;
+}
+
 .fotoTonde {
   border-radius: 50%;
   width: 70px;
   height: 70px;
+  position: absolute;
   top: 10px;
 }
 
