@@ -285,7 +285,7 @@ function NewsFeed() {
                   </>
                 )}
               </Row>
-              <Row>
+              <Row clasName="mx-0">
                 {/* Card commenti */}
                 {selectedPostId === post._id && (
                   <Card className="mt-3">
@@ -298,7 +298,7 @@ function NewsFeed() {
                           <Col xs={8}>
                             <small className="text-muted">{com.author}</small>
                           </Col>
-                          <Row className="d-flex">
+                          <Row className="d-flex mx-0">
                             <Col>
                               <p className="mb-0">{com.comment}</p>
                             </Col>
