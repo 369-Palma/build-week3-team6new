@@ -17,17 +17,14 @@ const Informazioni = () => {
 
     //inizio fetch - PUT
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/",
-        {
-          method: "PUT",
-          body: JSON.stringify(text),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: process.env.REACT_APP_API_KEY,
-          },
-        }
-      );
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+        method: "PUT",
+        body: JSON.stringify(text),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: process.env.REACT_APP_API_KEY,
+        },
+      });
       if (response.ok) {
         const newInfoJson = await response.json();
         console.log(newInfoJson);
@@ -54,13 +51,11 @@ const Informazioni = () => {
           <Col sx={1} className="d-flex flex-column h-100">
             <HiOutlinePencil
               className="fs-5 d-flex align-self-end"
+              style={{ cursor: "pointer" }}
               onClick={handleShow}
             />
             {/* inizio modale */}
-            <div
-              className="modal show"
-              style={{ display: "block", position: "initial" }}
-            >
+            <div className="modal show" style={{ display: "block", position: "initial" }}>
               <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)}>
                 <Modal.Header closeButton>
                   <Modal.Title>Modifica informazioni</Modal.Title>
@@ -69,9 +64,8 @@ const Informazioni = () => {
                 <Modal.Body>
                   <p className="textColor-modal">* indica che è obbligatorio</p>
                   <p>
-                    Puoi includere anni di esperienza, settore o competenze
-                    acquisite. Potresti anche inserire i risultati raggiunti o
-                    le esperienze di lavoro precedenti.
+                    Puoi includere anni di esperienza, settore o competenze acquisite. Potresti anche inserire i
+                    risultati raggiunti o le esperienze di lavoro precedenti.
                   </p>
                   <Form.Control
                     type="textarea"
@@ -89,8 +83,7 @@ const Informazioni = () => {
                     type="submit"
                     variant="primary"
                     className="rounded-pill fw-semibold px-3"
-                    onClick={updateInfo}
-                  >
+                    onClick={updateInfo}>
                     Salva
                   </Button>
                 </Modal.Footer>
