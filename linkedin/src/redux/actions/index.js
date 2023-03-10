@@ -8,11 +8,14 @@ export const POST_POSTS = "POST_POSTS"
 export const GET_DATA_LOADING_ON = "GET_DATA_LOADING_ON"
 export const GET_DATA_LOADING_OFF = "GET_DATA_LOADING_OFF"
 
+
 // const carlosCommKey =
 //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDVjYmEyNDc4ZDAwMTNhMDU4MjYiLCJpYXQiOjE2NzgxMTUwOTgsImV4cCI6MTY3OTMyNDY5OH0.dtkqts9v7fRlKAildn8gdlZAJssjYpLxahUDCmdzKv8";
 
 const baseline = "https://striveschool-api.herokuapp.com/api/profile/"
 const postBaseline = "https://striveschool-api.herokuapp.com/api/posts/"
+
+
 
 export const fetchProfiles = (query) => {
   return async (dispatch, getState) => {
@@ -120,7 +123,7 @@ export const deleteExp = (expid) => {
     try {
       const res = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/63fc7944f193e60013807f5e/experiences/` +
-          expid,
+        expid,
         {
           method: "DELETE",
           headers: {

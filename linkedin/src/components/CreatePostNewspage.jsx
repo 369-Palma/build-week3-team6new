@@ -1,37 +1,46 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   FcClapperboard,
   FcPicture,
   FcPlanner,
   FcViewDetails,
-} from "react-icons/fc"
-import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap"
-import { useState, useEffect } from "react"
-import { fetchPosts, fetchUser } from "../redux/actions/index"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+} from "react-icons/fc";
+import {
+  Form,
+  Card,
+  Modal,
+  Button,
+  Col,
+  Row,
+  Container,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { fetchPosts, fetchUser } from "../redux/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import "./style/post.css";
 
 const StartAPost = () => {
-  const [show, setShow] = useState(false)
-  const [formData, setformData] = useState(new FormData())
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const [formData, setformData] = useState(new FormData());
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [newPost, setNewPost] = useState({
     text: "",
-  })
+  });
 
-  const dispatch = useDispatch()
-  const params = useParams()
-  const profileStore = useSelector((state) => state.contentUsers)
+  const dispatch = useDispatch();
+  const params = useParams();
+  const profileStore = useSelector((state) => state.contentUsers);
 
   useEffect(() => {
-    dispatch(fetchUser(params.userId))
-  }, [])
+    dispatch(fetchUser(params.userId));
+  }, []);
 
-  console.log(profileStore)
+  console.log(profileStore);
   const handleImageUpload = async (postId) => {
     try {
       // setId(id)
-
 
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
@@ -42,31 +51,31 @@ const StartAPost = () => {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (response.ok) {
-        alert("Image uploaded!")
+        alert("Image uploaded!");
       } else {
-        console.log("error")
-        alert("Something went wrong. Please try again.")
+        console.log("error");
+        alert("Something went wrong. Please try again.");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const handleImageChange = (ev) => {
     setformData((prev) => {
-      prev.delete("post")
-      prev.append("post", ev.target.files[0])
-      return prev
-    })
-  }
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
+      return prev;
+    });
+  };
   // PUT DEI COMMENTS
   const createNewPost = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const newPostToSend = {
       ...newPost,
-    }
+    };
 
     try {
       let response = await fetch(
@@ -79,23 +88,23 @@ const StartAPost = () => {
             Authorization: process.env.REACT_APP_API_KEY,
           },
         }
-      )
+      );
       if (response.ok) {
-        const newPostJson = await response.json()
-        console.log(newPostJson)
-        setNewPost(newPostJson)
-        await handleImageUpload(newPostJson._id)
-        dispatch(fetchPosts())
+        const newPostJson = await response.json();
+        console.log(newPostJson);
+        setNewPost(newPostJson);
+        await handleImageUpload(newPostJson._id);
+        dispatch(fetchPosts());
 
-        alert("Post was sent!")
+        alert("Post was sent!");
       } else {
-        console.log("error")
-        alert("something went wrong")
+        console.log("error");
+        alert("something went wrong");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -107,11 +116,11 @@ const StartAPost = () => {
                 /* variant="top" */
                 src={profileStore?.image}
                 alt="foto"
-                className="fotoTonde"
+                className="fotoTonda"
               />
             </Col>
             <Col xs={10}>
-              <Form className="my-4 ">
+              <Form className="my-4">
                 <Form.Control
                   type="search"
                   placeholder="Scrivi un post..."
@@ -215,7 +224,7 @@ const StartAPost = () => {
         </Button>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default StartAPost
+export default StartAPost;
