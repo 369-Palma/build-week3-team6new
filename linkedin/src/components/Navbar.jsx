@@ -5,8 +5,8 @@ import {
   Nav,
   Navbar,
   Container,
-  // FormControl,
-  // Form
+  Form,
+  FormControl
 } from "react-bootstrap";
 import ModalNav from "../components/ModalProfileNav";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -41,7 +41,7 @@ const CustomNavbar = () => {
             </a>
           </div>
           <div>
-            {/* <Form inline className="d-none d-lg-block">
+            <Form inline className="d-none d-lg-block">
               <Form.Group id="navbar-search-container">
                 <FormControl
                   id="form-control-search-form-control"
@@ -50,7 +50,7 @@ const CustomNavbar = () => {
                   className="mr-sm-2"
                 />
               </Form.Group>
-            </Form> */}
+            </Form>
           </div>
         </div>
         <div>
