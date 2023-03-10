@@ -39,7 +39,6 @@ function UpdatePropic({ userId }) {
         const data = await response.json()
         dispatch(fetchUser("me"))
         setShowModal(false)
-        console.log(data)
       }
     } catch (error) {
       console.log(error)
