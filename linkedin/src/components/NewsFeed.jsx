@@ -1,4 +1,3 @@
-import "../components/style/comment.css";
 import { useEffect, useState } from "react";
 import { fetchPosts, fetchUser } from "../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
